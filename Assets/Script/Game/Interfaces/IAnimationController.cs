@@ -1,0 +1,99 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Game.Interfaces
+{
+    /// <summary>
+    /// BlendTree 기반 유닛 애니메이션 제어 인터페이스
+    /// BlendTreeAnimationController를 통한 정밀한 타이밍 제어
+    /// </summary>
+    public interface IAnimationController
+    {
+        // ========================================
+        // Properties
+        // ========================================
+
+        /// <summary>
+        /// 현재 애니메이션이 재생 중인지 여부
+        /// UnitService가 이 값을 체크하여 애니메이션 완료 대기
+        /// </summary>
+        bool IsAnimationPlaying { get; }
+
+        /// <summary>
+        /// 현재 애니메이션의 진행도 (0.0 ~ 1.0)
+        /// </summary>
+        float CurrentAnimationProgress { get; }
+
+        // ========================================
+        // Animation Methods
+        // ========================================
+
+        /// <summary>
+        /// BlendTree 기반 이동 애니메이션 재생
+        /// </summary>
+        /// <param name="from">시작 그리드 위치</param>
+        /// <param name="to">목표 그리드 위치</param>
+        /// <param name="isFirstStep">첫 칸 여부 (true: MoveSpeed=0에서 시작, false: 현재 값 유지)</param>
+        /// <param name="isLastStep">마지막 칸 여부 (true: 감속 적용, false: Walk 유지)</param>
+        void PlayMoveAnimation(Vector2Int from, Vector2Int to, bool isFirstStep = true, bool isLastStep = true);
+
+        /// <summary>
+        /// BlendTree 기반 공격 애니메이션 재생
+        /// 타겟 정보는 애니메이션 컨트롤러의 책임이 아니므로 파라미터 없음
+        /// </summary>
+        void PlayAttackAnimation();
+
+        /// <summary>
+        /// 현재 재생 중인 애니메이션 중단
+        /// </summary>
+        void StopCurrentAnimation();
+
+        /// <summary>
+        /// 애니메이션 속도 배율 설정
+        /// </summary>
+        /// <param name="speed">속도 배율 (1.0 = 정상 속도)</param>
+        void SetAnimationSpeed(float speed);
+
+        // ========================================
+        // BlendTree Animation Events
+        // ========================================
+
+        /// <summary>
+        /// 이동 시작 이벤트 (from, to)
+        /// BlendTreeAnimationController.OnBlendTreeMoveStart에서 전달
+        /// </summary>
+        event Action<Vector2Int, Vector2Int> OnMoveStart;
+
+        /// <summary>
+        /// 이동 종료 이벤트 (targetPosition)
+        /// BlendTreeAnimationController.OnBlendTreeMoveEnd에서 전달
+        /// </summary>
+        event Action<Vector2Int> OnMoveEnd;
+
+        /// <summary>
+        /// 공격 시작 이벤트
+        /// 애니메이션 타이밍 전달용 (타겟 정보는 CombatComponent가 관리)
+        /// </summary>
+        event Action OnAttackStart;
+
+        /// <summary>
+        /// 공격 종료 이벤트
+        /// 애니메이션 타이밍 전달용 (타겟 정보는 CombatComponent가 관리)
+        /// </summary>
+        event Action OnAttackEnd;
+
+        /// <summary>
+        /// 애니메이션 중단 이벤트
+        /// StopCurrentAnimation() 호출 시 발생
+        /// </summary>
+        event Action OnAnimationInterrupted;
+
+        /// <summary>
+        /// 공격 타격 순간 이벤트 (공격 진행도 60% 지점)
+        /// 애니메이션 타이밍 전달용, CombatComponent가 구독하여 데미지 적용
+        /// 타겟 정보는 CombatComponent가 관리
+        /// </summary>
+        event Action OnAttackHit;
+    }
+}

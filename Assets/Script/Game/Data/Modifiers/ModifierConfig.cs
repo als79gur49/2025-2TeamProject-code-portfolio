@@ -1,0 +1,235 @@
+using System.Collections.Generic;
+using UnityEngine;
+using Game.Interfaces;
+using Game.Core;
+using Game.Services.Modifiers;
+
+namespace Game.Data.Modifiers
+{
+    /// <summary>
+    /// 공격 방향 플래그 (복수 선택 가능)
+    /// (x, y)에서 x는 상/하, y는 좌/우를 의미
+    /// </summary>
+    [System.Flags]
+    public enum AttackDirectionFlags
+    {
+        None         = 0,
+        Forward      = 1 << 0, // 팀 기준 전진 방향
+        DiagonalUp   = 1 << 1, // 전진 + 위쪽
+        DiagonalDown = 1 << 2  // 전진 + 아래쪽
+    }
+
+    /// <summary>
+    /// 투사체 실행 방식
+    /// </summary>
+    public enum ProjectileExecutionType
+    {
+        Moving,
+        InstantLaser,
+        /// <summary>
+        /// 이동형 투사체 + 타일 도착 시 VFX 생성,
+        /// 일정 지연(hitDelay) 후 실제 데미지 적용
+        /// </summary>
+        MovingDelayed,
+        /// <summary>
+        /// 목표까지의 거리와 상관없이
+        /// 항상 동일한 비행 시간 동안 곡선(곡사) 이동하는 투사체
+        /// (Transform 이동은 Mover에서 처리)
+        /// </summary>
+        BallisticEqualTime
+    }
+
+    /// <summary>
+    /// Modifier 타입 열거형
+    /// Registry에서 Modifier 생성 시 사용
+    /// </summary>
+    public enum ModifierType
+    {
+        RangedAttack,
+        MeleeAttack,
+        SniperAttack,
+        BishopAttack,
+        QueenAttack,
+        NormalMovement,
+        BoosterMovement
+    }
+
+    /// <summary>
+    /// 투사체 관련 설정
+    /// </summary>
+    public readonly struct ProjectileConfig
+    {
+        public readonly ProjectileExecutionType ExecutionType;
+        public readonly float ProjectileSpeed;
+        public readonly float HitDelay;
+
+        public ProjectileConfig(
+            ProjectileExecutionType executionType,
+            float projectileSpeed = 10f,
+            float hitDelay = 0.2f)
+        {
+            ExecutionType = executionType;
+            ProjectileSpeed = Mathf.Max(0f, projectileSpeed);
+            HitDelay = Mathf.Max(0f, hitDelay);
+        }
+    }
+
+    /// <summary>
+    /// 불변 Modifier 설정 구조체
+    /// ScriptableObject로부터 변환된 런타임 데이터 전송 객체
+    /// </summary>
+    public readonly struct ModifierConfig
+    {
+        // 기본 설정
+        public readonly string Name;
+        public readonly int Priority;
+        public readonly ChainBehavior ChainBehavior;
+        public readonly ActionType ActionType;
+        public readonly ModifierType Type;
+
+        // 조건 및 타겟팅
+        public readonly IReadOnlyList<IModifierCondition> Conditions;
+        public readonly TargetingParams TargetingParams;
+
+        // 타입별 설정 (null일 수 있음)
+        public readonly AttackConfig? AttackConfig;
+        public readonly MovementConfig? MovementConfig;
+        public readonly ProjectileConfig? ProjectileConfig;
+
+        public ModifierConfig(
+            string name,
+            int priority,
+            ChainBehavior chainBehavior,
+            ActionType actionType,
+            ModifierType type,
+            IReadOnlyList<IModifierCondition> conditions = null,
+            TargetingParams targetingParams = default,
+            AttackConfig? attackConfig = null,
+            MovementConfig? movementConfig = null,
+            ProjectileConfig? projectileConfig = null)
+        {
+            Name = name;
+            Priority = priority;
+            ChainBehavior = chainBehavior;
+            ActionType = actionType;
+            Type = type;
+            Conditions = conditions ?? new List<IModifierCondition>();
+            TargetingParams = targetingParams;
+            AttackConfig = attackConfig;
+            MovementConfig = movementConfig;
+            ProjectileConfig = projectileConfig;
+        }
+
+        /// <summary>
+        /// 설정 유효성 검증
+        /// </summary>
+        public bool IsValid()
+        {
+            if (string.IsNullOrEmpty(Name)) return false;
+            if (Priority < 0 || Priority > 200) return false;
+
+            // ActionType에 따른 Config 검증
+            if (ActionType == ActionType.Attack && !AttackConfig.HasValue) return false;
+            if (ActionType == ActionType.Movement && !MovementConfig.HasValue) return false;
+
+            return true;
+        }
+
+        public override string ToString()
+        {
+            return $"ModifierConfig[{Name}, Priority:{Priority}, Type:{Type}]";
+        }
+    }
+
+    /// <summary>
+    /// 공격 관련 설정
+    /// </summary>
+    public readonly struct AttackConfig
+    {
+        public readonly int Range;
+        public readonly int DamageModifier;
+        public readonly bool Piercing;
+        public readonly bool RequiresClearLane;
+        public readonly bool TargetNexusOnly;
+
+        public AttackConfig(
+            int range = 1,
+            int damageModifier = 0,
+            bool piercing = false,
+            bool requiresClearLane = false,
+            bool targetNexusOnly = false)
+        {
+            Range = Mathf.Max(1, range);
+            DamageModifier = damageModifier;
+            Piercing = piercing;
+            RequiresClearLane = requiresClearLane;
+            TargetNexusOnly = targetNexusOnly;
+        }
+    }
+
+    /// <summary>
+    /// 이동 관련 설정
+    /// </summary>
+    public readonly struct MovementConfig
+    {
+        public readonly int MaxRange;
+        public readonly bool DiagonalMovement;
+        public readonly bool UnlimitedRange;
+
+        public MovementConfig(
+            int maxRange = 3,
+            bool diagonalMovement = false,
+            bool unlimitedRange = false)
+        {
+            MaxRange = Mathf.Max(1, maxRange);
+            DiagonalMovement = diagonalMovement;
+            UnlimitedRange = unlimitedRange;
+        }
+    }
+
+    /// <summary>
+    /// 타겟팅 파라미터
+    /// ITargetSelector에 전달되는 설정
+    /// </summary>
+    public readonly struct TargetingParams
+    {
+        public readonly int Range;
+        public readonly bool Piercing;
+        public readonly bool DiagonalAllowed;
+        public readonly bool RequiresClearLane;
+        public readonly TeamRelation TargetRelation;
+        public readonly TargetType TargetType;
+        public readonly bool TargetNexusOnly;
+        public readonly AttackDirectionFlags Directions;
+
+        public TargetingParams(
+            int range = 1,
+            bool piercing = false,
+            bool diagonalAllowed = false,
+            bool requiresClearLane = false,
+            TeamRelation targetRelation = TeamRelation.Enemy,
+            TargetType targetType = TargetType.Both,
+            bool targetNexusOnly = false,
+            AttackDirectionFlags directions = AttackDirectionFlags.Forward)
+        {
+            Range = range;
+            Piercing = piercing;
+            DiagonalAllowed = diagonalAllowed;
+            RequiresClearLane = requiresClearLane;
+            TargetRelation = targetRelation;
+            TargetType = targetType;
+            TargetNexusOnly = targetNexusOnly;
+            Directions = directions;
+        }
+    }
+
+    /// <summary>
+    /// 타겟 타입 열거형
+    /// </summary>
+    public enum TargetType
+    {
+        Unit,
+        Base,
+        Both
+    }
+}

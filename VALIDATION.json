@@ -1,0 +1,3253 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "purpose": "Local non-executable source review copy; no Unity build, run, or test performed",
+  "repository": "als79gur49/2025-2TeamProject",
+  "branch": "feature/carddata-refactoring",
+  "commit": "8b1f53250f18e622b71ca302cfda816433d14852",
+  "validated_at_utc": "2026-10-01T08:09:37.890Z",
+  "counts": {
+    "original_files": 19230,
+    "original_csharp": 436,
+    "included_csharp": 409,
+    "original_included_files": 413,
+    "supplemental_files": 5,
+    "total_files": 418,
+    "excluded_csharp": 27
+  },
+  "checks": {
+    "source_git_blob_sha1_and_size": {
+      "matched": 413,
+      "failed": 0
+    },
+    "source_sha256": "Computed and included for every original file in MANIFEST.csv and inventory",
+    "source_paths": "Preserved except 3 context files mapped under ReviewContext",
+    "allowlist": {
+      "exact_paths": [
+        ".gitignore",
+        "Assets/Script/Audio/AudioPlayRequest.cs",
+        "Assets/Script/Audio/AudioServiceContainer.cs",
+        "Assets/Script/Audio/AudioServiceEvents.cs",
+        "Assets/Script/Audio/BGMAudioService.cs",
+        "Assets/Script/Audio/ButtonSoundPlayer.cs",
+        "Assets/Script/Audio/EffectAudioService.cs",
+        "Assets/Script/Audio/EventChannelSoundPlayer.cs",
+        "Assets/Script/Audio/IAudioService.cs",
+        "Assets/Script/Audio/IAudioServiceContainer.cs",
+        "Assets/Script/Audio/IBGMAudioService.cs",
+        "Assets/Script/Audio/IEffectAudioService.cs",
+        "Assets/Script/Audio/IVolumeController.cs",
+        "Assets/Script/Audio/Services/ISettingsCoordinator.cs",
+        "Assets/Script/Audio/Services/SettingsCoordinator.cs",
+        "Assets/Script/Audio/VolumeController.cs",
+        "Assets/Script/Data/ICardRegistry.cs",
+        "Assets/Script/Editor/AnimatorSetupHelper.cs",
+        "Assets/Script/Game.Scripts.asmdef",
+        "Assets/Script/Game/AI/CardSelection/CardSelectionStrategyFactory.cs",
+        "Assets/Script/Game/AI/CardSelection/ICardSelectionStrategy.cs",
+        "Assets/Script/Game/AI/CardSelection/RandomSelectionStrategy.cs",
+        "Assets/Script/Game/AI/CardSelection/RarityWeightedSelectionStrategy.cs",
+        "Assets/Script/Game/AI/CardSelection/SelectionType.cs",
+        "Assets/Script/Game/AI/CardValueInfo.cs",
+        "Assets/Script/Game/AI/EnemyAIController.cs",
+        "Assets/Script/Game/AI/KnapsackCardSelector.cs",
+        "Assets/Script/Game/Base.cs",
+        "Assets/Script/Game/Card/CardDragData.cs",
+        "Assets/Script/Game/Card/Effects/AlwaysFilterDefinition.cs",
+        "Assets/Script/Game/Card/Effects/AndTargetFilterDefinition.cs",
+        "Assets/Script/Game/Card/Effects/AreaShapeDefinition.cs",
+        "Assets/Script/Game/Card/Effects/CardEffectFactory.cs",
+        "Assets/Script/Game/Card/Effects/DamageBaseEffect.cs",
+        "Assets/Script/Game/Card/Effects/DamageBaseEffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/DamageEffect.cs",
+        "Assets/Script/Game/Card/Effects/DamageEffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/DrawCardsEffect.cs",
+        "Assets/Script/Game/Card/Effects/DrawCardsEffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/EffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/EffectTargetScope.cs",
+        "Assets/Script/Game/Card/Effects/EffectTargetingHelper.cs",
+        "Assets/Script/Game/Card/Effects/EffectType.cs",
+        "Assets/Script/Game/Card/Effects/EmptyTileFilterDefinition.cs",
+        "Assets/Script/Game/Card/Effects/FrenzyBuffEffect.cs",
+        "Assets/Script/Game/Card/Effects/FrenzyBuffEffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/GameContext.cs",
+        "Assets/Script/Game/Card/Effects/GlobalAreaShapeDefinition.cs",
+        "Assets/Script/Game/Card/Effects/HealBaseEffect.cs",
+        "Assets/Script/Game/Card/Effects/HealBaseEffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/HealEffect.cs",
+        "Assets/Script/Game/Card/Effects/HealEffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/ICardEffect.cs",
+        "Assets/Script/Game/Card/Effects/IVFXAwareEffect.cs",
+        "Assets/Script/Game/Card/Effects/LineShapeDefinition.cs",
+        "Assets/Script/Game/Card/Effects/MultiStatBuffEffect.cs",
+        "Assets/Script/Game/Card/Effects/MultiStatBuffEffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/OrTargetFilterDefinition.cs",
+        "Assets/Script/Game/Card/Effects/RadiusShapeDefinition.cs",
+        "Assets/Script/Game/Card/Effects/ReturnUnitsToHandEffect.cs",
+        "Assets/Script/Game/Card/Effects/ReturnUnitsToHandEffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/ReturnableUnitFilterDefinition.cs",
+        "Assets/Script/Game/Card/Effects/SequentialLineShapeDefinition.cs",
+        "Assets/Script/Game/Card/Effects/SquareShapeDefinition.cs",
+        "Assets/Script/Game/Card/Effects/StatThresholdFilterDefinition.cs",
+        "Assets/Script/Game/Card/Effects/StunEffect.cs",
+        "Assets/Script/Game/Card/Effects/StunEffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/SummonEffect.cs",
+        "Assets/Script/Game/Card/Effects/SummonEffectDefinition.cs",
+        "Assets/Script/Game/Card/Effects/TargetFilterDefinition.cs",
+        "Assets/Script/Game/Card/Effects/TeamFilterDefinition.cs",
+        "Assets/Script/Game/Card/Effects/VFXTilePlacementMode.cs",
+        "Assets/Script/Game/Card/UI/Refactored/CardUIRefactored.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Context/CardUIBaseContext.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Context/CardUIBattleContext.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Context/CardUIBuilderContext.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Context/CardUIDragState.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Context/CardUIEventChannels.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Context/CardUIInventoryContext.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Context/CardUISettings.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Context/CardUIViewData.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Core/BaseCardUIStrategy.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Core/ICardUIStrategy.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Strategies/InDeckStrategy.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Strategies/InHandStrategy.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Strategies/InInventoryStrategy.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Utilities/CardUIAnimator.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Utilities/CardUIColorProvider.cs",
+        "Assets/Script/Game/Card/UI/Refactored/Utilities/CardUIPanelHelper.cs",
+        "Assets/Script/Game/Components/Abilities/AttackEffects/FrenzyOnKillEffect.cs",
+        "Assets/Script/Game/Components/Abilities/AttackEffects/SplashEffect.cs",
+        "Assets/Script/Game/Components/Abilities/AttackEffects/StunEffect.cs",
+        "Assets/Script/Game/Components/Abilities/AttackEffects/StunStatusEffect.cs",
+        "Assets/Script/Game/Components/Abilities/AttackModifiers/BishopModifier.cs",
+        "Assets/Script/Game/Components/Abilities/AttackModifiers/MeleeModifier.cs",
+        "Assets/Script/Game/Components/Abilities/AttackModifiers/QueenModifier.cs",
+        "Assets/Script/Game/Components/Abilities/AttackModifiers/RangedModifier.cs",
+        "Assets/Script/Game/Components/Abilities/AttackModifiers/SniperModifier.cs",
+        "Assets/Script/Game/Components/Abilities/BuffEffects/TeamStatBuffEffect.cs",
+        "Assets/Script/Game/Components/Abilities/DeathEffects/ExplosionOnDeathEffect.cs",
+        "Assets/Script/Game/Components/Abilities/DeployEffects/DeployBonusEffect.cs",
+        "Assets/Script/Game/Components/Abilities/DeployEffects/DeployColumnStatSourceEffect.cs",
+        "Assets/Script/Game/Components/Abilities/DeployEffects/DeployDrawCardsEffect.cs",
+        "Assets/Script/Game/Components/Abilities/DeployEffects/DeployHealBaseEffect.cs",
+        "Assets/Script/Game/Components/Abilities/DeployEffects/DeployTeamMultiStatSourceEffect.cs",
+        "Assets/Script/Game/Components/Abilities/DeployEffects/DeployTeamStunSourceEffect.cs",
+        "Assets/Script/Game/Components/Abilities/MovementModifiers/BoosterModifier.cs",
+        "Assets/Script/Game/Components/Abilities/MovementModifiers/NormalMoveModifier.cs",
+        "Assets/Script/Game/Components/Abilities/StatusEffects/SelfDamageDebuffEffect.cs",
+        "Assets/Script/Game/Components/ActionTurnOutcome.cs",
+        "Assets/Script/Game/Components/AttackStateBehaviour.cs",
+        "Assets/Script/Game/Components/BasicUnitAI.cs",
+        "Assets/Script/Game/Components/BlendTreeAnimationController.cs",
+        "Assets/Script/Game/Components/CombatComponent.cs",
+        "Assets/Script/Game/Components/CombatExtensions.cs",
+        "Assets/Script/Game/Components/GridController.cs",
+        "Assets/Script/Game/Components/GridDataBridge.cs",
+        "Assets/Script/Game/Components/GridRenderer.cs",
+        "Assets/Script/Game/Components/GridServices.cs",
+        "Assets/Script/Game/Components/GridState.cs",
+        "Assets/Script/Game/Components/HealthComponent.cs",
+        "Assets/Script/Game/Components/MovementComponent.cs",
+        "Assets/Script/Game/Components/PathfindingComponents.cs",
+        "Assets/Script/Game/Components/Projectiles/GridProjectile.cs",
+        "Assets/Script/Game/Components/Projectiles/GridProjectileMover.cs",
+        "Assets/Script/Game/Components/TeamComponent.cs",
+        "Assets/Script/Game/Components/UnitAnimationController.cs",
+        "Assets/Script/Game/Components/VFX/BaseHitVFX.cs",
+        "Assets/Script/Game/Components/VFX/UnitVFXController.cs",
+        "Assets/Script/Game/Controllers/SceneTransitionController.cs",
+        "Assets/Script/Game/Coordinators/GameResultCoordinator.cs",
+        "Assets/Script/Game/Coordinators/GameUICoordinator.cs",
+        "Assets/Script/Game/Coordinators/RewardQueueService.cs",
+        "Assets/Script/Game/Coordinators/StageRewardCoordinator.cs",
+        "Assets/Script/Game/Coordinators/UnitPlacementCoordinator.cs",
+        "Assets/Script/Game/Core/ActionEvaluator.cs",
+        "Assets/Script/Game/Core/ActionExecutorRegistry.cs",
+        "Assets/Script/Game/Core/Effects/DurationTickContext.cs",
+        "Assets/Script/Game/Core/Effects/DurationType.cs",
+        "Assets/Script/Game/Core/Effects/EffectContext.cs",
+        "Assets/Script/Game/Core/Effects/EffectManager.cs",
+        "Assets/Script/Game/Core/Effects/EffectTrigger.cs",
+        "Assets/Script/Game/Core/Effects/IEffect.cs",
+        "Assets/Script/Game/Core/Effects/IImmediateEffect.cs",
+        "Assets/Script/Game/Core/Effects/IPersistentVFXEffect.cs",
+        "Assets/Script/Game/Core/Executors/AttackActionExecutor.cs",
+        "Assets/Script/Game/Core/Executors/MovementActionExecutor.cs",
+        "Assets/Script/Game/Core/GameInitializer.cs",
+        "Assets/Script/Game/Core/GridTraversalUtility.cs",
+        "Assets/Script/Game/Core/IGlobalService.cs",
+        "Assets/Script/Game/Core/Modifiers/ModifierFactory.cs",
+        "Assets/Script/Game/Core/ResultPattern.cs",
+        "Assets/Script/Game/Core/SceneInitializer.cs",
+        "Assets/Script/Game/Core/ServiceBootstrap.cs",
+        "Assets/Script/Game/Core/ServiceLocator.cs",
+        "Assets/Script/Game/Core/StageSceneInitializer.cs",
+        "Assets/Script/Game/Core/TeamRelationMatrix.cs",
+        "Assets/Script/Game/Core/TitleSceneInitializer.cs",
+        "Assets/Script/Game/Data/CardPreviewHelper.cs",
+        "Assets/Script/Game/Data/DamageDisplayData.cs",
+        "Assets/Script/Game/Data/Effects/DeployBonusEffectData.cs",
+        "Assets/Script/Game/Data/Effects/DeployColumnStatSourceEffectData.cs",
+        "Assets/Script/Game/Data/Effects/DeployDrawCardsEffectData.cs",
+        "Assets/Script/Game/Data/Effects/DeployEffectTeamTargetConfig.cs",
+        "Assets/Script/Game/Data/Effects/DeployHealBaseEffectData.cs",
+        "Assets/Script/Game/Data/Effects/DeployTeamMultiStatSourceEffectData.cs",
+        "Assets/Script/Game/Data/Effects/DeployTeamStunEffectData.cs",
+        "Assets/Script/Game/Data/Effects/ExplosionOnDeathEffectData.cs",
+        "Assets/Script/Game/Data/Effects/FrenzyOnKillEffectData.cs",
+        "Assets/Script/Game/Data/Effects/SelfDamageDebuffData.cs",
+        "Assets/Script/Game/Data/Effects/SplashEffectData.cs",
+        "Assets/Script/Game/Data/Effects/StunOnAttackEffectData.cs",
+        "Assets/Script/Game/Data/Effects/UnitEffectData.cs",
+        "Assets/Script/Game/Data/GameSessionData.cs",
+        "Assets/Script/Game/Data/Modifiers/BishopModifierData.cs",
+        "Assets/Script/Game/Data/Modifiers/BoosterModifierData.cs",
+        "Assets/Script/Game/Data/Modifiers/MeleeModifierData.cs",
+        "Assets/Script/Game/Data/Modifiers/ModifierConfig.cs",
+        "Assets/Script/Game/Data/Modifiers/ModifierData.cs",
+        "Assets/Script/Game/Data/Modifiers/NormalMoveModifierData.cs",
+        "Assets/Script/Game/Data/Modifiers/QueenModifierData.cs",
+        "Assets/Script/Game/Data/Modifiers/RangedModifierData.cs",
+        "Assets/Script/Game/Data/Modifiers/SniperModifierData.cs",
+        "Assets/Script/Game/Data/SessionOutcome.cs",
+        "Assets/Script/Game/Data/StatModifier.cs",
+        "Assets/Script/Game/Editor/AnimationClipValidator.cs",
+        "Assets/Script/Game/Editor/AnimationEventSetupTool.cs",
+        "Assets/Script/Game/Editor/AnimationPerformanceMonitor.cs",
+        "Assets/Script/Game/Editor/CardHandDebugWindow.cs",
+        "Assets/Script/Game/Editor/GameSettingsEditor.cs",
+        "Assets/Script/Game/Editor/GridCoordinateValidator.cs",
+        "Assets/Script/Game/Editor/PlayerGoldEditor.cs",
+        "Assets/Script/Game/Editor/ResourceManagerEditor.cs",
+        "Assets/Script/Game/Editor/StageProgressEditor.cs",
+        "Assets/Script/Game/Editor/UnitAnimationControllerInspector.cs",
+        "Assets/Script/Game/Examples/SceneLoaderExample.cs",
+        "Assets/Script/Game/GameSettings.cs",
+        "Assets/Script/Game/GridManager.cs",
+        "Assets/Script/Game/Interfaces/IActionExecutor.cs",
+        "Assets/Script/Game/Interfaces/IActionModifier.cs",
+        "Assets/Script/Game/Interfaces/IAnimationController.cs",
+        "Assets/Script/Game/Interfaces/IAttackEffect.cs",
+        "Assets/Script/Game/Interfaces/IAttackModifier.cs",
+        "Assets/Script/Game/Interfaces/ICardHandManager.cs",
+        "Assets/Script/Game/Interfaces/ICardServiceManager.cs",
+        "Assets/Script/Game/Interfaces/ICardSpawnService.cs",
+        "Assets/Script/Game/Interfaces/ICombatSystem.cs",
+        "Assets/Script/Game/Interfaces/ICombatSystemEnhanced.cs",
+        "Assets/Script/Game/Interfaces/IEnemyCardHandView.cs",
+        "Assets/Script/Game/Interfaces/IGridHeightCalculator.cs",
+        "Assets/Script/Game/Interfaces/IGridManager.cs",
+        "Assets/Script/Game/Interfaces/IHealthComponent.cs",
+        "Assets/Script/Game/Interfaces/IHealthComponentEnhanced.cs",
+        "Assets/Script/Game/Interfaces/IMovementModifier.cs",
+        "Assets/Script/Game/Interfaces/IMovementSystem.cs",
+        "Assets/Script/Game/Interfaces/IProjectileAttackModifier.cs",
+        "Assets/Script/Game/Interfaces/IResourceManager.cs",
+        "Assets/Script/Game/Interfaces/ISpawnValidator.cs",
+        "Assets/Script/Game/Interfaces/ITeamComponent.cs",
+        "Assets/Script/Game/Interfaces/IUnitAI.cs",
+        "Assets/Script/Game/Managers/CardServiceManager.cs",
+        "Assets/Script/Game/Managers/GameSessionManager.cs",
+        "Assets/Script/Game/Managers/IGameSessionManager.cs",
+        "Assets/Script/Game/Repositories/DamageDisplayRepository.cs",
+        "Assets/Script/Game/Repositories/IDamageDisplayRepository.cs",
+        "Assets/Script/Game/Services/BaseManager.cs",
+        "Assets/Script/Game/Services/BusyType.cs",
+        "Assets/Script/Game/Services/Card/CardHandLayoutManager.cs",
+        "Assets/Script/Game/Services/Card/CardHandManager.cs",
+        "Assets/Script/Game/Services/Card/CardSpawnService.cs",
+        "Assets/Script/Game/Services/Card/EnemyCardHandView.cs",
+        "Assets/Script/Game/Services/Card/SpawnValidator.cs",
+        "Assets/Script/Game/Services/DamageDisplayService.cs",
+        "Assets/Script/Game/Services/DeathAnimationManager.cs",
+        "Assets/Script/Game/Services/GameOutcomeManager.cs",
+        "Assets/Script/Game/Services/GameService.cs",
+        "Assets/Script/Game/Services/GameServiceManager.cs",
+        "Assets/Script/Game/Services/GlobalStateManager.cs",
+        "Assets/Script/Game/Services/IDeathAnimationManager.cs",
+        "Assets/Script/Game/Services/IGlobalStateManager.cs",
+        "Assets/Script/Game/Services/Interfaces/IBaseManager.cs",
+        "Assets/Script/Game/Services/Interfaces/IDamageDisplayService.cs",
+        "Assets/Script/Game/Services/Interfaces/IGameOutcomeManager.cs",
+        "Assets/Script/Game/Services/Interfaces/IGameService.cs",
+        "Assets/Script/Game/Services/Interfaces/IGameServiceManager.cs",
+        "Assets/Script/Game/Services/Interfaces/ISceneLoaderService.cs",
+        "Assets/Script/Game/Services/Interfaces/ISceneTransitionController.cs",
+        "Assets/Script/Game/Services/Interfaces/IScoringService.cs",
+        "Assets/Script/Game/Services/Interfaces/ITurnService.cs",
+        "Assets/Script/Game/Services/Interfaces/IUIService.cs",
+        "Assets/Script/Game/Services/Interfaces/IUnitService.cs",
+        "Assets/Script/Game/Services/Modifiers/Conditions/AlwaysTrueCondition.cs",
+        "Assets/Script/Game/Services/Modifiers/Conditions/ClearLaneCondition.cs",
+        "Assets/Script/Game/Services/Modifiers/Conditions/MinimumHealthCondition.cs",
+        "Assets/Script/Game/Services/Modifiers/IModifierCondition.cs",
+        "Assets/Script/Game/Services/Modifiers/IModifierDependencies.cs",
+        "Assets/Script/Game/Services/Modifiers/ITargetSelector.cs",
+        "Assets/Script/Game/Services/Modifiers/ModifierDependencies.cs",
+        "Assets/Script/Game/Services/Modifiers/TargetSelectors/DirectionalLineTargetSelector.cs",
+        "Assets/Script/Game/Services/Modifiers/TargetSelectors/MeleeTargetSelector.cs",
+        "Assets/Script/Game/Services/Modifiers/TargetSelectors/MovementTargetSelector.cs",
+        "Assets/Script/Game/Services/Modifiers/TargetSelectors/NexusTargetSelector.cs",
+        "Assets/Script/Game/Services/Modifiers/TargetSelectors/RangedTargetSelector.cs",
+        "Assets/Script/Game/Services/Modifiers/TargetSelectors/TargetSelectorProvider.cs",
+        "Assets/Script/Game/Services/PhaseExecutionContext.cs",
+        "Assets/Script/Game/Services/ResourceManager.cs",
+        "Assets/Script/Game/Services/SceneLoaderService.cs",
+        "Assets/Script/Game/Services/ScoringService.cs",
+        "Assets/Script/Game/Services/TurnPhase.cs",
+        "Assets/Script/Game/Services/TurnService.cs",
+        "Assets/Script/Game/Services/UIService.cs",
+        "Assets/Script/Game/Services/UnitService.cs",
+        "Assets/Script/Game/Test/TileOccupancyIntegrationTest.cs",
+        "Assets/Script/Game/Test/UnitGameServiceTest.cs",
+        "Assets/Script/Game/Tile.cs",
+        "Assets/Script/Game/UI/BaseDamageHudController.cs",
+        "Assets/Script/Game/UI/BaseUI.cs",
+        "Assets/Script/Game/UI/DamagePopupUI.cs",
+        "Assets/Script/Game/UI/ManaHudUI.cs",
+        "Assets/Script/Game/UI/UnitStatsUI.cs",
+        "Assets/Script/Game/Unit.cs",
+        "Assets/Script/Game/UnitCardLink.cs",
+        "Assets/Script/Game/Utilities/GridCoordinateExtensions.cs",
+        "Assets/Script/Game/Utilities/GridPositionHelper.cs",
+        "Assets/Script/Game/Utilities/MaterialSetter.cs",
+        "Assets/Script/Game/VFX/AutoDestroyOnParticleEnd.cs",
+        "Assets/Script/Game/VFX/ISpellEffectExecutor.cs",
+        "Assets/Script/Game/VFX/SpellEffectExecutor.cs",
+        "Assets/Script/Game/VFX/VFXEventTrigger.cs",
+        "Assets/Script/Game/VFX/VFXTriggerData.cs",
+        "Assets/Script/Managers/CardDatabase.cs",
+        "Assets/Script/Managers/CollectionManager.cs",
+        "Assets/Script/Managers/ICardCollection.cs",
+        "Assets/Script/Managers/IPlayerDataManager.cs",
+        "Assets/Script/Managers/IStageProgressManager.cs",
+        "Assets/Script/Managers/PlayerDataManager.cs",
+        "Assets/Script/Managers/StageProgressManager.cs",
+        "Assets/Script/SaveSystem/Core/SaveDataAdapter.cs",
+        "Assets/Script/SaveSystem/Core/SaveGameManager.cs",
+        "Assets/Script/SaveSystem/Data/AudioSettingsData.cs",
+        "Assets/Script/SaveSystem/Data/CardCollectionData.cs",
+        "Assets/Script/SaveSystem/Data/DeckSaveData.cs",
+        "Assets/Script/SaveSystem/Data/EnhancedCardData.cs",
+        "Assets/Script/SaveSystem/Data/PlayerData.cs",
+        "Assets/Script/SaveSystem/Data/SaveFileType.cs",
+        "Assets/Script/SaveSystem/Data/StageProgressData.cs",
+        "Assets/Script/SaveSystem/Interfaces/ISaveDataAdapter.cs",
+        "Assets/Script/SaveSystem/Interfaces/ISaveGameManager.cs",
+        "Assets/Script/ScriptableObjects/AudioData.cs",
+        "Assets/Script/ScriptableObjects/CardData.cs",
+        "Assets/Script/ScriptableObjects/CardPackDefinition.cs",
+        "Assets/Script/ScriptableObjects/CardPackPresentationFinishedEventChannelSO.cs",
+        "Assets/Script/ScriptableObjects/CardPackPresentationRequestEventChannelSO.cs",
+        "Assets/Script/ScriptableObjects/CardPackRewardEventChannelSO.cs",
+        "Assets/Script/ScriptableObjects/CardPoolSet.cs",
+        "Assets/Script/ScriptableObjects/CardRarityTable.cs",
+        "Assets/Script/ScriptableObjects/Conditions/ChapterProgressCondition.cs",
+        "Assets/Script/ScriptableObjects/Conditions/CompositeConditions.cs",
+        "Assets/Script/ScriptableObjects/Conditions/StageClearCondition.cs",
+        "Assets/Script/ScriptableObjects/Conditions/StatsConditions.cs",
+        "Assets/Script/ScriptableObjects/Conditions/UnlockCondition.cs",
+        "Assets/Script/ScriptableObjects/DamageDisplayEventChannelSO.cs",
+        "Assets/Script/ScriptableObjects/DeckData.cs",
+        "Assets/Script/ScriptableObjects/EnemyCardPoolSO.cs",
+        "Assets/Script/ScriptableObjects/EnemyKilledEventChannelSO.cs",
+        "Assets/Script/ScriptableObjects/GameEventChannelSO.cs",
+        "Assets/Script/ScriptableObjects/SceneData/Editor/SceneDataEditor.cs",
+        "Assets/Script/ScriptableObjects/SceneData/SceneCategory.cs",
+        "Assets/Script/ScriptableObjects/SceneData/SceneData.cs",
+        "Assets/Script/ScriptableObjects/SoundEventChannelSO.cs",
+        "Assets/Script/ScriptableObjects/StageDataSO.cs",
+        "Assets/Script/ScriptableObjects/StatusVFXConfig.cs",
+        "Assets/Script/ScriptableObjects/TeamConfigSO.cs",
+        "Assets/Script/ScriptableObjects/UnitData.cs",
+        "Assets/Script/ScriptableObjects/VFXData.cs",
+        "Assets/Script/ScriptableObjects/VoidEventChannelSO.cs",
+        "Assets/Script/Shop/CartItem.cs",
+        "Assets/Script/Shop/Configuration/ShopConfiguration.cs",
+        "Assets/Script/Shop/Data/CardPackOpenResult.cs",
+        "Assets/Script/Shop/Data/CardPackPresentationData.cs",
+        "Assets/Script/Shop/Data/ShopData.cs",
+        "Assets/Script/Shop/Discount/IDiscountStrategy.cs",
+        "Assets/Script/Shop/Discount/RandomDiscountStrategy.cs",
+        "Assets/Script/Shop/IShopManager.cs",
+        "Assets/Script/Shop/Items/CardPackOpener.cs",
+        "Assets/Script/Shop/Items/CardPackShopItem.cs",
+        "Assets/Script/Shop/Items/CardShopItem.cs",
+        "Assets/Script/Shop/Items/IPurchasableItem.cs",
+        "Assets/Script/Shop/Items/IPurchaseContext.cs",
+        "Assets/Script/Shop/Pricing/IPricingStrategy.cs",
+        "Assets/Script/Shop/Pricing/PricingContext.cs",
+        "Assets/Script/Shop/Pricing/RarityBasedPricing.cs",
+        "Assets/Script/Shop/Selection/ICardSelectionStrategy.cs",
+        "Assets/Script/Shop/Selection/IPackSelectionStrategy.cs",
+        "Assets/Script/Shop/Selection/RandomPackSelectionStrategy.cs",
+        "Assets/Script/Shop/Selection/RandomSelectionStrategy.cs",
+        "Assets/Script/Shop/ShopItem.cs",
+        "Assets/Script/Shop/ShopManager.cs",
+        "Assets/Script/UI/Components/DeckButtonSwitcher.cs",
+        "Assets/Script/UI/Components/DeckSwitcher.cs",
+        "Assets/Script/UI/Components/ScrollRectHorizontalPositionButton.cs",
+        "Assets/Script/UI/Coordinators/CardInventorySaveCoordinator.cs",
+        "Assets/Script/UI/Coordinators/DeckInventoryCoordinator.cs",
+        "Assets/Script/UI/Coordinators/StagePreviewInitializer.cs",
+        "Assets/Script/UI/Core/GlobalUIPanelManager.cs",
+        "Assets/Script/UI/Core/IButtonedPanel.cs",
+        "Assets/Script/UI/Core/IDialogPanel.cs",
+        "Assets/Script/UI/Core/IDualClosePanel.cs",
+        "Assets/Script/UI/Core/IGameResultPanel.cs",
+        "Assets/Script/UI/Core/INavigablePanel.cs",
+        "Assets/Script/UI/Core/IOpenablePanel.cs",
+        "Assets/Script/UI/Core/IUIPanel.cs",
+        "Assets/Script/UI/Core/LoadingScreenPanel.cs",
+        "Assets/Script/UI/Core/LocalUIPanelManager.cs",
+        "Assets/Script/UI/Core/PopupManager.cs",
+        "Assets/Script/UI/Core/UIPanel.cs",
+        "Assets/Script/UI/Core/UIPanelController.cs",
+        "Assets/Script/UI/Core/UIPanelFacade.cs",
+        "Assets/Script/UI/Core/UIPanelManager.cs",
+        "Assets/Script/UI/Events/CardDragEndEventChannelSO.cs",
+        "Assets/Script/UI/Events/CardDragStartEventChannelSO.cs",
+        "Assets/Script/UI/Events/CardInfoEventChannelSO.cs",
+        "Assets/Script/UI/Events/CardPackInfoEventChannelSO.cs",
+        "Assets/Script/UI/Events/StageInfoEventChannelSO.cs",
+        "Assets/Script/UI/Feedback/CardTransferFeedback.cs",
+        "Assets/Script/UI/Feedback/DropdownValueChangeTween.cs",
+        "Assets/Script/UI/Feedback/UIButtonTween.cs",
+        "Assets/Script/UI/Game/CardInfoPanel.cs",
+        "Assets/Script/UI/Game/CardPackInfoPanel.cs",
+        "Assets/Script/UI/Game/DefeatPanel.cs",
+        "Assets/Script/UI/Game/StageButton.cs",
+        "Assets/Script/UI/Game/VictoryPanel.cs",
+        "Assets/Script/UI/Menu/MainMenuCameraController.cs",
+        "Assets/Script/UI/Menu/MainMenuPanel.cs",
+        "Assets/Script/UI/Panels/CardInventoryPanel.cs",
+        "Assets/Script/UI/Panels/ConfirmPanelWithSceneData.cs",
+        "Assets/Script/UI/Panels/DeckBuilderPanel.cs",
+        "Assets/Script/UI/Panels/EnemyCardIconUI.cs",
+        "Assets/Script/UI/Panels/InventoryPanel.cs",
+        "Assets/Script/UI/Panels/PackOpenCardSlot.cs",
+        "Assets/Script/UI/Panels/PackOpenPanel.cs",
+        "Assets/Script/UI/Panels/ShopItemUI.cs",
+        "Assets/Script/UI/Panels/ShopItemViewModel.cs",
+        "Assets/Script/UI/Panels/ShopPanel.cs",
+        "Assets/Script/UI/Panels/StageDetailInfoPanel.cs",
+        "Assets/Script/UI/Panels/StageEnemyPreviewPanel.cs",
+        "Assets/Script/UI/Settings/InGameSettingsPanel.cs",
+        "Assets/Script/UI/Settings/SettingsPanel.cs",
+        "Assets/Script/UI/Utils/UIModalStack.cs",
+        "Assets/Script/Validators/DeckValidationResult.cs",
+        "Assets/Script/Validators/DeckValidator.cs",
+        "CONTRIBUTIONS.md",
+        "MANIFEST.csv",
+        "README.md",
+        "ReviewContext/Packages/manifest.json",
+        "ReviewContext/Packages/packages-lock.json",
+        "ReviewContext/ProjectSettings/ProjectVersion.txt",
+        "VALIDATION.json"
+      ],
+      "unexpected_files": [],
+      "missing_files": [],
+      "gitignore": "Default deny; explicitly reopen each ancestor directory; explicitly allow 418 file paths; no extension-wide allow rule"
+    },
+    "forbidden_paths": {
+      "findings": []
+    },
+    "secret_patterns": {
+      "scanned_files": 418,
+      "patterns": [
+        {
+          "name": "private_key",
+          "regex": "-----BEGIN (?:RSA |EC |OPENSSH |DSA )?PRIVATE KEY-----",
+          "flags": "g"
+        },
+        {
+          "name": "github_token",
+          "regex": "\\b(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{30,})\\b",
+          "flags": "g"
+        },
+        {
+          "name": "aws_access_key",
+          "regex": "\\b(?:AKIA|ASIA)[A-Z0-9]{16}\\b",
+          "flags": "g"
+        },
+        {
+          "name": "google_api_key",
+          "regex": "\\bAIza[A-Za-z0-9_-]{30,}\\b",
+          "flags": "g"
+        },
+        {
+          "name": "slack_token",
+          "regex": "\\bxox[baprs]-[A-Za-z0-9-]{20,}\\b",
+          "flags": "g"
+        },
+        {
+          "name": "openai_key",
+          "regex": "\\bsk-(?:proj-|svcacct-)?[A-Za-z0-9_-]{20,}\\b",
+          "flags": "g"
+        },
+        {
+          "name": "credential_assignment",
+          "regex": "\\b(?:password|passwd|api[_-]?key|client[_-]?secret|access[_-]?token|secret[_-]?key)\\s*(?:=|:)\\s*[\"'][^\"'\\r\\n]{8,}[\"']",
+          "flags": "gi"
+        },
+        {
+          "name": "credential_in_url",
+          "regex": "https?:\\/\\/[^\\s/@:]+:[^\\s/@]+@",
+          "flags": "gi"
+        }
+      ],
+      "findings": [],
+      "scope": "All 418 included files scanned after writing this report; finite pattern scan is not an exhaustive guarantee"
+    },
+    "encoding": {
+      "source_413": "UTF-8 reconstructed bytes exactly match original Git blobs; no normalization",
+      "cp949_recoveries": 0,
+      "gitattributes_present": false
+    },
+    "no_git_initialization": true,
+    "no_original_edits": true,
+    "no_bug_fixes": true,
+    "no_new_license": true,
+    "privacy": {
+      "scanned_files": 418,
+      "patterns": [
+        {
+          "name": "email_address",
+          "regex": "[A-Za-z0-9.!#$%&*+/=?^_`{|}~-]+@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)+",
+          "flags": "g"
+        },
+        {
+          "name": "absolute_user_path",
+          "regex": "[A-Za-z]:[\\\\/](?:Users|Documents and Settings)[\\\\/]|\\/(?:home|Users)\\/",
+          "flags": "g"
+        },
+        {
+          "name": "phone_number",
+          "regex": "\\b01[016789][ -]?\\d{3,4}[ -]?\\d{4}\\b",
+          "flags": "g"
+        }
+      ],
+      "findings": [],
+      "allowed_identity_data": "User-approved team names and Git author aliases; no personal commit emails or absolute user paths included",
+      "scope": "Finite regex scan plus review of generated public documents"
+    },
+    "external_implementation_and_media_exclusion": {
+      "vendor_or_sample_csharp_excluded": 20,
+      "all_non_scope_csharp_excluded": 27,
+      "source_subset": "409 C# under Assets/Script plus Game.Scripts.asmdef",
+      "media_meta_dll_serialized_data_and_vendor_implementation_findings": 0,
+      "api_references_preserved": true
+    },
+    "document_consistency": {
+      "development_period": "User confirmation separate from Git author date range",
+      "contribution": "GitHub account mapping separate from raw author names and user role attestation; no AI-derived human contribution percentage",
+      "versions": "Unity and five requested packages cross-checked against original context; DOTween/Pro unconfirmed with failure evidence",
+      "excluded_csharp_list": "27 paths match immutable original tree and current scope",
+      "broken_comments": "Original UIPanelController bytes unchanged",
+      "non_executable_limit": "Explicit in README and validation; no build/run/test success asserted",
+      "source_document_links": "Checked local link destinations"
+    },
+    "original_repository_unchanged": true,
+    "original_repository_visibility_changed": false,
+    "original_git_history_included": false
+  },
+  "history": {
+    "commits": 194,
+    "github_author_account_counts": {
+      "als79gur49": 184,
+      "(unlinked)": 10
+    },
+    "raw_git_author_name_counts": {
+      "als79gur49": 176,
+      "alsgur7949": 5,
+      "moonsoyi": 3,
+      "TeamProject Developer": 9,
+      "권민혁": 1
+    },
+    "earliest_author_date_utc": "2025-09-06T04:25:25Z",
+    "latest_author_date_utc": "2025-12-12T17:46:12Z",
+    "actual_development_period": {
+      "value": "2025년 9~12월",
+      "source": "User confirmation",
+      "precision": "Month range; exact start/end dates and submission date not confirmed"
+    },
+    "main_base_sha": "f938b3502f829ad74d83936e4db52974267111cf",
+    "ahead_of_main": 158,
+    "behind_main": 0,
+    "branch_heads": [
+      {
+        "branch": "2025-10-17colleage",
+        "sha": "b610b0d31e8774ea372b60bc3a3000ca1d5aa5f1",
+        "in_selected_history": true
+      },
+      {
+        "branch": "feature/carddata-refactoring",
+        "sha": "8b1f53250f18e622b71ca302cfda816433d14852",
+        "in_selected_history": true
+      },
+      {
+        "branch": "main",
+        "sha": "f938b3502f829ad74d83936e4db52974267111cf",
+        "in_selected_history": true
+      }
+    ],
+    "official_final_submission": "Not established"
+  },
+  "user_confirmations": {
+    "latest_selected": true,
+    "project_title": "Urban Tour",
+    "team_roles": [
+      {
+        "name": "김종우",
+        "role": "기획"
+      },
+      {
+        "name": "권민혁",
+        "role": "프로그래밍"
+      },
+      {
+        "name": "진현우",
+        "role": "그래픽"
+      }
+    ],
+    "team_publication_consent": "User attestation; no independent signed consent verified",
+    "no_class_external_example_or_other_person_code": "User attestation; excluded vendor/tutorial files independently observed",
+    "school_computer_author_aliases": "User confirmed TeamProject Developer and the questioned alsgur7949 setting as self; answer spelling alsugr7949 retained as a spelling discrepancy, not a separate person",
+    "github_account_mapping": "Git API linkage is separate from human identity attestation",
+    "development_period": "2025년 9~12월"
+  },
+  "excluded_csharp_paths": [
+    "Assets/Game_Practice/MapDrop.cs",
+    "Assets/Layer Lab/Scripts/PanelControl.cs",
+    "Assets/Layer Lab/Scripts/PanelView.cs",
+    "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleAudio.cs",
+    "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleEPOOutline.cs",
+    "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics.cs",
+    "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModulePhysics2D.cs",
+    "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleSprite.cs",
+    "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUI.cs",
+    "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUnityVersion.cs",
+    "Assets/Plugins/Demigiant/DOTween/Modules/DOTweenModuleUtils.cs",
+    "Assets/Plugins/Demigiant/DOTweenPro/DOTweenAnimation.cs",
+    "Assets/Plugins/Demigiant/DOTweenPro/DOTweenDeAudio.cs",
+    "Assets/Plugins/Demigiant/DOTweenPro/DOTweenDeUnityExtended.cs",
+    "Assets/Plugins/Demigiant/DOTweenPro/DOTweenProShortcuts.cs",
+    "Assets/Plugins/Demigiant/DOTweenPro/DOTweenTextMeshPro.cs",
+    "Assets/Plugins/Demigiant/DOTweenPro/DOTweenTk2d.cs",
+    "Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenAnimationInspector.cs",
+    "Assets/Plugins/Demigiant/DOTweenPro/Editor/DOTweenPreviewManager.cs",
+    "Assets/TutorialInfo/Scripts/Editor/ReadmeEditor.cs",
+    "Assets/TutorialInfo/Scripts/Readme.cs",
+    "Assets/_ConeAni.cs",
+    "CardUIRefactored_Improved_Part1.cs",
+    "CardUIRefactored_Improved_Part2.cs",
+    "backup_carddata_20250929_003212/Assets/Script/Game/Data/CardData.cs",
+    "backup_carddata_20250929_003212/CardData_Phase1_Test.cs",
+    "backup_carddata_20250929_003212/Phase3_Data_Migration_Test.cs"
+  ],
+  "static_limitations": [
+    "Non-executable asset-excluded copy",
+    "Unity.InputSystem asmdef reference absent from manifest/lock",
+    "UnityEditor, PlasticPipe and Codice imports remain",
+    "TileOccupancyIntegrationTest references old GameServiceManager.Instance/GetService API",
+    "GridController.CanMoveUnit returns true immediately",
+    "Original broken comments preserved including UIPanelController"
+  ],
+  "dotween": {
+    "exact_version": "Unconfirmed",
+    "pro_exact_version": "Unconfirmed",
+    "additional_evidence_read": [
+      "Assets/Plugins/Demigiant/DOTween/readme.txt blob 82b7c6cd76f63355f11ac2c4d72fea577ada0a97",
+      "Assets/Plugins/Demigiant/DOTweenPro/readme.txt blob 379dbbc97a924cb3e32eca7dbfd1d68282a08ebc",
+      "8 Pro C# files inspected for version indicators; legacy compatibility versions do not prove installed version"
+    ],
+    "vendor_files_included": false,
+    "dll_read_attempts": [
+      {
+        "path": "Assets/Plugins/Demigiant/DOTween/DOTween.dll",
+        "blob_sha1": "57112d34beef1b8bb4f78782d752c7bef2452e0c",
+        "bytes": 175616,
+        "result": "Connected GitHub fetch_blob failed with UnicodeDecodeError; binary interpreted as UTF-8. DLL metadata and embedded strings unavailable by this supported route."
+      },
+      {
+        "path": "Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll",
+        "blob_sha1": "1c376027b5137fc6b36b3334cf4115922de9adb3",
+        "bytes": 16384,
+        "result": "Connected GitHub fetch_blob failed with UnicodeDecodeError; binary interpreted as UTF-8. DLL metadata and embedded strings unavailable by this supported route."
+      }
+    ],
+    "dll_meta_reads": [
+      {
+        "path": "Assets/Plugins/Demigiant/DOTween/DOTween.dll.meta",
+        "blob_sha1": "482dbb8332ca35c05de36b71de08f7b8caa8612f",
+        "result": "Unity PluginImporter settings; no installation version"
+      },
+      {
+        "path": "Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll.meta",
+        "blob_sha1": "9ecbfd3cb566ea918d6faf42bc36bfb8c40d4df2",
+        "result": "Unity PluginImporter settings; no installation version"
+      }
+    ],
+    "library_executed": false,
+    "authentication_bypassed": false
+  },
+  "inventory": [
+    {
+      "path": ".gitignore",
+      "bytes": 28524,
+      "sha256": "8849cb502ea14e4217fe39ed539197c70f3b336f65aeecccc475ba4a90f64dfa",
+      "git_blob_sha1": "9c6bfb5c0685e3e76c2860742d48a6c8981bc0ed"
+    },
+    {
+      "path": "Assets/Script/Audio/AudioPlayRequest.cs",
+      "bytes": 1655,
+      "sha256": "4e4f39bd05e5984c31444c5754814e40469184d17fb63273f4e832208982bb44",
+      "git_blob_sha1": "d7b17c051728bb6ec97900120b1358a7c9e0f3cc"
+    },
+    {
+      "path": "Assets/Script/Audio/AudioServiceContainer.cs",
+      "bytes": 31276,
+      "sha256": "066f2396a1762d923bbfc6b9da4250f4e5c46e3fcf15e1458d04680833461338",
+      "git_blob_sha1": "f01daa1318b1c640f62141173cde280f8ccf8753"
+    },
+    {
+      "path": "Assets/Script/Audio/AudioServiceEvents.cs",
+      "bytes": 6450,
+      "sha256": "2c3db6533e794b3c55e0c1a34f9419f6f0f11aaa0501c5c89343bbabbbf75148",
+      "git_blob_sha1": "29375e6d9ac7a20f1d5115e542369cb2476c559e"
+    },
+    {
+      "path": "Assets/Script/Audio/BGMAudioService.cs",
+      "bytes": 11971,
+      "sha256": "3efaad1ea0d7173e39dfa919749d66633d4bffd57614c39ff83a7d564a6585ed",
+      "git_blob_sha1": "86d5ac78642581ce16248db31970446f79d5310f"
+    },
+    {
+      "path": "Assets/Script/Audio/ButtonSoundPlayer.cs",
+      "bytes": 3849,
+      "sha256": "ea1590598e80226b8fc2a65b829b9fac5c19de65ad5e20cfa65e630f99887372",
+      "git_blob_sha1": "bf7a6f42a247a3d764693d38c041ab59dd61760c"
+    },
+    {
+      "path": "Assets/Script/Audio/EffectAudioService.cs",
+      "bytes": 28932,
+      "sha256": "de1c7d0da2131519af650cd9c1920c52576ae9f5be0c04d01bb7c8ac2527794d",
+      "git_blob_sha1": "13c0837a7377a4f7646736c99719168f0d90bc4b"
+    },
+    {
+      "path": "Assets/Script/Audio/EventChannelSoundPlayer.cs",
+      "bytes": 2298,
+      "sha256": "d0caa2869be0e3d2cc406ee0f72d123150cd561560b0af44db67e79cf4485da9",
+      "git_blob_sha1": "36655a2764288125ce890ee8ca71e5b1d5807dfe"
+    },
+    {
+      "path": "Assets/Script/Audio/IAudioService.cs",
+      "bytes": 622,
+      "sha256": "f68c6695e98c543e90599521ef82551c695e7c73fa205fcb68ab8c0e361c333e",
+      "git_blob_sha1": "98414f464b24413bff573db07958a9c9a368dd3c"
+    },
+    {
+      "path": "Assets/Script/Audio/IAudioServiceContainer.cs",
+      "bytes": 3192,
+      "sha256": "0294347c34bebc918b7538d62c25a1c5e8f9674c15c219a04c0321df918b5a04",
+      "git_blob_sha1": "229781b692315eeb554d026a638e51fb29eda188"
+    },
+    {
+      "path": "Assets/Script/Audio/IBGMAudioService.cs",
+      "bytes": 2222,
+      "sha256": "1bb640ac441f073699f28acad549eb49ea72f794584fa4e69f09ae7301129351",
+      "git_blob_sha1": "740d75d64d35af591c683b99479ec707b8013205"
+    },
+    {
+      "path": "Assets/Script/Audio/IEffectAudioService.cs",
+      "bytes": 6424,
+      "sha256": "e17efead619d81ae67150e8a365d250d2b28bc1d66a719c896a9035c602512a7",
+      "git_blob_sha1": "a473346b6312ac1281aa72c7c9b1f4fd7a1a124d"
+    },
+    {
+      "path": "Assets/Script/Audio/IVolumeController.cs",
+      "bytes": 3634,
+      "sha256": "660fe2bfe45fd132aa5edd5c099607c0fa4e993f63bf15e48a638fc73ff92722",
+      "git_blob_sha1": "367451ab815992cb9f1078a611d01a2d674f3947"
+    },
+    {
+      "path": "Assets/Script/Audio/Services/ISettingsCoordinator.cs",
+      "bytes": 468,
+      "sha256": "4fc682dd3a6ea492ded498d5fbabb30ca1e5cfbe2dd36bb44623042300432c6a",
+      "git_blob_sha1": "baac90d0269a2c9d027d14dd1d94cbc51508defe"
+    },
+    {
+      "path": "Assets/Script/Audio/Services/SettingsCoordinator.cs",
+      "bytes": 3787,
+      "sha256": "1d836564af2a6b69b5d648b986b323bba740affff76211fbab5e1dcf75617dd4",
+      "git_blob_sha1": "7e12210ebb5b08daf17a344aaf9ee0f3c185df1e"
+    },
+    {
+      "path": "Assets/Script/Audio/VolumeController.cs",
+      "bytes": 18816,
+      "sha256": "9354b6c30b2b2be865d6f70868a6480e3920531d925bf9b68130f0117c00c169",
+      "git_blob_sha1": "b6b45e8e4e3189c77fb7d39cb22371e9d6d8c00a"
+    },
+    {
+      "path": "Assets/Script/Data/ICardRegistry.cs",
+      "bytes": 814,
+      "sha256": "7d15e19d3291bd9051631d4c698e4217b2956911ea117d3a3149ab4ce47a079c",
+      "git_blob_sha1": "b408720cc6c866dddf594fef47dba0420a2ec631"
+    },
+    {
+      "path": "Assets/Script/Editor/AnimatorSetupHelper.cs",
+      "bytes": 15313,
+      "sha256": "b62958581368725d282f827331ab8e715cae206883a9801e3fd7258d9abf6f36",
+      "git_blob_sha1": "f57755c21f18edc131a5de4d82408520dc767c93"
+    },
+    {
+      "path": "Assets/Script/Game.Scripts.asmdef",
+      "bytes": 461,
+      "sha256": "07eeb087d2bd8902facd36677d354b9766cef60a7565da035041cf03a6cfe34f",
+      "git_blob_sha1": "f5dd5eca70c280385cb4fc5ef8693830c0e6d3bb"
+    },
+    {
+      "path": "Assets/Script/Game/AI/CardSelection/CardSelectionStrategyFactory.cs",
+      "bytes": 1869,
+      "sha256": "d8cb71de2d0ec8cb212af589fdcb92cf1408b148049cd55d74ba3a2f8737b8ae",
+      "git_blob_sha1": "e80f3f955599df12e26366a3cd7ec83daa861d73"
+    },
+    {
+      "path": "Assets/Script/Game/AI/CardSelection/ICardSelectionStrategy.cs",
+      "bytes": 792,
+      "sha256": "48685f44f8563889ffa1fa144634c81da93417e5900c1fe6def78558d8da0f14",
+      "git_blob_sha1": "958f35c1b52416face98a6f976ffa4c43a99ef0c"
+    },
+    {
+      "path": "Assets/Script/Game/AI/CardSelection/RandomSelectionStrategy.cs",
+      "bytes": 1288,
+      "sha256": "52e8ea49567937427bf871140a32279a6fdb35ea1dd04c5c0640c064a43561d3",
+      "git_blob_sha1": "533248c1846596edf3a1ff1f67c3900435087b18"
+    },
+    {
+      "path": "Assets/Script/Game/AI/CardSelection/RarityWeightedSelectionStrategy.cs",
+      "bytes": 5576,
+      "sha256": "b46174577861c2fd410eed7c59364a1c79371b35f674d514eca90296908df263",
+      "git_blob_sha1": "cec296eb9387625f58f873810d59e98755990c5c"
+    },
+    {
+      "path": "Assets/Script/Game/AI/CardSelection/SelectionType.cs",
+      "bytes": 563,
+      "sha256": "037b9559a3507d2b4e25a697f3f4883ce1adbf7ef807585f744f233bc99ad727",
+      "git_blob_sha1": "c4ed5bef4d2145d6f47124631562ef8cd62dd2a8"
+    },
+    {
+      "path": "Assets/Script/Game/AI/CardValueInfo.cs",
+      "bytes": 1102,
+      "sha256": "ba5af50e2cb868b835255783e4e8933edd830d3d0318c928ff7d39cc38478443",
+      "git_blob_sha1": "33859cca9192358102140771a331937b943a6335"
+    },
+    {
+      "path": "Assets/Script/Game/AI/EnemyAIController.cs",
+      "bytes": 44788,
+      "sha256": "5fd3441062af6f9bb1a669609a2d5f576a260444b7dc24f9113f209e5b620a0f",
+      "git_blob_sha1": "96a6f24647b72f802303d9a846af28e7429bec02"
+    },
+    {
+      "path": "Assets/Script/Game/AI/KnapsackCardSelector.cs",
+      "bytes": 4957,
+      "sha256": "41ecfe14754dd763cefdfdaad826698a389b7ec99e1621f0831c29e3019dca3e",
+      "git_blob_sha1": "127a0e2b0342d53e13f649fc7633bf5b965e22bb"
+    },
+    {
+      "path": "Assets/Script/Game/Base.cs",
+      "bytes": 6775,
+      "sha256": "db72b9c94758cac8b5642276912fbcb1b8989c5907ba39c3659273fc7ad6a4f2",
+      "git_blob_sha1": "aa0dc8ee3d57d1235cead6b6acb84e64f0edd540"
+    },
+    {
+      "path": "Assets/Script/Game/Card/CardDragData.cs",
+      "bytes": 1514,
+      "sha256": "eca0ff44830825ca7de30d5d7a3b12c32c58b2e927f4f3942ef3b182463c50e6",
+      "git_blob_sha1": "fb82cc9ce9ff01c3a722dbe4af5caace85bb7595"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/AlwaysFilterDefinition.cs",
+      "bytes": 604,
+      "sha256": "25ee441ac006c0db2ff5db3310215ca8a6136f901b88302c860a450acaeda2ce",
+      "git_blob_sha1": "41b8d1ed20ddc73e8ac7a2109bbb6618673414ef"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/AndTargetFilterDefinition.cs",
+      "bytes": 2786,
+      "sha256": "ad359aeedba978d90a1eef635f4a55dc513fcbb4afdf6a737131a2d30ae5d344",
+      "git_blob_sha1": "982195619dcb4b90afcef9a5c026ce00f228e408"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/AreaShapeDefinition.cs",
+      "bytes": 1966,
+      "sha256": "b9b4a34e79fdecd35f4970a101c58d44f565c51d8594c4d9a0326e4522b6fedf",
+      "git_blob_sha1": "3fc7d5e453ea8985cafd2dad443f6cb4bcd7d113"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/CardEffectFactory.cs",
+      "bytes": 2295,
+      "sha256": "39cc5088317bc640f359fc7249ba6c216e7659baabacc551467e6e0d50445093",
+      "git_blob_sha1": "ab87c70df61780fef056ade5f976b1d6092a5bb5"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/DamageBaseEffect.cs",
+      "bytes": 4224,
+      "sha256": "8f7e2180a86c7f84850ef4de295072235416e0158d4a5cfcfbfdcab48d00a165",
+      "git_blob_sha1": "be95afa4651940a550a96ad1c7306798d6775018"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/DamageBaseEffectDefinition.cs",
+      "bytes": 773,
+      "sha256": "afd24825335230403b3a340729f498047a3645689112085323183b7d78762e98",
+      "git_blob_sha1": "5c665199f59670bd581ef4220e5da4b7ed44efee"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/DamageEffect.cs",
+      "bytes": 6131,
+      "sha256": "e080f32f6bcb8adb3d29a598e5277baf65d300897efa5ec68312d300e75a1e93",
+      "git_blob_sha1": "71aa4057a9ecfa69902ea92ec07f4eda95197a9f"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/DamageEffectDefinition.cs",
+      "bytes": 862,
+      "sha256": "0f87f12fccb275c59099a574af47620e3bf94049704ac32f1393ac35282bbb4f",
+      "git_blob_sha1": "ae43afcad6f22a90f1ba13c3e2234726ed6f310a"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/DrawCardsEffect.cs",
+      "bytes": 3546,
+      "sha256": "bba4b8c19ebc00b7b9ea12972cd30b2e3469a5ca3d5348bc359ff8541dfd25c7",
+      "git_blob_sha1": "2f654049306bb7110f429965262f686d0387b040"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/DrawCardsEffectDefinition.cs",
+      "bytes": 870,
+      "sha256": "f8ee05d22be7c3e5bf63ac662929768a208f91b4c58fc42108133894a98da13b",
+      "git_blob_sha1": "005f4115c71020fd1989049694fb66a3875bf17f"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/EffectDefinition.cs",
+      "bytes": 2161,
+      "sha256": "94a4588a146df0b371e7f5c5f5d0a719b20a9228ffdc8b57545519bb9f9de7b1",
+      "git_blob_sha1": "86bc58ea9159dc7c7e4bab39f32951295be42605"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/EffectTargetScope.cs",
+      "bytes": 414,
+      "sha256": "6ccb0c40c0330c4f1bb1c4385e502db1882b42e37e40a5b8279787d585541013",
+      "git_blob_sha1": "40bb844b1d877de3b782e5a358f7b38282c55017"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/EffectTargetingHelper.cs",
+      "bytes": 6294,
+      "sha256": "e7cdc9cfb9e87430b260c3bcbcdf814a0f5b3b0efe0623b47d3985a2b56f0ba5",
+      "git_blob_sha1": "a6466a241c107c22b60519185b821fbaf8d8a253"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/EffectType.cs",
+      "bytes": 1124,
+      "sha256": "0b578b21253aab1b5bfa313621f617b1b150d2bfe2c545992cd33a49db29bed8",
+      "git_blob_sha1": "0e7727182017c8ca3d3bb2c15aace3bd70a1a188"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/EmptyTileFilterDefinition.cs",
+      "bytes": 616,
+      "sha256": "0102c23105b23df03f785d9fa316142e8c99bb114e2e10720a4a33d27c5d2c19",
+      "git_blob_sha1": "818164432fe2467617edc7cb3fa019c21cbec4cb"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/FrenzyBuffEffect.cs",
+      "bytes": 5246,
+      "sha256": "eef8c2f8bbfaf945c7c94bea644eb3a190c4985ee21159f9f81daad3de5d336c",
+      "git_blob_sha1": "72ec4685cb8d89a8013007b4515cb1d5f1a9dcf9"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/FrenzyBuffEffectDefinition.cs",
+      "bytes": 1717,
+      "sha256": "7eab8d309a5dfdd8663b4d30d206aeecaed4558591e4c86affaa45cc94e16e81",
+      "git_blob_sha1": "183d3d6da7bf36dd0e26a3b789bcf1ef81d7431b"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/GameContext.cs",
+      "bytes": 3540,
+      "sha256": "a781c3806396bc8502c0b8ff158daf9792bc6be43fa74a3fe95247f4fc300e52",
+      "git_blob_sha1": "d7a93ffb437bc2d11476c39d3b32e7f1c123b1ba"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/GlobalAreaShapeDefinition.cs",
+      "bytes": 1927,
+      "sha256": "08e665643bfee483ad2bcb8d10b74dbfaf99f68aaa3ab86334f292a3f4a4c6a3",
+      "git_blob_sha1": "3b05e883ab5183ee95ed15a8a7ac0406723ce413"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/HealBaseEffect.cs",
+      "bytes": 4241,
+      "sha256": "65337eba8e8f5c4341375f6194a6c37c8defa4d491d55eb4867c2ebcefc498fd",
+      "git_blob_sha1": "b12cd456026fc6deb2454d1995aae9120f70555c"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/HealBaseEffectDefinition.cs",
+      "bytes": 759,
+      "sha256": "4ca12acccf9fdd72650a27ac92e24e86c4c140b67b03f6936f757de538a4487f",
+      "git_blob_sha1": "ed9b2c7314f6dda8d2d5bbdc11ad7156f24f617d"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/HealEffect.cs",
+      "bytes": 5487,
+      "sha256": "cfbac7d9a98232cff22f8aca04ec232567bd585468000a4cf7521228db8d3a86",
+      "git_blob_sha1": "6be9f6cdee9d30278820bca9b7dd9cc7dfea4d31"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/HealEffectDefinition.cs",
+      "bytes": 628,
+      "sha256": "2d008bc724c8d8bf5a5e291cf08a6cd8243f175da479b08b6ae59add9b3378ac",
+      "git_blob_sha1": "2b006de12334602688b7713cf5088c29e58b188b"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/ICardEffect.cs",
+      "bytes": 1312,
+      "sha256": "5e9136fdfb2f852f8048273dad9e1b2df117055925c0a4061730609643da9fc4",
+      "git_blob_sha1": "76a1aa4ae4d6831b614d97d833c0de36c7d17b19"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/IVFXAwareEffect.cs",
+      "bytes": 759,
+      "sha256": "f12f3fcd718737e98bf5fa8604644920af7771fdb13863d33a2206c7f7b4a2fa",
+      "git_blob_sha1": "b170255eeee320751e8b8678384e3bb2a3c98101"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/LineShapeDefinition.cs",
+      "bytes": 6874,
+      "sha256": "f3ef35614b2932072116f8c7220eb65ab9324f81cfa246c924425ea2b3dd1eb3",
+      "git_blob_sha1": "da348c2bfe1be3d133fd41bc4aa70f6f141ea051"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/MultiStatBuffEffect.cs",
+      "bytes": 5138,
+      "sha256": "d21de79bc471b82ecd1cb20df284f62a99b673524d8e0975f696381bec01f4d4",
+      "git_blob_sha1": "4dc140eb33850bf1aa64847cb6c171f99e0d11c4"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/MultiStatBuffEffectDefinition.cs",
+      "bytes": 1713,
+      "sha256": "a78a5ad8024cb252d904e24b6102c4c9da552fe424afb740b459140e9e56551e",
+      "git_blob_sha1": "84aacb1b27fb809c3692708817d23c5ddb5fe754"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/OrTargetFilterDefinition.cs",
+      "bytes": 3412,
+      "sha256": "e9ee94986de780e74064ca5eb6a70904ac3992772ca91c6b452a185b4ac08520",
+      "git_blob_sha1": "3045caadfb62838edf21307e2cdf5ed52e632946"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/RadiusShapeDefinition.cs",
+      "bytes": 1734,
+      "sha256": "f72bdbcddd339a9cf731a2c27d1f7009cea51011b3309452c7d3ed831b181e42",
+      "git_blob_sha1": "ad176c980980fa1065c79b20fe21f2d5b017a35d"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/ReturnUnitsToHandEffect.cs",
+      "bytes": 5416,
+      "sha256": "1a55fdf677b742caa0dcc8401c65915d508bf07d5d6fdbda9cfe1a572288415e",
+      "git_blob_sha1": "028b90b4ca286851e5f670d8dfb605a758a49436"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/ReturnUnitsToHandEffectDefinition.cs",
+      "bytes": 677,
+      "sha256": "e743dce05473f129e6945920e45e99b3f50febb34f84c38b6d40e79ef9bf0e15",
+      "git_blob_sha1": "ecf220f1399e2ca25fd41370bdf70ff64a9d784c"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/ReturnableUnitFilterDefinition.cs",
+      "bytes": 1037,
+      "sha256": "a6dfbf2aebdd39cd814431ec45ecc3356b5589b1023d7c38155476b7465f0220",
+      "git_blob_sha1": "5545a406fedc4007735d9cdfa01dfa5faf893484"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/SequentialLineShapeDefinition.cs",
+      "bytes": 5392,
+      "sha256": "155d338e807d24b8b066b5960b5f2095f1d73c3c11491861d6ced2aa38cbaff0",
+      "git_blob_sha1": "528f977e39f39014ffffd97637cca85caaa8f327"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/SquareShapeDefinition.cs",
+      "bytes": 1335,
+      "sha256": "e0e79baebf69b0df5525d23a3f7992d953cffbd3b53dd52adf858777aace3fd6",
+      "git_blob_sha1": "b2511d01f31f14dc09261fcea069eeff45ee80c8"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/StatThresholdFilterDefinition.cs",
+      "bytes": 5586,
+      "sha256": "4761b6f54caba327211d5c0938f2bb035548a7df1eb7eba0fcb677647f241820",
+      "git_blob_sha1": "00303e88637cb3fdb3828549811ba3f23ef5fb6b"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/StunEffect.cs",
+      "bytes": 4134,
+      "sha256": "30a9f0bde1dd31ba1240254906e2fd699ac772058f7322797271459e693d734a",
+      "git_blob_sha1": "4426a1f12b78e1949a117d5c7625c8126f44123f"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/StunEffectDefinition.cs",
+      "bytes": 724,
+      "sha256": "1948c357dd796aa2a3c840ee67c1546595e217c448b953454bda41995da8aa94",
+      "git_blob_sha1": "ccb23ada93d3d9a89f5a8c1ac834507a0460afc8"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/SummonEffect.cs",
+      "bytes": 8634,
+      "sha256": "256f58772de0db2206e57a582870a7d3103c3191c8beb3a14bbf5134466b00be",
+      "git_blob_sha1": "d0ba4194b2373f82fc8e8e4f60a1803d62f02b37"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/SummonEffectDefinition.cs",
+      "bytes": 651,
+      "sha256": "a00637b8fad5e3dfbd89eb8d668603d64c81788c38d378f1efeec51b01ebf19b",
+      "git_blob_sha1": "c13fc84715009138ddd1d727239975fd6eb4aba8"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/TargetFilterDefinition.cs",
+      "bytes": 900,
+      "sha256": "8f794f180e34ebd4b99ceea317012b59f4994d389cad8dffd489238c5f06e7ec",
+      "git_blob_sha1": "587a9ae65b15f158b45b78e6fceca87691374c6f"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/TeamFilterDefinition.cs",
+      "bytes": 2006,
+      "sha256": "18b9b41d753532372b8c80752015052169f7cb64692adda917b9e891daad0fe8",
+      "git_blob_sha1": "9a8807400b06ffe844369362e88da8e8dbcf514d"
+    },
+    {
+      "path": "Assets/Script/Game/Card/Effects/VFXTilePlacementMode.cs",
+      "bytes": 637,
+      "sha256": "9ecc147edaec53ab37194308b7810702be8adf5158dccadd982b767f49c68fba",
+      "git_blob_sha1": "3f1c900e3ccded648799c8106886002fa3e4d3b7"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/CardUIRefactored.cs",
+      "bytes": 17640,
+      "sha256": "79fadae36ae45fcd3788e2d9562e44e3da98e4e65eca5a4aceb73a81ce190693",
+      "git_blob_sha1": "147c424fbedce8ed9c8d79d5ca8a76cf39f26088"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Context/CardUIBaseContext.cs",
+      "bytes": 930,
+      "sha256": "4ecf5226aae8e2f26668cf457c6843a5d7bfdc8f062f9e8f67d3d2c6f436e9d8",
+      "git_blob_sha1": "07723fb23ad08a2210bb26c1b65507528c40f566"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Context/CardUIBattleContext.cs",
+      "bytes": 714,
+      "sha256": "33eb7a1b11984a9d0902990a3d71cbb85a962028bce30c6204d01003194724c5",
+      "git_blob_sha1": "0e077999d8b7e9ea22dd5e90f77fd7068c3f207e"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Context/CardUIBuilderContext.cs",
+      "bytes": 343,
+      "sha256": "264582b67917e1e39f5daac341c4a1e45a5984d8b23aeaf1831ddca9343367c4",
+      "git_blob_sha1": "26dc11be33fab27cfc0a4554e1b3102cba5099e4"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Context/CardUIDragState.cs",
+      "bytes": 469,
+      "sha256": "402089fe1a681249df11af6e520f77e1c80a3869f874d1a34d50019ddcdb72a8",
+      "git_blob_sha1": "5a99205feab17faa18d5d0bb6d23389724315379"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Context/CardUIEventChannels.cs",
+      "bytes": 397,
+      "sha256": "25004d2a33d938f3b8ebdbbef6957b0c984d41ec9244d9c0741b0a5ff3b30502",
+      "git_blob_sha1": "1021a108a20ec009bcdb8f85647b68edbc669d18"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Context/CardUIInventoryContext.cs",
+      "bytes": 347,
+      "sha256": "4ce45f24be0f6237a75cfdbf8984227f598634ee85cf2db98642b7f0b8d8fb1a",
+      "git_blob_sha1": "e8eb58d110f70566abd5ebf426265bc1091ae957"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Context/CardUISettings.cs",
+      "bytes": 524,
+      "sha256": "1f6276add59ec6d28791f4b20af03472be503aafb5b3d4d51b167a64ebd08ab5",
+      "git_blob_sha1": "c92d25912842406d99dd38a689704e8c1659e165"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Context/CardUIViewData.cs",
+      "bytes": 989,
+      "sha256": "158d904b51b32016d8bede0a2e5f5ef57e20a6201dd7ebb1e9dcd96df02cb6d7",
+      "git_blob_sha1": "12249fc05cab7ea532ef8b86348340f8fa481fd7"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Core/BaseCardUIStrategy.cs",
+      "bytes": 8299,
+      "sha256": "7f8f6fcb26a71724bdb23dafb362ce0cd6e08d03e2ba5afb6cffeacb73fc5268",
+      "git_blob_sha1": "0ae7fcb5d48aa2f911904dd53215b1f66159e3ac"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Core/ICardUIStrategy.cs",
+      "bytes": 563,
+      "sha256": "44c8641066e26f340c6eddce3cb8aa409128d85406988cc8f610fa1c87be4891",
+      "git_blob_sha1": "587aa812c6e38d86d83a8d5b515974ae2238617b"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Strategies/InDeckStrategy.cs",
+      "bytes": 4633,
+      "sha256": "482db08f3e66021f1a7cb60af7d2a145483118101ea25af768b16568222c1cf4",
+      "git_blob_sha1": "2e3737a0c00cdc62fa961fc8b0ee14cbb7e27fb7"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Strategies/InHandStrategy.cs",
+      "bytes": 14767,
+      "sha256": "f6a3fc3c4b676665041a4365cd4a6428ed861c1da7c7ed2150fec059f963dea2",
+      "git_blob_sha1": "2a01164fdcb0b2f577cf72192660e2978f89a4bb"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Strategies/InInventoryStrategy.cs",
+      "bytes": 4739,
+      "sha256": "390b962ac014147fc19be2e603d6913de3a7d57a23d33e1a1ef9de21c6016cd2",
+      "git_blob_sha1": "1b3cfdb906d0ae67b1999eeea9e01b9f745c1ef8"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Utilities/CardUIAnimator.cs",
+      "bytes": 3536,
+      "sha256": "f348a1df5e54c53ad780386d91ed2d21c259608aa4e298efd0eec32ec48a92b1",
+      "git_blob_sha1": "ccd7204220cbe2a26ba858587b420c9ebcdc9874"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Utilities/CardUIColorProvider.cs",
+      "bytes": 1952,
+      "sha256": "b0b3279fc511554a619a683bddd5ead5ae3fdaabdde0aacc8cb8e5f152e12189",
+      "git_blob_sha1": "03304e4e972c3456391d11af4501ac66cf909811"
+    },
+    {
+      "path": "Assets/Script/Game/Card/UI/Refactored/Utilities/CardUIPanelHelper.cs",
+      "bytes": 1335,
+      "sha256": "8b89b66897c58ac2558fbd7b4a9d1ffa26678dbbec783a5fdbdb25610f6f2d9a",
+      "git_blob_sha1": "b9855be9e780c0d565911e15889706cdf9af15ab"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/AttackEffects/FrenzyOnKillEffect.cs",
+      "bytes": 2831,
+      "sha256": "eb3be3379b4740046b578152ad5840a0904b687713e65db3143d8f167fca70c3",
+      "git_blob_sha1": "2ea02f8177a0b4ed27e463f54c6ca3c003b45d17"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/AttackEffects/SplashEffect.cs",
+      "bytes": 3333,
+      "sha256": "0753b24bb4ae03d42e3add38878dbdf621343c7cb4b3338a5de02d2565f587e0",
+      "git_blob_sha1": "13b9c430c9e3c1a6b01e01c3ea9aafca18928171"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/AttackEffects/StunEffect.cs",
+      "bytes": 2206,
+      "sha256": "1adbc6e27bd6d02507eaa93e7012dc8fc195a79f160382128976735fe1ce3c4d",
+      "git_blob_sha1": "89641650da886ea9cf11acca8ea9b96ed984821d"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/AttackEffects/StunStatusEffect.cs",
+      "bytes": 2696,
+      "sha256": "7cd8e25deb63c2e6a01e8b7dcd251a20adcc1761ff9396aef0381366318469d1",
+      "git_blob_sha1": "792df1e4267837843b651c9c262ba51540f69649"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/AttackModifiers/BishopModifier.cs",
+      "bytes": 10550,
+      "sha256": "68e5c8fbf66ff6620e21cb151c0ec87ce96cecfd724a60d406f254269c9a1a7f",
+      "git_blob_sha1": "c8ad49a0601a2ed015f8a0bc722e880e1147c514"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/AttackModifiers/MeleeModifier.cs",
+      "bytes": 3694,
+      "sha256": "4183b8ef1ef16857ace6cbe19b0ced6d63ee384c31e70ef0f1ca3eadaa5b8f20",
+      "git_blob_sha1": "0edf797d2a89d2f4cf4cc04a5b5464bb7a3e5660"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/AttackModifiers/QueenModifier.cs",
+      "bytes": 3835,
+      "sha256": "f990af5a75e0aad208cd5de5c418d1395dd1a95744802d9cf755e5797eb1f694",
+      "git_blob_sha1": "b465115a2299d09b13a52573542ac66dff6c6bc2"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/AttackModifiers/RangedModifier.cs",
+      "bytes": 4263,
+      "sha256": "4fc8756dbdae1105ce7e7e1e56fe96e59ba8fd8419fb8a593f1c5c93630a777c",
+      "git_blob_sha1": "a71de95cbb63608f09f977bba201e0e11da7f567"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/AttackModifiers/SniperModifier.cs",
+      "bytes": 4034,
+      "sha256": "c2aafd39f692592a5a1df752259f1496ae00cd1764c74d51049cfc3dec8f12ca",
+      "git_blob_sha1": "53b40f00925a70f7effb22fbd0357841aa19bdea"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/BuffEffects/TeamStatBuffEffect.cs",
+      "bytes": 6502,
+      "sha256": "a095583002a5f4e0b7270137f8b007c89dadf8e7d7e41a5b1456ed4aaa9bbc72",
+      "git_blob_sha1": "628008420be8b9709160c3628ec8295826c70962"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/DeathEffects/ExplosionOnDeathEffect.cs",
+      "bytes": 2918,
+      "sha256": "119b2c44ab2b0403fb98cfbb93bffa813289ee1ed806d4b849b00a68035546ec",
+      "git_blob_sha1": "d27860a681b9b8345cb98d4ec02d14ebd0d33af5"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/DeployEffects/DeployBonusEffect.cs",
+      "bytes": 2759,
+      "sha256": "0c5f932dab35fade3401cb68f05c7840dafcbeda5239313ba5122d67b83c0ecd",
+      "git_blob_sha1": "431a1b013e148deefba505ca7cf76dbf428f2f09"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/DeployEffects/DeployColumnStatSourceEffect.cs",
+      "bytes": 6289,
+      "sha256": "2ff0df1fc6dffb5f3ef5e1ee8d928456840cfd7fe394154c3d91d3dd6c1a1751",
+      "git_blob_sha1": "c9e3abf9ec33a4ceb0934938aa434e63940f7d65"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/DeployEffects/DeployDrawCardsEffect.cs",
+      "bytes": 3512,
+      "sha256": "868b913d3b41283465095a227c32cb4b1aac6e15c38242101cf44c4e7f125f08",
+      "git_blob_sha1": "7e85a67362981375cde08cdff284dfe8000f05d5"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/DeployEffects/DeployHealBaseEffect.cs",
+      "bytes": 4034,
+      "sha256": "17f927048054e40570c29ea459ca774384cd6a6b33c1e9a0b78c6fcce201efc1",
+      "git_blob_sha1": "8f755d29c4ea3fb73db9c379bc519d9d0cbfc28f"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/DeployEffects/DeployTeamMultiStatSourceEffect.cs",
+      "bytes": 7071,
+      "sha256": "2a5f1b5e7b25820bf06f17a2ff9e7642f939bf13ebc19b2ebfb16d457c7f683f",
+      "git_blob_sha1": "b40f79c2a86e5dfe611065e6bae0ffae8f5c4777"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/DeployEffects/DeployTeamStunSourceEffect.cs",
+      "bytes": 6127,
+      "sha256": "fb607936e24291bcd8f8964d23f4c39834f969f16fe397a3de2d1f483d8cb119",
+      "git_blob_sha1": "d6f48c6e0f345db5edb22e6936e93426f50ab2c7"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/MovementModifiers/BoosterModifier.cs",
+      "bytes": 4004,
+      "sha256": "dae3b2f647b0da7343a9b975e94b96e287b537fed48f5a32db8f9994411b68dc",
+      "git_blob_sha1": "76ff8cf19a6decab716d23e036b2656d18c1b42d"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/MovementModifiers/NormalMoveModifier.cs",
+      "bytes": 5189,
+      "sha256": "4dbdbf0a2b9b166a3f2220ac5772824650c33a946881c951216da2d76660d0ff",
+      "git_blob_sha1": "5c93c69c5420b302fc8f1a229ddc23757183440c"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Abilities/StatusEffects/SelfDamageDebuffEffect.cs",
+      "bytes": 1843,
+      "sha256": "7cd05a053081b02f8363fdd323fb7730a77d06b89092d8dc17b32fe2444290c4",
+      "git_blob_sha1": "f121a6a6a5e0f6e24e60a792f011dfb350e9ee89"
+    },
+    {
+      "path": "Assets/Script/Game/Components/ActionTurnOutcome.cs",
+      "bytes": 828,
+      "sha256": "2c4fdcf6a9db99b50c7c564a37ca25192fc72ae092c0c5be722dd87dde91518e",
+      "git_blob_sha1": "9e79cd25276617adc9c04600c55307b4e5c47995"
+    },
+    {
+      "path": "Assets/Script/Game/Components/AttackStateBehaviour.cs",
+      "bytes": 2399,
+      "sha256": "13f6adbd85c2163c86f4bd159b9a767ba9e0f79d953257fd5e1f64bb4e616d1b",
+      "git_blob_sha1": "b7afd95b493267279cd6df6e03f9b5a559f41177"
+    },
+    {
+      "path": "Assets/Script/Game/Components/BasicUnitAI.cs",
+      "bytes": 9202,
+      "sha256": "80ffb0c291fc65b284f7645d882b2e6d81d92f08aeb2582dd7734b8c7a6146d1",
+      "git_blob_sha1": "0abba123e2b3f5660ee99999f6efff31e91a1b97"
+    },
+    {
+      "path": "Assets/Script/Game/Components/BlendTreeAnimationController.cs",
+      "bytes": 26848,
+      "sha256": "bd74dd9f3d67cc0df11558b2452546f6a46af039e1df35d2be8d6a47eaec1167",
+      "git_blob_sha1": "185ab0e6b3067aea9dd82368dd935915882739d5"
+    },
+    {
+      "path": "Assets/Script/Game/Components/CombatComponent.cs",
+      "bytes": 53220,
+      "sha256": "6ebc89aafa06af127e3da9b556a028dd4f3eb6166d9032c7617f51d6b87d0bb9",
+      "git_blob_sha1": "9b06f7a99fb557771fc18fde5496df38e8046808"
+    },
+    {
+      "path": "Assets/Script/Game/Components/CombatExtensions.cs",
+      "bytes": 3081,
+      "sha256": "f7bbc322f3753a2df1ab7eb3b3d90d3e635719e428ed65470a0ecbf49679baac",
+      "git_blob_sha1": "a88d38353abe52ec139ec2ece0b0016fd25a826f"
+    },
+    {
+      "path": "Assets/Script/Game/Components/GridController.cs",
+      "bytes": 49704,
+      "sha256": "ea1fe14e42d5e85863c63ddc4131309abad1ef8c330e87c8ca84cba1677741c6",
+      "git_blob_sha1": "2bb163e4901616ddc07385af46894d27562f1f6c"
+    },
+    {
+      "path": "Assets/Script/Game/Components/GridDataBridge.cs",
+      "bytes": 2413,
+      "sha256": "8ebb14db7a8f69f130d2e932d5868b4630e41e6f314156a0bf6abfa5b2b90b59",
+      "git_blob_sha1": "01c93993fa582c233fd0318f78373eceb73aa0ac"
+    },
+    {
+      "path": "Assets/Script/Game/Components/GridRenderer.cs",
+      "bytes": 28301,
+      "sha256": "462cb8b7f533db195aff60473e04ec235275275a4d080f6aaba7f9cef91ec2c8",
+      "git_blob_sha1": "0865f456e09a34ad3b1f28f92e0fb8df5468c48b"
+    },
+    {
+      "path": "Assets/Script/Game/Components/GridServices.cs",
+      "bytes": 1024,
+      "sha256": "8568db0dfef4fafed9d306b6dbdfde903001e88e6df9fba2179566905cfdd60f",
+      "git_blob_sha1": "021ff5cec02e9beba2743344c1853b636512405b"
+    },
+    {
+      "path": "Assets/Script/Game/Components/GridState.cs",
+      "bytes": 30262,
+      "sha256": "f39ff4d903b9d9ec2217a86311bb4645fd41b9e1bfc9a8d690fde5244a4c41be",
+      "git_blob_sha1": "20505ce7fb90df3ce075d00b664e36d5202585a4"
+    },
+    {
+      "path": "Assets/Script/Game/Components/HealthComponent.cs",
+      "bytes": 17870,
+      "sha256": "108cebdd5d8db99101215de7a77e57900e15d304fbb332fd3e2f05cf68307856",
+      "git_blob_sha1": "24f715a8b4903042fd4105ea13514899f49d2415"
+    },
+    {
+      "path": "Assets/Script/Game/Components/MovementComponent.cs",
+      "bytes": 40766,
+      "sha256": "a6aa8a4795865d416e51a0a002b3e2853c2c0297ba5253db5def2771d71a885c",
+      "git_blob_sha1": "fdfaff251278544140b0fd083eb95590e9b732d0"
+    },
+    {
+      "path": "Assets/Script/Game/Components/PathfindingComponents.cs",
+      "bytes": 757,
+      "sha256": "bf977c6c48f1a301150e1449c48e4cb2964c17ec3eb525532f64c7c9ba44e332",
+      "git_blob_sha1": "67d1f5fb49cda630a8e4fd477f2854591fee1c42"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Projectiles/GridProjectile.cs",
+      "bytes": 22760,
+      "sha256": "763858dffb69161e5b70653311fc4ad19832299d40a96cc21c059aaa0ef911f0",
+      "git_blob_sha1": "4dbf8b7de2ebae51fb9fbaa13435ae6b899da9b4"
+    },
+    {
+      "path": "Assets/Script/Game/Components/Projectiles/GridProjectileMover.cs",
+      "bytes": 6746,
+      "sha256": "795da0f9180fb6f3d97229dcb86bec490810735ecf532ed40982f13bff2b1923",
+      "git_blob_sha1": "4277f75babd1d9ada7da21c9352a561ffd7ed8ba"
+    },
+    {
+      "path": "Assets/Script/Game/Components/TeamComponent.cs",
+      "bytes": 5449,
+      "sha256": "c9f93e5f7e11dfe58a53893acbcf5dd2d6d1c314a6467dc1893581b9a5d55c9e",
+      "git_blob_sha1": "d95267690bc320e0d075c99ebe7abb9ede2a619e"
+    },
+    {
+      "path": "Assets/Script/Game/Components/UnitAnimationController.cs",
+      "bytes": 16356,
+      "sha256": "9e8842f6d4319ee7c0252b861553ad0f560859a078e9dac06ed7158a4014017b",
+      "git_blob_sha1": "a112339dd1920e4454b33736c930284671881423"
+    },
+    {
+      "path": "Assets/Script/Game/Components/VFX/BaseHitVFX.cs",
+      "bytes": 3311,
+      "sha256": "70479405d9ff3f308c478eb17991a3858835d3e6f0f2d22495009014c446257d",
+      "git_blob_sha1": "5d7fc917f817a84c60b12f22efaac98f65707f9c"
+    },
+    {
+      "path": "Assets/Script/Game/Components/VFX/UnitVFXController.cs",
+      "bytes": 8556,
+      "sha256": "f42956368029c5b24be6dd0d92e03a05447fd455c96d13364e609ee4f06a1a76",
+      "git_blob_sha1": "b6090250256fef9eb1a878eb8dce91ef2b3dcd69"
+    },
+    {
+      "path": "Assets/Script/Game/Controllers/SceneTransitionController.cs",
+      "bytes": 17517,
+      "sha256": "9fde0ee43c111932a0f0a70d9faac10724061a501a731fdf351fb94eacd844c7",
+      "git_blob_sha1": "9dcf537c490d7a4a7c99d343a1701ef8425f3ec7"
+    },
+    {
+      "path": "Assets/Script/Game/Coordinators/GameResultCoordinator.cs",
+      "bytes": 9000,
+      "sha256": "e3d09d542313d3a4c4de46a27aec21d7430b9251952bdf1fdad6c3581ab9df73",
+      "git_blob_sha1": "c5593a91bf536b35b3c65c17f88973798a104184"
+    },
+    {
+      "path": "Assets/Script/Game/Coordinators/GameUICoordinator.cs",
+      "bytes": 5643,
+      "sha256": "305a6c4f45acbc0fbb29530082d5bbcbe2fda37763168124c5029ba68cb4ec44",
+      "git_blob_sha1": "7432865255b55801c0b8fdf579e2017caa303754"
+    },
+    {
+      "path": "Assets/Script/Game/Coordinators/RewardQueueService.cs",
+      "bytes": 3906,
+      "sha256": "d90f4cb07e7f1412af91409caa0d916bcfbd0858af8e0cb5b82036a5874d631a",
+      "git_blob_sha1": "f6c3750a6efc189ca787eee34c9149f3396015cc"
+    },
+    {
+      "path": "Assets/Script/Game/Coordinators/StageRewardCoordinator.cs",
+      "bytes": 4392,
+      "sha256": "deeed915c44e101a658c6a9baa94e4b509f1271e89e025c2c72d23d9526b24f7",
+      "git_blob_sha1": "3666499ed863da187dd5372e3e4c4b5b42fac835"
+    },
+    {
+      "path": "Assets/Script/Game/Coordinators/UnitPlacementCoordinator.cs",
+      "bytes": 2869,
+      "sha256": "e46e61dc3f9e5add16a370dbe846d964246496002061cd4df34784fae487813b",
+      "git_blob_sha1": "f1b7297c44f4886289d4ba989007f2e5313c7789"
+    },
+    {
+      "path": "Assets/Script/Game/Core/ActionEvaluator.cs",
+      "bytes": 2571,
+      "sha256": "aace7c47a844ca81f714d51de2da9e0efe6c64a7893da47456a80b32a02b049e",
+      "git_blob_sha1": "16a3888e74bd20f1f07765a32decbdffab5ac512"
+    },
+    {
+      "path": "Assets/Script/Game/Core/ActionExecutorRegistry.cs",
+      "bytes": 1109,
+      "sha256": "c250ef407661dac40d114bc6bfdaca0a877a55a1229ba10b1e6152c620cbccda",
+      "git_blob_sha1": "d237a899edaa8cbb65ac2e3e85490ebe4345f96a"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Effects/DurationTickContext.cs",
+      "bytes": 1065,
+      "sha256": "b9ef51de29b9200a3dd53066b787c51cf0ae1219e66048034fe8948f8a5388af",
+      "git_blob_sha1": "b959a102d023c43838dbb552001f4dd52b87b974"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Effects/DurationType.cs",
+      "bytes": 511,
+      "sha256": "fde9b77f684c1d7d2b5ee545d8a25fbdb7f194d0d8df58b0f77fa7fd29ddbfe5",
+      "git_blob_sha1": "ac22d2d4e9d95fb8d13eb4fb27bce1c814231ed2"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Effects/EffectContext.cs",
+      "bytes": 534,
+      "sha256": "275ed61af85209cc4e130b451b311e010f08cbdd7f8fb564d7a6a4cc4b6426f3",
+      "git_blob_sha1": "15fb03265e6e20261e178433c5f33ba36b1642c7"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Effects/EffectManager.cs",
+      "bytes": 6409,
+      "sha256": "3dd5944411180ea3dd52e0e685dce1e34dbff94777749d57d1d1fecff0abcfff",
+      "git_blob_sha1": "2f10c875b6b41b1da265156b9d62bcdec89374ba"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Effects/EffectTrigger.cs",
+      "bytes": 315,
+      "sha256": "c3bd149d3a3405b2fbd3354604197bb24b182dbcdff524edafc97b292ef6586f",
+      "git_blob_sha1": "7811f0a94260820ba4bd8a0f7f4cad313086a75f"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Effects/IEffect.cs",
+      "bytes": 1221,
+      "sha256": "9829466b33fb857dc75e91fe8700dfb3677e7b3879c6c1c7f51a9bf0f3507d22",
+      "git_blob_sha1": "eb709f31d8b2d70447041cb219b220319224ea15"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Effects/IImmediateEffect.cs",
+      "bytes": 730,
+      "sha256": "01d83083a030ae436347402291b9dbc7a0d03c63d575f8b032dc0b930f94fc10",
+      "git_blob_sha1": "d4490a4c7824f94748cc67b6166f57b02b8096bb"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Effects/IPersistentVFXEffect.cs",
+      "bytes": 1111,
+      "sha256": "6f9118be8ed4d5d1a4be6beb1cf643dbdaeca0430b79f5936f2c71cb6bae0b19",
+      "git_blob_sha1": "926812144e41657214f06d2beccc4403f6d689ae"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Executors/AttackActionExecutor.cs",
+      "bytes": 683,
+      "sha256": "c1af5d3ee945d4bea6c62675c0ad78fdf700f6793a6be315d90d93c9436fd849",
+      "git_blob_sha1": "47ce409c8afe7fcb5653e4edf342bf510c9d3f90"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Executors/MovementActionExecutor.cs",
+      "bytes": 883,
+      "sha256": "13204eb4b10be10919f16399a2498fb8cff621834b38e2728ae0cf259e713a9f",
+      "git_blob_sha1": "99600f6e1d6ba21580213067053aba54f4f8d08e"
+    },
+    {
+      "path": "Assets/Script/Game/Core/GameInitializer.cs",
+      "bytes": 37348,
+      "sha256": "05eea24b5fe040a793cb7c91be044883ccc23262096dfd0a8c06e00fec01a957",
+      "git_blob_sha1": "06baf6b6fab2950e94af096ab08994b847b7dd8d"
+    },
+    {
+      "path": "Assets/Script/Game/Core/GridTraversalUtility.cs",
+      "bytes": 1395,
+      "sha256": "c6d560cedb2866e0ef08a31c79916c1619c3fcb30a45e0fde536f2eb7f638e6a",
+      "git_blob_sha1": "f5707698670b46b0ead4c53231540a6e895f7d2a"
+    },
+    {
+      "path": "Assets/Script/Game/Core/IGlobalService.cs",
+      "bytes": 445,
+      "sha256": "0a8b105dad2eee25e7f1de276b653e2cbc531e07f0edadba1c2fec77c5bd9e56",
+      "git_blob_sha1": "7046ef6946d5d795148ccddfc9ebce0d39682914"
+    },
+    {
+      "path": "Assets/Script/Game/Core/Modifiers/ModifierFactory.cs",
+      "bytes": 5191,
+      "sha256": "0eebb9b095eb91bdeecc1304bb6701a0a42aecf73375eb507ea5f14f582c0976",
+      "git_blob_sha1": "bda067f19c91ec3143da716374c84121eded17cb"
+    },
+    {
+      "path": "Assets/Script/Game/Core/ResultPattern.cs",
+      "bytes": 18416,
+      "sha256": "9e51df4717596fe5f8d08df2020246ee9824e638297954eec89bbf8cf664047d",
+      "git_blob_sha1": "5b1e2eb49971374b04c1e9b5dcded40786b31ec9"
+    },
+    {
+      "path": "Assets/Script/Game/Core/SceneInitializer.cs",
+      "bytes": 7485,
+      "sha256": "2008f127554df9204251c48cf6883b3a851c4767d69f0435a35493313f0c575a",
+      "git_blob_sha1": "ff9ba50e8cf92d5dbc6956aeaf4b918af4e3ba18"
+    },
+    {
+      "path": "Assets/Script/Game/Core/ServiceBootstrap.cs",
+      "bytes": 35651,
+      "sha256": "a336ef4d6c825d700ba04609c50fdaf624289aab723f066823cf47caf43ca8ac",
+      "git_blob_sha1": "d24324454e9837085e299879b2490600f51a1dc1"
+    },
+    {
+      "path": "Assets/Script/Game/Core/ServiceLocator.cs",
+      "bytes": 15843,
+      "sha256": "89950ed58e9d9a72d748e5bc355e55ac52db3b9a084337f755ba0c026282ae31",
+      "git_blob_sha1": "3949df2db4ac25bb700ab05c18632b1e42d05bcb"
+    },
+    {
+      "path": "Assets/Script/Game/Core/StageSceneInitializer.cs",
+      "bytes": 9853,
+      "sha256": "8dd541506e6677665ccda38acf4511656e5251a802c8e4423ab0e340c10480ee",
+      "git_blob_sha1": "17a4d9d10f06b37e00524058c9a499faa9b6a278"
+    },
+    {
+      "path": "Assets/Script/Game/Core/TeamRelationMatrix.cs",
+      "bytes": 4043,
+      "sha256": "d548a52e63188e9308ccdbe30e3c1f61262ca481e3541232b33e999cc0f678a7",
+      "git_blob_sha1": "5554456ad4a74c696c27392e57b27e2bf2ab8012"
+    },
+    {
+      "path": "Assets/Script/Game/Core/TitleSceneInitializer.cs",
+      "bytes": 13860,
+      "sha256": "0d6947c82be4e3a03fc8c857e630392db663a48038f8f99a8c2b6a7f9695ab35",
+      "git_blob_sha1": "ddd37da0907b6a82b93cac45f275c00a92d8fcd4"
+    },
+    {
+      "path": "Assets/Script/Game/Data/CardPreviewHelper.cs",
+      "bytes": 7564,
+      "sha256": "c3b097db6eb7f76dea3c58c885be1c4c16c064b9c8da8ddfff8e6950ec12587e",
+      "git_blob_sha1": "1fdb3e80e6f528470ebdb8fc53c0081c686b22ab"
+    },
+    {
+      "path": "Assets/Script/Game/Data/DamageDisplayData.cs",
+      "bytes": 1468,
+      "sha256": "839442e01d5a3968bbb83ab709cfdc47b9ede33179ab9bfa8c9cb0b02b0c2355",
+      "git_blob_sha1": "2c05efe5eee6ba7a1c353ecff98b8869cebb6ea2"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/DeployBonusEffectData.cs",
+      "bytes": 838,
+      "sha256": "7cbdf79fa2a5fc17cf2028d8cd08da6445d12f2562337bd08e056766e505af17",
+      "git_blob_sha1": "772777ce7deb8f1a725f81c6f6841e6f9b577dcf"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/DeployColumnStatSourceEffectData.cs",
+      "bytes": 1979,
+      "sha256": "cdbf3de0435f45189222480ad1cc8e3828d60e8cc8b9ee6f4ad8447f0e06e9a8",
+      "git_blob_sha1": "e9e1a19947f1e0fc9f1296d434e5e577e5416821"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/DeployDrawCardsEffectData.cs",
+      "bytes": 1236,
+      "sha256": "ef6ae54e7cd5e6411d0f8f7605da1bc2a3a5e7a06bf60ac6871cbf23df68e325",
+      "git_blob_sha1": "7821a8dd8aa4c9d4cd2317f2aef595a63f53ef7d"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/DeployEffectTeamTargetConfig.cs",
+      "bytes": 562,
+      "sha256": "563a2d948c93912ee1bf1e6ca0c5c0cb8ae353ee238d51d54b9878682f11e613",
+      "git_blob_sha1": "0674cedfff5331b85a29468189fc7d2ba4aa86b2"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/DeployHealBaseEffectData.cs",
+      "bytes": 1231,
+      "sha256": "0cd83aa9a4b58e55379ad22a8e5cd24d5037bb8d77982551c8a346abb5fef255",
+      "git_blob_sha1": "c61fc046599732fff1a219f8dd03e026cd147cc6"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/DeployTeamMultiStatSourceEffectData.cs",
+      "bytes": 2076,
+      "sha256": "8fb0a52543a070b57508807c2c051bb16aa33381f9b6b30d9130edba0f57ac4a",
+      "git_blob_sha1": "6fa3385d71118965786b947dcd35e18fe16b12ab"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/DeployTeamStunEffectData.cs",
+      "bytes": 1374,
+      "sha256": "5c5a8c8b19cd92691a573fb65885e7ddca70927d7b5d5107e45038399c873bcb",
+      "git_blob_sha1": "b7c824ba6a7d2226fe72009da253b9acd1ed377f"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/ExplosionOnDeathEffectData.cs",
+      "bytes": 878,
+      "sha256": "e11d95cf15ce487193a1618ea29f9feb3c3a4adaeecc1eeb2f9f927a4f57c80e",
+      "git_blob_sha1": "6fbab3f53523e822cfec63988e8415c37906cbd3"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/FrenzyOnKillEffectData.cs",
+      "bytes": 542,
+      "sha256": "ed077051d20c2ae2aa60f75aebb55dd6a41dcd69acf0057362d58d21e3d414a2",
+      "git_blob_sha1": "96c4f771d9436f5410d845c6c2bd4c664534e9e8"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/SelfDamageDebuffData.cs",
+      "bytes": 724,
+      "sha256": "75c6ed00c11cf4c078b7646ec0966d606a68c092840a0048ca3d879c282665f0",
+      "git_blob_sha1": "da720bd01f2e2cb2b62636316de0c9eca127a90d"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/SplashEffectData.cs",
+      "bytes": 688,
+      "sha256": "3141a8b4bc38eb7ae1e154bcf63779e80123379b854112c8e80f8c00f4566d70",
+      "git_blob_sha1": "1422361392c1676573be74684a0c1f92d8184308"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/StunOnAttackEffectData.cs",
+      "bytes": 689,
+      "sha256": "340a1d26a70857b6b680b7a563b8edd24ea1f70d676dfba1622c873d5d918007",
+      "git_blob_sha1": "26255ef83adddf65f3966f1b81acb7d8a0ad90e0"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Effects/UnitEffectData.cs",
+      "bytes": 1554,
+      "sha256": "c4f588c6f5a0b1d3fa8d205ac271bbcad29ccb156340055c68a2c5f174b5fad1",
+      "git_blob_sha1": "ffa4ab900a4ba9d4af78f6d282196200bc8972f9"
+    },
+    {
+      "path": "Assets/Script/Game/Data/GameSessionData.cs",
+      "bytes": 2040,
+      "sha256": "18f0e4acd2b9f70ec43b755d0a4dc9c3f51464afae794d5b6df0b91b8c500363",
+      "git_blob_sha1": "28aef0af8ad87a322276f216782e56f87ab99dff"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Modifiers/BishopModifierData.cs",
+      "bytes": 2269,
+      "sha256": "9dcf4d5f8e7f2c1a0cbfa67d995d6089e51a41a67163de713b20de40e30321d8",
+      "git_blob_sha1": "1cb830dcdd60409f01b961c89df4b5f958adc2be"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Modifiers/BoosterModifierData.cs",
+      "bytes": 1671,
+      "sha256": "85fddce0c95e5e5ca21131f885424e49d2c182de6b187a0f6693bbcd297648e3",
+      "git_blob_sha1": "2d43032884401cbbf8e9c795a239dab4af71de21"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Modifiers/MeleeModifierData.cs",
+      "bytes": 1665,
+      "sha256": "c6dbabd7efba9c76ab92741af8d543ff5666f31a0c1598f0c7939f1239df25c0",
+      "git_blob_sha1": "1caac7e5aced8a31ab36ede6de95c3a8c6e43f0c"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Modifiers/ModifierConfig.cs",
+      "bytes": 7289,
+      "sha256": "c1ab97ec34cc6929b937b9b75e8cf4005982e47629cfb337f1ec97e5489c8a39",
+      "git_blob_sha1": "c9915bd9cb50089c7bb69e78264a91462c032fdc"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Modifiers/ModifierData.cs",
+      "bytes": 4255,
+      "sha256": "f03e4c52189a0a6a43c4c2aa4c584627692277d5fa349fca739de4b683e3d97d",
+      "git_blob_sha1": "9cac8e9f05add8ca2f7e56ec2b0fbf0d777b58f4"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Modifiers/NormalMoveModifierData.cs",
+      "bytes": 1642,
+      "sha256": "22c5243c06909ea3f93d46e4193b3531a5c25d511d26200d3a5cfb41a4ee601d",
+      "git_blob_sha1": "69fb116f57b68fdedfb17d98f62e8917bc3a773e"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Modifiers/QueenModifierData.cs",
+      "bytes": 2321,
+      "sha256": "c108f5cdaf0e20caaa2cdcf62e8be76f65b6f5f3555000b25de207724c9b2aee",
+      "git_blob_sha1": "6b2845b6ecbc15081df4cc2b0e006d8babf832b1"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Modifiers/RangedModifierData.cs",
+      "bytes": 2558,
+      "sha256": "f506bce52871d604278ee5d4a0c5152b2b0a6874780c218734f8c1da38e21842",
+      "git_blob_sha1": "f58e4d53ba059b517efca3505f25bfaac3ca0730"
+    },
+    {
+      "path": "Assets/Script/Game/Data/Modifiers/SniperModifierData.cs",
+      "bytes": 2780,
+      "sha256": "5d950a215e890dd0d334cdac5982aeb51396ab1020c44307eb7ab2fe75fdeb82",
+      "git_blob_sha1": "8aa69264bca9d823151eac508fbfdcf77285960a"
+    },
+    {
+      "path": "Assets/Script/Game/Data/SessionOutcome.cs",
+      "bytes": 260,
+      "sha256": "a537b24a4dd1584a88c9e4a24a3cc14a44176f0246f4638a19ab859a5520395b",
+      "git_blob_sha1": "c9b69ffeef1500b5014f460326667ac62b4081f2"
+    },
+    {
+      "path": "Assets/Script/Game/Data/StatModifier.cs",
+      "bytes": 6677,
+      "sha256": "3115445d11c84e07fb4a3223dcade9ec0f7eca8b38f77fd0acc3d061dcd99435",
+      "git_blob_sha1": "fc582893368ea4fd683d4c9bf04c37f8a46b4af7"
+    },
+    {
+      "path": "Assets/Script/Game/Editor/AnimationClipValidator.cs",
+      "bytes": 10096,
+      "sha256": "4c978e567847c56aa470fa41c46fe7047fd4cb2ba4fa38548d3c6919936df929",
+      "git_blob_sha1": "9f0c96188fe5d6fb83442a8f4511909586b3646f"
+    },
+    {
+      "path": "Assets/Script/Game/Editor/AnimationEventSetupTool.cs",
+      "bytes": 13405,
+      "sha256": "8da09e0dd75900bb5baacd98dc240c26901301fdc3a3218ad553109f48a62eca",
+      "git_blob_sha1": "ba7e768136c092ed863081ea7fe96de3239cc808"
+    },
+    {
+      "path": "Assets/Script/Game/Editor/AnimationPerformanceMonitor.cs",
+      "bytes": 12888,
+      "sha256": "5071969f215aaad368b78f028e9f0c77033161c9ad9f3f55c2d72e456bf430e0",
+      "git_blob_sha1": "55657b48fe26a1056ffe9f0e3036260428e30735"
+    },
+    {
+      "path": "Assets/Script/Game/Editor/CardHandDebugWindow.cs",
+      "bytes": 11232,
+      "sha256": "1f27b2212dfd9d07f32349e010b63ddbf296c747c31a27d965437b165a3dd7d9",
+      "git_blob_sha1": "2a54229c1991390923e1f34c8519bcd4e8a01bb3"
+    },
+    {
+      "path": "Assets/Script/Game/Editor/GameSettingsEditor.cs",
+      "bytes": 10018,
+      "sha256": "c05c5056168c0128eb90eb4853b241006e9a6dc8fac000efe133b7080f5ce4ab",
+      "git_blob_sha1": "b79de860756beb93b65c8b547e6ef332d4a7ad5e"
+    },
+    {
+      "path": "Assets/Script/Game/Editor/GridCoordinateValidator.cs",
+      "bytes": 11167,
+      "sha256": "a49cd4c44303272dd42bf3232483fcc8ad590f78b8bda1a1717887e6a38ca862",
+      "git_blob_sha1": "30416df257508e111f3fae0d41ff572a42b2ea4c"
+    },
+    {
+      "path": "Assets/Script/Game/Editor/PlayerGoldEditor.cs",
+      "bytes": 12534,
+      "sha256": "aa4a43a0315b0bc94693480e015b8c91fbf0299c80f3fc626f98044266347713",
+      "git_blob_sha1": "5631707504634a88882147699966e22ad92dbb68"
+    },
+    {
+      "path": "Assets/Script/Game/Editor/ResourceManagerEditor.cs",
+      "bytes": 19240,
+      "sha256": "e0e4c92153be796f56459d0682514682d84377944f292bd55257bd105e652212",
+      "git_blob_sha1": "f4ce0c4de9113f480182d2501355fc300cb46047"
+    },
+    {
+      "path": "Assets/Script/Game/Editor/StageProgressEditor.cs",
+      "bytes": 17475,
+      "sha256": "bf207baba70b2a797ae9e20963a83b6cb2749d3cc702b4cf889de3e81304ff98",
+      "git_blob_sha1": "d443e8591ed74fc8daad61bb31f1d8e7f217bef7"
+    },
+    {
+      "path": "Assets/Script/Game/Editor/UnitAnimationControllerInspector.cs",
+      "bytes": 7930,
+      "sha256": "0e8aad6124eb867085a04180f1f2b69e81e91ce5627cded3823ae06042a7e5b5",
+      "git_blob_sha1": "7d37e8fffed4d86ef7f93b82b3191e2d6f174ba6"
+    },
+    {
+      "path": "Assets/Script/Game/Examples/SceneLoaderExample.cs",
+      "bytes": 12226,
+      "sha256": "54df32182cbb9505bf8c72b6fd0250f4b887575d954239f05b0abee28e3ac202",
+      "git_blob_sha1": "0706166897de48b9c0a2b18bcd38f8876f610cd5"
+    },
+    {
+      "path": "Assets/Script/Game/GameSettings.cs",
+      "bytes": 7471,
+      "sha256": "ea1f4eed9dd025cfbf78db008f4cac4107793736166080ca60bae7500b8b60f1",
+      "git_blob_sha1": "2a1345e131951e981b75cca6997df34a860f979d"
+    },
+    {
+      "path": "Assets/Script/Game/GridManager.cs",
+      "bytes": 21965,
+      "sha256": "84ad9fdcb87c1afbf6de3fa7ce98e64f3640a8d8a616497d386df62cc4edfa1c",
+      "git_blob_sha1": "a0567c39ece8df2792fecbbdc941059c90f00579"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IActionExecutor.cs",
+      "bytes": 225,
+      "sha256": "ff604743533ecde076637e8f063d7cbbf42a24c1bc013131e1eb7c2f05ecdd11",
+      "git_blob_sha1": "12f4a730a2132cc512d3afcb883d56726f984616"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IActionModifier.cs",
+      "bytes": 3271,
+      "sha256": "55d4b7a48f7a68ad9751082a9f0135e6f9b2f8dd1983b2ab5a8cfed391ab4d73",
+      "git_blob_sha1": "12b395cd171b4e4f02c109af2e67d7f7c4e34ada"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IAnimationController.cs",
+      "bytes": 3648,
+      "sha256": "1d8e40726782bfacdff623d468ba543ef66ceeecdfb91a6017a087094634ac1c",
+      "git_blob_sha1": "c608cfd22876bc486bfa6c65e634cbe47f520365"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IAttackEffect.cs",
+      "bytes": 323,
+      "sha256": "bd0703fabc3702111e09dc6ef3618c00b660f94d18741fcd0e3635e79f52650a",
+      "git_blob_sha1": "1a5759bec41c65dc30f910c9a07215dc5aad106c"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IAttackModifier.cs",
+      "bytes": 149,
+      "sha256": "bf9ff4a26073183ae385dad4b10299f7e1a194e4a3e4477b7e252dede2ff9aad",
+      "git_blob_sha1": "633c91a173453ca7a6f06cc0bf86dc1ac6166682"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/ICardHandManager.cs",
+      "bytes": 2676,
+      "sha256": "3e5d252ba538f2ba52edba3661f2865ca1dda6e64904fbcb854b153bb3d7a7da",
+      "git_blob_sha1": "2153e64351fa3f5dbaf2fe6b26ea4f281fd596ce"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/ICardServiceManager.cs",
+      "bytes": 2143,
+      "sha256": "df5bc24d26883b1e49efc02801c572892b510ca469c20c5d54b8639a04b8da91",
+      "git_blob_sha1": "61eb02cdf6338bdd47e3a3fb4b81554b93092d57"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/ICardSpawnService.cs",
+      "bytes": 1678,
+      "sha256": "a505ba8370a2ba4857e72ce4a711212ad236ff1986b769bb0acc2a38b3a17399",
+      "git_blob_sha1": "35791184ab7e2d26142add6976f2b7a0d66cb543"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/ICombatSystem.cs",
+      "bytes": 9648,
+      "sha256": "5573f40dff783e0886d85bb60a206691028c9029043a8d2166005f8994d1aa9f",
+      "git_blob_sha1": "a1510aa23165e8f6c950affb6dbbf22a33048fbf"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/ICombatSystemEnhanced.cs",
+      "bytes": 19195,
+      "sha256": "a886775574eb6472336cf8002fc442fe3dd71219adf73866b10703d737b655c5",
+      "git_blob_sha1": "f708f12e3e5f33ae3dff1de266cf8a1d4ab276b3"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IEnemyCardHandView.cs",
+      "bytes": 902,
+      "sha256": "246a686e50948e26b2444f299cb45c17be72fefb98610ae8f0b3653ffe74173d",
+      "git_blob_sha1": "fd1221ca884bd0e6c9c18eecdbe14f1f66e78b47"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IGridHeightCalculator.cs",
+      "bytes": 2092,
+      "sha256": "abd8d7c639cfc30c7aff92eafba9f455d92f5c3f26924a12fadff356886f8e4e",
+      "git_blob_sha1": "0337a5373e992df2ba6eadeb9a6c7f418592c521"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IGridManager.cs",
+      "bytes": 20640,
+      "sha256": "db96d038f9f5deb741d08ea57513518b454777d444c007b034d7f236d841cefb",
+      "git_blob_sha1": "0880594cb517dad267dc0a4d236021a10139edbf"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IHealthComponent.cs",
+      "bytes": 7386,
+      "sha256": "df697d5347eab4410cd15bac1e6eb4962316e3a9ee19a77c70cf4da035bb9909",
+      "git_blob_sha1": "60c685aa4b7792857d8d6d13ffda829ff5581141"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IHealthComponentEnhanced.cs",
+      "bytes": 12113,
+      "sha256": "d5feaf354aaf63b3b64078914a6a8aebf98149ed0f17aa3b80f96c6c4263cf32",
+      "git_blob_sha1": "aec98ed24fe0448ffbc6d8b8bda8766153b3fad0"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IMovementModifier.cs",
+      "bytes": 243,
+      "sha256": "e8711a96bb9813eea29c7d56eed4ca790bf44a80c60f5f11a05a5ecd0bdf680b",
+      "git_blob_sha1": "09af167b6d8b5f2d412122ad6d7bf2fca9a42368"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IMovementSystem.cs",
+      "bytes": 11876,
+      "sha256": "0d95a36a4d2366adc70eb3c9c7e887de7f77c950eaa51eed15f8d6b702cd6eb2",
+      "git_blob_sha1": "9a2b8e444e5f18cbdffc40eab633bb6105ecf694"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IProjectileAttackModifier.cs",
+      "bytes": 279,
+      "sha256": "84fb6e29099ae672a1b2ce01e793602c62026b4ae9743fdb4c0ef08170217fee",
+      "git_blob_sha1": "0bca8a1043dd90165e3f4af1704c8ad38b418abc"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IResourceManager.cs",
+      "bytes": 4763,
+      "sha256": "bd34045c24398863d97cc354c66be78753ed11ebfcd76d0b715102d32a57de83",
+      "git_blob_sha1": "91f540b82688ec7805dd86d9602abbe352f90cfb"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/ISpawnValidator.cs",
+      "bytes": 711,
+      "sha256": "4030ca84605935b631fd4412c9ad7a8231de926aa40a5e45f9946ab71df0c66e",
+      "git_blob_sha1": "c29b6e30b78a0eb5c3ae500c3eb4674d08105f8a"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/ITeamComponent.cs",
+      "bytes": 1287,
+      "sha256": "165f3f3aef0d800ff8d2061d03220433eb58293ea61b9e85d4ad9644812a91c6",
+      "git_blob_sha1": "b87287e2bd8de5b235eb44079d7c7bc7e875f9fe"
+    },
+    {
+      "path": "Assets/Script/Game/Interfaces/IUnitAI.cs",
+      "bytes": 3299,
+      "sha256": "c2b32f7860b4906648983d04bc06f6db294d4b72c5c053f985a37c9803f3e4db",
+      "git_blob_sha1": "83842fb0e0e99b57c5cdbd3b0de4bd1bc2dc1eae"
+    },
+    {
+      "path": "Assets/Script/Game/Managers/CardServiceManager.cs",
+      "bytes": 30191,
+      "sha256": "6e9f23a6bb3087d4ae32cbb6f0d32a6dd803ce8ea0427eb68170d2821c3ae6d3",
+      "git_blob_sha1": "01a1ded79f4819fe871b2ca8457c58d6671bf6c4"
+    },
+    {
+      "path": "Assets/Script/Game/Managers/GameSessionManager.cs",
+      "bytes": 14698,
+      "sha256": "f152741c31526765d47775528129d454e5ffdf0a232f25f2d49e0c46616c64f3",
+      "git_blob_sha1": "2440ce310df6fe1f972b9942eceeb196ba9e3ae8"
+    },
+    {
+      "path": "Assets/Script/Game/Managers/IGameSessionManager.cs",
+      "bytes": 4279,
+      "sha256": "93e1c4cc1e6fc8e7b5ca600319999dec2245181356ed922338e8d9b6e3464861",
+      "git_blob_sha1": "ea622a0e3ff660bf3fbd59724c81f8fadf7f871f"
+    },
+    {
+      "path": "Assets/Script/Game/Repositories/DamageDisplayRepository.cs",
+      "bytes": 3560,
+      "sha256": "d13d474ba151d3168ec253216ee821d1404b3f7a3d68c9632fc2fd501728e4b4",
+      "git_blob_sha1": "78c3e17395baa7a11f762c7456e96e6fdb2c750f"
+    },
+    {
+      "path": "Assets/Script/Game/Repositories/IDamageDisplayRepository.cs",
+      "bytes": 1034,
+      "sha256": "4e162671954acb818e0d7b0da7988d2090427ac8523091574123db68e2f0945b",
+      "git_blob_sha1": "447c41d2236c1345ba89a78f35afde7df50e64e3"
+    },
+    {
+      "path": "Assets/Script/Game/Services/BaseManager.cs",
+      "bytes": 16418,
+      "sha256": "689c977e4972069a5e6f4f16458ec005a8bdd31448296b41348c4df8cc1943d1",
+      "git_blob_sha1": "f4959295bbc0d973d905fce102a07a1240d8082e"
+    },
+    {
+      "path": "Assets/Script/Game/Services/BusyType.cs",
+      "bytes": 1265,
+      "sha256": "e71e41c4d671450252c41c0dad9c9dea59832fe233a0b802658f0b729c52e14a",
+      "git_blob_sha1": "4f9ad86d47d48c5dd61d70d820a3b24a0ffe83d5"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Card/CardHandLayoutManager.cs",
+      "bytes": 4959,
+      "sha256": "3efb0b24ccd64867c552c7e81767537c635014d97c22a020879147857e28ef05",
+      "git_blob_sha1": "439731abd9985b18e7b39686fb2138400098cddb"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Card/CardHandManager.cs",
+      "bytes": 32036,
+      "sha256": "d82163b4d74915d344c6763f59745946e1b11ae2eab49edb07d768f3eaf174ef",
+      "git_blob_sha1": "1806d8edfbc6b026db2f0ecb1c7855adf2b984f5"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Card/CardSpawnService.cs",
+      "bytes": 13997,
+      "sha256": "d8e105198c2ec260bc590d7d436a43e3d9dbd9b5d01242bbb3efd061398aa839",
+      "git_blob_sha1": "cecd6a1ec89dd8543d8bb78e14cca8832bbb91ce"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Card/EnemyCardHandView.cs",
+      "bytes": 10816,
+      "sha256": "8dab172a8b24968a0c875195b23bd8e760adecfcbb99e222433e2941ddf23e30",
+      "git_blob_sha1": "d1f8d0ba12d2c95d549660fc002e73b4cc3340cd"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Card/SpawnValidator.cs",
+      "bytes": 17758,
+      "sha256": "a4f295f7df6ae21a5deff1095b0556d644cd349a699a04925b70a95eb6a05724",
+      "git_blob_sha1": "868806afd71ce94764856aa468d7e46a82c4ab78"
+    },
+    {
+      "path": "Assets/Script/Game/Services/DamageDisplayService.cs",
+      "bytes": 5998,
+      "sha256": "c31585d99d9ab87c1d592fe15061e818ade8174cb9ca2fa4d00f49e14e95afa3",
+      "git_blob_sha1": "9a0f1739432c0cf722ba19e06c643669b9d43488"
+    },
+    {
+      "path": "Assets/Script/Game/Services/DeathAnimationManager.cs",
+      "bytes": 6372,
+      "sha256": "d91f8343c7c5d5d9c55267278c0427c34f21f6b34ad69e4476fbdd207374bcd0",
+      "git_blob_sha1": "f5289f84fe7f38266be09ed5b07f309fcdda0b73"
+    },
+    {
+      "path": "Assets/Script/Game/Services/GameOutcomeManager.cs",
+      "bytes": 5149,
+      "sha256": "f5e2b062ab08bb2ab2f7c3ec62d013410985294feee2ca0b6e1b169f5e3d6c61",
+      "git_blob_sha1": "97df649a4287d3e20d49b3d4532c031fbec0326e"
+    },
+    {
+      "path": "Assets/Script/Game/Services/GameService.cs",
+      "bytes": 6777,
+      "sha256": "9311f41d03b72dd8decd0fd830b2cdc326fb90d7a1fc79102d875b41a2fd0ccb",
+      "git_blob_sha1": "aa6ad8c10c8f490c283011abac00cebdb2e2ba96"
+    },
+    {
+      "path": "Assets/Script/Game/Services/GameServiceManager.cs",
+      "bytes": 24255,
+      "sha256": "cf951d566827e6c93260ef1dd190effaf73630b8329b0b25a8f5f6b1f33f58ec",
+      "git_blob_sha1": "f0a3f66fdd173818870f3e46dd723da62d2e6c13"
+    },
+    {
+      "path": "Assets/Script/Game/Services/GlobalStateManager.cs",
+      "bytes": 6453,
+      "sha256": "61b1adc81886a3806d5126064ee391aeea0701cf17504ad0c05c09578ec8319d",
+      "git_blob_sha1": "f80608aa066197ff9eddd31e9f32bdcd2d949ce0"
+    },
+    {
+      "path": "Assets/Script/Game/Services/IDeathAnimationManager.cs",
+      "bytes": 993,
+      "sha256": "367da1c8492b56e11902a14761db62db913118e31351eaa07b958f42e0d9504a",
+      "git_blob_sha1": "24aa6cf0fcf47598812d88fadce52a646787811a"
+    },
+    {
+      "path": "Assets/Script/Game/Services/IGlobalStateManager.cs",
+      "bytes": 2026,
+      "sha256": "7c93e017ba7189311a9dd4550836575c70e159fc63b0054284db8667c65144a4",
+      "git_blob_sha1": "e86063cedb89a47e955585fea1ff7f3e888d719d"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/IBaseManager.cs",
+      "bytes": 1406,
+      "sha256": "776b0b9abd64f3bfbdc81d0feddbd9b0a4d73e5da3019cee0c459265217d0eee",
+      "git_blob_sha1": "9589f1e2d44dcea2453c93e6b96d13cecf884ec8"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/IDamageDisplayService.cs",
+      "bytes": 691,
+      "sha256": "9af7a51e013ed87bc53ea45ba15a9f2d39218156cbaebc248088d2f5b5ce0966",
+      "git_blob_sha1": "5e97e06f7f55414730a9899b6ef8a6e0bd5de4be"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/IGameOutcomeManager.cs",
+      "bytes": 817,
+      "sha256": "0da443d24a9d3bd1d78bd0134ba4d179b4346e1f872a42600648b31c54abd92c",
+      "git_blob_sha1": "89d773c9ab25cfdf67d44425f14ad97246a61d82"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/IGameService.cs",
+      "bytes": 1443,
+      "sha256": "c7d1c53f361d1298115f43026146524c11884022929c8e6b8dcf3320b54d747c",
+      "git_blob_sha1": "63eaf7c613e064de487dbc68a7082b09e19e593d"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/IGameServiceManager.cs",
+      "bytes": 3048,
+      "sha256": "7ee8129c162046f4bd3e57d1ec3c207eabe17474b470eb89aa642a8ecbda2659",
+      "git_blob_sha1": "572fcb124a680cffaa6bfd386c4721f1825cafb5"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/ISceneLoaderService.cs",
+      "bytes": 2942,
+      "sha256": "4d1170d30528cd990ae0453644f1c40126eaac4340989913a6728b007a594f3f",
+      "git_blob_sha1": "05e1d90f2feb7d79da9f8120a187f59ab9315788"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/ISceneTransitionController.cs",
+      "bytes": 1352,
+      "sha256": "bc8d089a9fc664a84bd3fcc02be6c6bcca7c54b28c55ad62a7f4a0fe1560260a",
+      "git_blob_sha1": "5112c4c9fe0c9939e9258e1ed316ede129109d1f"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/IScoringService.cs",
+      "bytes": 1523,
+      "sha256": "67805c2392d6643a990505de92ee7bbef95e864f8892e42e35c08293583d7423",
+      "git_blob_sha1": "c68702d9086acc313e8ddf6869c0524b76af187c"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/ITurnService.cs",
+      "bytes": 1745,
+      "sha256": "d4787db1772dd250e825a5c2415ffc215ccbf4e502ed5d0ce39ec11264db4dcd",
+      "git_blob_sha1": "2ea9cc20ef71e1720fb297c3a650d094654490b1"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/IUIService.cs",
+      "bytes": 1525,
+      "sha256": "2f66af7c4c4b3e5b2542e6b9745df4155fd6229bcb52de7e955302bd6785cd4c",
+      "git_blob_sha1": "7c4f42cb3ce5bc8e01b5423be728e2ab0cc04e2a"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Interfaces/IUnitService.cs",
+      "bytes": 4822,
+      "sha256": "38af7b41219762f97c229f5a6de2c62639dd1c8d3996fe5d165e070495a875ec",
+      "git_blob_sha1": "0507639945af0413f0748e12cb34984020b34060"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/Conditions/AlwaysTrueCondition.cs",
+      "bytes": 588,
+      "sha256": "6f7934b38dc434bafa7b60fb12ebf4033dec46042ea88c0f54d00b696c845168",
+      "git_blob_sha1": "7716efc625ca7e24eb63b8606be3963b3f669879"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/Conditions/ClearLaneCondition.cs",
+      "bytes": 1925,
+      "sha256": "e90b09e8c9ad9fc6e6cfd5e9d77eef0c558a1f1112f0c199059c6666d223b744",
+      "git_blob_sha1": "8f4bd1166fee71c50d14b74877bae2230dc26b16"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/Conditions/MinimumHealthCondition.cs",
+      "bytes": 1036,
+      "sha256": "30b6f3cb5f71c75b54066691af991d419dc8af1899df2da2f9df46d743c7d976",
+      "git_blob_sha1": "9654a1cbeb79b2ca1f9a95605ffab7f1e9a3cd5e"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/IModifierCondition.cs",
+      "bytes": 736,
+      "sha256": "38e073ae33ebf370b02f05868ea65bcdc8b9ad73d5c72c373549a492d187cf44",
+      "git_blob_sha1": "22d271f404407c3ec2732b418a5d5d887784c410"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/IModifierDependencies.cs",
+      "bytes": 1368,
+      "sha256": "c1c7482d587d536ce923d1b0c4cdc96eb1be15201d2d486463cea1c298d25786",
+      "git_blob_sha1": "77e73781672ab03f1cd25d4e13a0ac7e49e9df39"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/ITargetSelector.cs",
+      "bytes": 1350,
+      "sha256": "85c92a67f35e8e63520a7bc19c2f5f2bbb9c2f6726f396bc0f65cca641c71f93",
+      "git_blob_sha1": "57a6f508115535c1cd53227443db7ab2ae2fe534"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/ModifierDependencies.cs",
+      "bytes": 1314,
+      "sha256": "74a4539d1c8dbdca6b77948d4827486c59845996e0fa8e0a2d4da7ae7b6bce1f",
+      "git_blob_sha1": "5e28de299b087ed147ac9582f919b7988b3591af"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/TargetSelectors/DirectionalLineTargetSelector.cs",
+      "bytes": 4655,
+      "sha256": "f0032f627150dca878d65a0e01c02b2bfa6449c573d92b283773f3bc0d74b10d",
+      "git_blob_sha1": "6f3d128ce9cd260bd3a6a2d34153e52d32cef9f1"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/TargetSelectors/MeleeTargetSelector.cs",
+      "bytes": 2497,
+      "sha256": "bec1c82e4a70d347e539cbef3e2e2e9deb6c48d884bf2fb512de7885c06b0801",
+      "git_blob_sha1": "765f175276eddc14db0fdaa058c2fa26170d27e6"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/TargetSelectors/MovementTargetSelector.cs",
+      "bytes": 3142,
+      "sha256": "80fd3f94dc4b727b122202b7368dacc5e5683592d55bed24e47a4e29a22d5aaf",
+      "git_blob_sha1": "9acaed681d02566f802a0ae9bd13e980e101030d"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/TargetSelectors/NexusTargetSelector.cs",
+      "bytes": 2279,
+      "sha256": "c2e1ca8d1944681d68cc159bcef35f98b5c53490a1762f4d9824327f143df615",
+      "git_blob_sha1": "c7b10c9351a790cd2e61860564c150d194cc27f1"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/TargetSelectors/RangedTargetSelector.cs",
+      "bytes": 3147,
+      "sha256": "2e848e089b27065cfde2c4fefadb2140d4d9e1d8bd340fee58944f5349acb50d",
+      "git_blob_sha1": "6669d9881b10e09d277f916c6a350514ce2e3094"
+    },
+    {
+      "path": "Assets/Script/Game/Services/Modifiers/TargetSelectors/TargetSelectorProvider.cs",
+      "bytes": 1852,
+      "sha256": "379ecc1ca7b40d21b140db8fa9a0fb6a8d5b7a96b865ae12f61e9f301b2c03fb",
+      "git_blob_sha1": "a68ad43443b542d6ffa72b9dc7ebed79e2b33763"
+    },
+    {
+      "path": "Assets/Script/Game/Services/PhaseExecutionContext.cs",
+      "bytes": 1521,
+      "sha256": "10701bb5cfcc7245f0a6f512effd63cdeb766545e11d3d7da06cec582e6f282e",
+      "git_blob_sha1": "78a31047f09f3f6f8557cd49d422397ccf096e39"
+    },
+    {
+      "path": "Assets/Script/Game/Services/ResourceManager.cs",
+      "bytes": 15364,
+      "sha256": "54599f9c714aebec5d7fa090bbfd52ac2d66b65ef6ceff80aab9329bbde2aeb0",
+      "git_blob_sha1": "3ca789dcb7ca9fcb3c14fa80e4d1aeb9b67accc6"
+    },
+    {
+      "path": "Assets/Script/Game/Services/SceneLoaderService.cs",
+      "bytes": 13302,
+      "sha256": "473e29fd6f9ac2f6f47bbe9c9503e7ce88d2e3fabe6e9abc62ed3eaa51102f79",
+      "git_blob_sha1": "7f67000aa3b717ead1fe63956dca34ed223ab7e4"
+    },
+    {
+      "path": "Assets/Script/Game/Services/ScoringService.cs",
+      "bytes": 4708,
+      "sha256": "f804d6a514fec38f5b3eaaa78366064fef7d1c35efba35b9467452dce1bf0978",
+      "git_blob_sha1": "4a4709fe2dbc2df3c3e9392d74b6551dc2cf791c"
+    },
+    {
+      "path": "Assets/Script/Game/Services/TurnPhase.cs",
+      "bytes": 1449,
+      "sha256": "59afaa9bc1c4801bf070dd40a3130183846169a9016c1be6b676f7cdf29c55fd",
+      "git_blob_sha1": "eed6d7a106f5cb6905318d377814c67f98ed5ae3"
+    },
+    {
+      "path": "Assets/Script/Game/Services/TurnService.cs",
+      "bytes": 5358,
+      "sha256": "66e36b0e4739f1c314fd8360d098fd90cb1c5c9b7bd2b9edece5a11c1276631e",
+      "git_blob_sha1": "2cc74cf2d4be13e7fe56fd2ddfeda96d94ee1ae2"
+    },
+    {
+      "path": "Assets/Script/Game/Services/UIService.cs",
+      "bytes": 22606,
+      "sha256": "64114a6b37fe897d96a9f82f153928c12e349ed18c1f4d17aa49df42c75425fd",
+      "git_blob_sha1": "3b8aeb823319b2ee58efaaadf2e68509d1f8b47a"
+    },
+    {
+      "path": "Assets/Script/Game/Services/UnitService.cs",
+      "bytes": 18557,
+      "sha256": "22625c1e0690ae6a76a570d96b25b5724c8b226589b91d4e49263dace4f98eca",
+      "git_blob_sha1": "87b51083c09d88ac0762032c15188bf38980ffa1"
+    },
+    {
+      "path": "Assets/Script/Game/Test/TileOccupancyIntegrationTest.cs",
+      "bytes": 11848,
+      "sha256": "99f9321d9ff186fd06de78a9db734598eae564c052335abe76888ec08182626b",
+      "git_blob_sha1": "46708b3187f873e01baea8101b8a7d55d433821e"
+    },
+    {
+      "path": "Assets/Script/Game/Test/UnitGameServiceTest.cs",
+      "bytes": 4329,
+      "sha256": "30d5f70af8ca8ee48228d91515f1efe23123f1e8f787a4ef3331fe0ce8c5b072",
+      "git_blob_sha1": "930c6656d4e0f5fb703e7e8994b968277a8d9573"
+    },
+    {
+      "path": "Assets/Script/Game/Tile.cs",
+      "bytes": 5382,
+      "sha256": "5cfa37f730c3dcc31547ce1c25a73467ce670f709e1bd8b7e211fdffabdf93e8",
+      "git_blob_sha1": "b64dd007cf2f388b6d53262db9abf30a31ff91a7"
+    },
+    {
+      "path": "Assets/Script/Game/UI/BaseDamageHudController.cs",
+      "bytes": 5534,
+      "sha256": "20c08a1ead23b4a3f0d71402ce1129edde0a334bf1c5334e3a984c14d3ff5205",
+      "git_blob_sha1": "ff2206968b9b7baded092630c7a56b52d0037e7a"
+    },
+    {
+      "path": "Assets/Script/Game/UI/BaseUI.cs",
+      "bytes": 5975,
+      "sha256": "cb48dfff0684c8e1fe975e24f1b153b39435cd5aaa53cc00795869fcc1964a6e",
+      "git_blob_sha1": "a456802ac93eb35a8d0bb976dbb9a46cf462102e"
+    },
+    {
+      "path": "Assets/Script/Game/UI/DamagePopupUI.cs",
+      "bytes": 7390,
+      "sha256": "39d749901176541f6cf6b10a73641115fbc78380f182eeea03a5a36e000396f0",
+      "git_blob_sha1": "e0bdbf887d31190cc90d33d6f20c95ebdb293e6b"
+    },
+    {
+      "path": "Assets/Script/Game/UI/ManaHudUI.cs",
+      "bytes": 2576,
+      "sha256": "090d015760a48d837387c3b7df42b7174b57433fde893b4c917808ac0b89b1f9",
+      "git_blob_sha1": "d817597f49fa445479312c3e9a35d07eb46eabed"
+    },
+    {
+      "path": "Assets/Script/Game/UI/UnitStatsUI.cs",
+      "bytes": 15428,
+      "sha256": "9ff3b216f82229c74e281fa113109ec7c8f81dab2b8222dd9c5df179528377f7",
+      "git_blob_sha1": "47dca992ce23f02595aab15c0bd3986e3fe8807c"
+    },
+    {
+      "path": "Assets/Script/Game/Unit.cs",
+      "bytes": 49871,
+      "sha256": "e3bcda7a9b9fecc46b6d27641d42fa84cd45d2f983a290814958a6122adb0592",
+      "git_blob_sha1": "27e0b857f85719764d1e749940ba32366b930b64"
+    },
+    {
+      "path": "Assets/Script/Game/UnitCardLink.cs",
+      "bytes": 777,
+      "sha256": "6892e169757ff407967472492e78058a47c4c10377dfbca4fc909c97b1be0468",
+      "git_blob_sha1": "269b6391d56322d141e387d64eab9255a63ceced"
+    },
+    {
+      "path": "Assets/Script/Game/Utilities/GridCoordinateExtensions.cs",
+      "bytes": 2133,
+      "sha256": "e4dd1c7384c2fbe81b69ecd8a3c2802d418999370e84d910f77262486905339f",
+      "git_blob_sha1": "694c885a24d84e5852db3955d9bc5a16d4da177e"
+    },
+    {
+      "path": "Assets/Script/Game/Utilities/GridPositionHelper.cs",
+      "bytes": 9533,
+      "sha256": "fc398adcf77831eefb9465221d8add7c664e8f4b5d7a7f8e970ffda11f8dc795",
+      "git_blob_sha1": "7de175823548efd271ebaac4d35b1c01ed8fa840"
+    },
+    {
+      "path": "Assets/Script/Game/Utilities/MaterialSetter.cs",
+      "bytes": 1966,
+      "sha256": "5f66db394b61b60ce78a00f41475cc739d25afc976c4b4c013f710e76a49b7e9",
+      "git_blob_sha1": "249ff3fc51d05442fecf54a2ea708f2b4f784af9"
+    },
+    {
+      "path": "Assets/Script/Game/VFX/AutoDestroyOnParticleEnd.cs",
+      "bytes": 2536,
+      "sha256": "3d8e041940446a4a6a11a8010da662c49830a1721d5d8f3f072b1f7431536ae9",
+      "git_blob_sha1": "ad904158328c55940b75649ba82eb023a0dc87f3"
+    },
+    {
+      "path": "Assets/Script/Game/VFX/ISpellEffectExecutor.cs",
+      "bytes": 827,
+      "sha256": "3185ff62a083a22a8a5eaadfe2d362c60c65fb17b696d5f24f6359687cccd3f2",
+      "git_blob_sha1": "4068e067c1fe63e25a82c225f06520c9086c43fb"
+    },
+    {
+      "path": "Assets/Script/Game/VFX/SpellEffectExecutor.cs",
+      "bytes": 25117,
+      "sha256": "605a3db45ab0f2a457cf0d79a3e63faa9d5ac9b0bb7ac65cf7ae7dce729b5aa9",
+      "git_blob_sha1": "ea6f1c0ba3a657783a4b189a9ec0a8319748ef84"
+    },
+    {
+      "path": "Assets/Script/Game/VFX/VFXEventTrigger.cs",
+      "bytes": 14433,
+      "sha256": "70a60df3f858f221a87553f683409396c815420b8f9783670d1410de5f69705a",
+      "git_blob_sha1": "50ccaa5cb3631abff09ee8cf044acde119195179"
+    },
+    {
+      "path": "Assets/Script/Game/VFX/VFXTriggerData.cs",
+      "bytes": 3840,
+      "sha256": "1b34aae20f45a38ccf8cca2a85b63873fdcac60e9d78aa0c22374debc397acfc",
+      "git_blob_sha1": "00c1f88aa37c458a9f44c872442af5ab87508d2a"
+    },
+    {
+      "path": "Assets/Script/Managers/CardDatabase.cs",
+      "bytes": 4196,
+      "sha256": "d23bd1bc530fa6334869ab5a69b3f8e6a4bd1d38e4c103509446d4bebab9339d",
+      "git_blob_sha1": "b3b994d6dd937113388fc18d3286577a90c91690"
+    },
+    {
+      "path": "Assets/Script/Managers/CollectionManager.cs",
+      "bytes": 14671,
+      "sha256": "7efdc41a38f014e50f8db3611d052cc6287f9c1562b58221bf01ff6ef8a90788",
+      "git_blob_sha1": "b1ebcaf7a5ecebb3977058a466976a9ce50e8b60"
+    },
+    {
+      "path": "Assets/Script/Managers/ICardCollection.cs",
+      "bytes": 1631,
+      "sha256": "1900455b5000bca6ffa4c030fa9c8a279dc0736e78f404aeb2860f1bb220fa90",
+      "git_blob_sha1": "3156ef21045877ebd680d04702049ee45a4f342d"
+    },
+    {
+      "path": "Assets/Script/Managers/IPlayerDataManager.cs",
+      "bytes": 3186,
+      "sha256": "9b15127e43e3927b88d3f6e200ced9a70f76da066f060b3166cb0fe05fc3c587",
+      "git_blob_sha1": "d7fa45ca3d04ddd127225ba0d29f85453f77a057"
+    },
+    {
+      "path": "Assets/Script/Managers/IStageProgressManager.cs",
+      "bytes": 4660,
+      "sha256": "7b2934b09cd7743ddc29ea4aa91dcbb38d891e7fc676c8d9c1acc10eff4c0fbb",
+      "git_blob_sha1": "706ba028eb2d9182b52669aee0305cde92dcb33c"
+    },
+    {
+      "path": "Assets/Script/Managers/PlayerDataManager.cs",
+      "bytes": 6621,
+      "sha256": "969437b038940f17875188b8cae9ffaaa681c123c24feffae9bc62dcc76fcb4f",
+      "git_blob_sha1": "1d0aee40b60dcbb1e2730e2ec289251417f8c6f8"
+    },
+    {
+      "path": "Assets/Script/Managers/StageProgressManager.cs",
+      "bytes": 22291,
+      "sha256": "b4e76eb5f479c8ffa25fec1fa985577aed578091f5f502f44b795ce66634844d",
+      "git_blob_sha1": "8df15eec0b1cad5cad63302ad766ef490feff73b"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Core/SaveDataAdapter.cs",
+      "bytes": 23123,
+      "sha256": "81a1a511c8b94e660604b8f7e3808f83ccee2c0957dcd82032d7c38f45fa084f",
+      "git_blob_sha1": "41b74f98b930f796a4ed7bed7f1a5db308cbe524"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Core/SaveGameManager.cs",
+      "bytes": 12439,
+      "sha256": "840dbf0594138a92fb808ff4fb734838cf9ef9dbad2231c015b4e1db648ec532",
+      "git_blob_sha1": "34cfa10e6a0221b777a922f4b6bf7d5c259cd982"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Data/AudioSettingsData.cs",
+      "bytes": 1591,
+      "sha256": "c15cf51be7478aad87536b357415dee4efa7b1c0da151b3d71d76ae01a8b9e67",
+      "git_blob_sha1": "23e16298e5a7797e8a3c268719e4ba40ac59f022"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Data/CardCollectionData.cs",
+      "bytes": 1450,
+      "sha256": "a702491220378cf60c967aac45f07c2a1db44c22a2bbc0ab9ecedc9178269de2",
+      "git_blob_sha1": "80490cfe65fc4f979c1fd1dc07b645216a1f4d0b"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Data/DeckSaveData.cs",
+      "bytes": 1465,
+      "sha256": "48d3d338544d76ac24f1fc38c3ab9fd2a3e396aa7f3a1249dda8c931b64f1e92",
+      "git_blob_sha1": "aaa35432624d24eec8ed8710c83c240d3718f4ec"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Data/EnhancedCardData.cs",
+      "bytes": 2065,
+      "sha256": "0c000988c17bbd8317deefe65527a8ce22e42a59692815a2516fc185ce82ff75",
+      "git_blob_sha1": "942f5d63f6f102b4bd11be42fe9c3810d8b37b41"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Data/PlayerData.cs",
+      "bytes": 1301,
+      "sha256": "8d10343b602b94a8667b6a49ebb894abefeb9301d0f92c44a9cef3c4cc857c48",
+      "git_blob_sha1": "40cee6fc0930377f1636fdd808f74b8810b97f1a"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Data/SaveFileType.cs",
+      "bytes": 923,
+      "sha256": "e9210db6c52c4e7cd594c00e3c6b4fcd80765374f9dafc2022baf6bc4f84c0ba",
+      "git_blob_sha1": "eff16f4c3910f2dd6a9af8e61654db3799250a8f"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Data/StageProgressData.cs",
+      "bytes": 8222,
+      "sha256": "273504f263e382f7de4989173c42898f3eb66be7e4078c474372bb80a4f15e3f",
+      "git_blob_sha1": "ec28e2987a8ca3c1f779c99eb26b0d3b9345d7d1"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Interfaces/ISaveDataAdapter.cs",
+      "bytes": 1425,
+      "sha256": "07a73620b1029f3462ddd1aacdbbae580e9dd6cd49ebe2cda8f9ae485ef92a9b",
+      "git_blob_sha1": "4fc94c919a3ace07a193fa3d44983a0cdd957a4e"
+    },
+    {
+      "path": "Assets/Script/SaveSystem/Interfaces/ISaveGameManager.cs",
+      "bytes": 1585,
+      "sha256": "e3cb747f89c68e918f4e5f500d2ea492e95b7160963a9816a6c7bc0acd04e90f",
+      "git_blob_sha1": "27c2e9f39be6a27702c314554a47fdb3266aef45"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/AudioData.cs",
+      "bytes": 3513,
+      "sha256": "1ac888fd7c73cb06bb7f15510ad0fff34ab4633f6abcba30537bf2e990508e98",
+      "git_blob_sha1": "70ea8e4f19c6d291c7faa9c4513726c4ebd0803e"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/CardData.cs",
+      "bytes": 20860,
+      "sha256": "c90fe2fec17bb2f897d8ee4a8a9874633fbdd4698e1988056d1b944bdc45720a",
+      "git_blob_sha1": "185b51a914bc35e161e3510736e01e8d43e8f0c3"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/CardPackDefinition.cs",
+      "bytes": 3491,
+      "sha256": "2eaa74afcce2474cd058fc4400807a0c3c54abb0a858c0c08bdc35fec631c3dc",
+      "git_blob_sha1": "6c626654ce42223d5f85e2e0f6ee9858eb74dc0c"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/CardPackPresentationFinishedEventChannelSO.cs",
+      "bytes": 418,
+      "sha256": "2802f38b119318832e56f8d1e45d495d3db7098a0ee3b2c97ef3d8a1bfe0af2a",
+      "git_blob_sha1": "de88b533be30639140c98e55c021481ebfc19dd8"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/CardPackPresentationRequestEventChannelSO.cs",
+      "bytes": 454,
+      "sha256": "02e19ab7fc95a0350402cd4ab4a0fe8fc807799791650dd9931510f297d4ca40",
+      "git_blob_sha1": "077d4f50c7d60c1114a6c0f77602135593881646"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/CardPackRewardEventChannelSO.cs",
+      "bytes": 422,
+      "sha256": "98d61fbecc6530dcec46f70e3bc3aebdb7ebcc28866c4b3bee5f10676043e25d",
+      "git_blob_sha1": "844186c99084c371004cd949f589e10c8f543c06"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/CardPoolSet.cs",
+      "bytes": 2237,
+      "sha256": "5142fa1136c80df4b714954f7ac33918264955f6011bfa8a71563fec76f406a4",
+      "git_blob_sha1": "cc82a81ad030ddd42331fdc7e3838e6155464984"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/CardRarityTable.cs",
+      "bytes": 2645,
+      "sha256": "38527228ce733c687dc2e462a0dab1224dbc3f4da42b3f50a10356479e2142f6",
+      "git_blob_sha1": "1d881221b6b8b3cf30a460108f2636c804911ef7"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/Conditions/ChapterProgressCondition.cs",
+      "bytes": 5916,
+      "sha256": "693b013efe070bde9f708d87edb0cf7007d4e8c495f5c7574d9f981aaff64264",
+      "git_blob_sha1": "2624a5e9ba1321f48d23e21b6da2c98c7048a5de"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/Conditions/CompositeConditions.cs",
+      "bytes": 6068,
+      "sha256": "36212de7cb8ebdecc30fdb254002aaaf17c5b1de42a10c1d5952e943a0dbc13e",
+      "git_blob_sha1": "46a283cfa0aac7ace6c0d739e59b737bd9ac0ee0"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/Conditions/StageClearCondition.cs",
+      "bytes": 3623,
+      "sha256": "dd72fae4219d7e307c939a3e7b66faf8024046b5ed590054e0091a5d5b09f654",
+      "git_blob_sha1": "47490ccb3b0929bb7b6585599b615af5bb2e9f23"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/Conditions/StatsConditions.cs",
+      "bytes": 11887,
+      "sha256": "7420c3070abdffa026c02a08aac919e619d469519d21304a6847d40056d261fd",
+      "git_blob_sha1": "613d4cbd54aa0aa813d6f3e812f934778922ad7d"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/Conditions/UnlockCondition.cs",
+      "bytes": 2862,
+      "sha256": "5649515f218bb02dae6904161d46ec8f3050defd9307fb0dbd41c870efab8c72",
+      "git_blob_sha1": "4032fdbcab98ff7932403593c1e090473cc4828b"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/DamageDisplayEventChannelSO.cs",
+      "bytes": 911,
+      "sha256": "c861d2fc446243389d259f3cffcfaffe58495b618387deac5fc9101d1dbd9aca",
+      "git_blob_sha1": "648c42aca17e93e83998927d92d5bdddb67dbccf"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/DeckData.cs",
+      "bytes": 4053,
+      "sha256": "71f9eff0f1d8357c7aa5dc689a54b8b6007a356dc80110e8d0674b155d64b6f0",
+      "git_blob_sha1": "96f7ababd65a8d8c4893aeb0de8b501979112950"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/EnemyCardPoolSO.cs",
+      "bytes": 4945,
+      "sha256": "25d313f21ee1475d6a010a975c4e8e990a9d428d226c7b0422aae27e8277be58",
+      "git_blob_sha1": "09b5dd4ab4fa1877b083a3b3de0e8ae646b1e36e"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/EnemyKilledEventChannelSO.cs",
+      "bytes": 670,
+      "sha256": "2e46c20cd9143d63f5cdb9c44926764abf0917f4233ea8953565d60522b97a26",
+      "git_blob_sha1": "0fb6d75e37238441fa7950cb3e4b76c59ffe430b"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/GameEventChannelSO.cs",
+      "bytes": 1727,
+      "sha256": "4fdda394768d86cc53733c49e0c629427a0d27416f478e5bb9d55d06e84962ba",
+      "git_blob_sha1": "e470093ef5a800b2c25f6092384a2ba2bd3d77cd"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/SceneData/Editor/SceneDataEditor.cs",
+      "bytes": 12117,
+      "sha256": "4c1a46d236dd447189f99b90b8664614c0064d73cb226494995c0d36de7122c5",
+      "git_blob_sha1": "da0c206e9768993aa803d127b0cf3984011559fe"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/SceneData/SceneCategory.cs",
+      "bytes": 579,
+      "sha256": "3b13bd58bdcd7dbf723b4a200665e7beef2f99e9abe99626822171eece77d52f",
+      "git_blob_sha1": "b3a299b52306ef9f2dc75220725b5e8f5dcad9b3"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/SceneData/SceneData.cs",
+      "bytes": 4861,
+      "sha256": "84aca77d85fec614ef47334a1e3e106ca84691b33de4589f4cb54e1d3da2ff42",
+      "git_blob_sha1": "f361aac08eb493b7a78dfca1f38a4fc0a4fe73ee"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/SoundEventChannelSO.cs",
+      "bytes": 5638,
+      "sha256": "1095c225732b946d647c11c8ed2b5ca1ceed752aaed8846ceeb2e7c39f3b0dcd",
+      "git_blob_sha1": "b0c6b0e55f47034ab365590e965a69d7dd4e8a11"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/StageDataSO.cs",
+      "bytes": 12887,
+      "sha256": "1fb94c11b2bec2322f9b84037e8b0b156d8d1bb07366a77a6fa338fd6246dad3",
+      "git_blob_sha1": "e74cfe475f8617debdb1a1b99f914e8d5e18155f"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/StatusVFXConfig.cs",
+      "bytes": 1396,
+      "sha256": "88f0621214dd312a2c35b4c92a8c962163f30aaf6f66f45bb23fd320ef3038bc",
+      "git_blob_sha1": "d1bad363810c8a5ea49e7f43a43d28dab75046f1"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/TeamConfigSO.cs",
+      "bytes": 2442,
+      "sha256": "5cfdf653dc8e60de789816ba37283c12be032f3f61c8979c0fe228f4291860f2",
+      "git_blob_sha1": "8687e92dc38a979d0fd6f7dc66c203f6f957b0a1"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/UnitData.cs",
+      "bytes": 2885,
+      "sha256": "6c43aafeb0afb50b4b586b832a6a1b90f7423d04b9e6fce6320ddc84de7a42e5",
+      "git_blob_sha1": "5cd7245b400aa48015f7e74f51fc0c2feda80467"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/VFXData.cs",
+      "bytes": 1908,
+      "sha256": "b188dd8c47d137ccd1d25da7d1f825fbc242704a9ecce2cdb51ce0e914a52605",
+      "git_blob_sha1": "ba39c7f02981bfd293e013dfc4f483dd6cec0ccf"
+    },
+    {
+      "path": "Assets/Script/ScriptableObjects/VoidEventChannelSO.cs",
+      "bytes": 1527,
+      "sha256": "1edcb2c280d7aa3b9540177e5e9303fe48221345f70b98e7c6ab003a03b7ac61",
+      "git_blob_sha1": "29aec942db710d0dbea755c47ba4af552634cf32"
+    },
+    {
+      "path": "Assets/Script/Shop/CartItem.cs",
+      "bytes": 1316,
+      "sha256": "708892733f1008e8faa60ba767552827355630d38c1319dd606c26855d415f44",
+      "git_blob_sha1": "8d511d575e870de35fe1bfd6c7e5b5b0cb6c62fe"
+    },
+    {
+      "path": "Assets/Script/Shop/Configuration/ShopConfiguration.cs",
+      "bytes": 1924,
+      "sha256": "cfddc8c78a307595cde152e9026cd18878485ff016f8a3b1e05972c01516c71a",
+      "git_blob_sha1": "89edfdae839550b4d84eb06b4d69ad9467d6dd56"
+    },
+    {
+      "path": "Assets/Script/Shop/Data/CardPackOpenResult.cs",
+      "bytes": 1127,
+      "sha256": "70a7837a7693689e5878f49622c78bfbc75750f8095d904f7ba639715ea7872d",
+      "git_blob_sha1": "70224c4dfb81e721b40e210c0a07cc28b2fe3bee"
+    },
+    {
+      "path": "Assets/Script/Shop/Data/CardPackPresentationData.cs",
+      "bytes": 523,
+      "sha256": "5a0b713a6c592b97f91aa4061345012683685342716d4bbaf98d2d8cf24aa43e",
+      "git_blob_sha1": "181ba67dd777288b76b60472e55b3c1f1907b781"
+    },
+    {
+      "path": "Assets/Script/Shop/Data/ShopData.cs",
+      "bytes": 1351,
+      "sha256": "29a752f58185f187b64cca2c463e4eea4bb4739e243c76b61b489ba6a94dfa76",
+      "git_blob_sha1": "b049382748ee99511cafb1aa74001a79c3a2f805"
+    },
+    {
+      "path": "Assets/Script/Shop/Discount/IDiscountStrategy.cs",
+      "bytes": 718,
+      "sha256": "c88d4bc17ea7b0c47375c04592ebd743a4d3e6c5a9f41dad509aef2f22946b44",
+      "git_blob_sha1": "099f75f42aba4b12141c7b38d7954c366c8c1d13"
+    },
+    {
+      "path": "Assets/Script/Shop/Discount/RandomDiscountStrategy.cs",
+      "bytes": 1017,
+      "sha256": "4b160a9126e0ef70ab9be37f37682fc089ac0f41a136f9cf13a2084c06394299",
+      "git_blob_sha1": "9526e7596f0f182125939c3b97a008cc26df2257"
+    },
+    {
+      "path": "Assets/Script/Shop/IShopManager.cs",
+      "bytes": 2378,
+      "sha256": "ad86f9a40c24a93ccf2d8899abba79766b92dba560d05a9a6741de3a64e64bf3",
+      "git_blob_sha1": "9acc6a6e1f5cef45d8d35069e2e097649fff8ac2"
+    },
+    {
+      "path": "Assets/Script/Shop/Items/CardPackOpener.cs",
+      "bytes": 10053,
+      "sha256": "61bf3666d960331e7ec6ebb5d5714783c3036f9154440e16c80fd95799c046f4",
+      "git_blob_sha1": "0315b83e4deb7bdd7f2bef869576d2164eb933fd"
+    },
+    {
+      "path": "Assets/Script/Shop/Items/CardPackShopItem.cs",
+      "bytes": 2804,
+      "sha256": "d9e19a08bf0a8550c0282612c2cb4797a1a86f4cadb84e0a0d4d8262f70f476f",
+      "git_blob_sha1": "bb794647368cdf79c3e3f58f34e45301ba16e488"
+    },
+    {
+      "path": "Assets/Script/Shop/Items/CardShopItem.cs",
+      "bytes": 1611,
+      "sha256": "f7b1e721801a44b86ea7688f4f50e2b6c3e12230d325dc3ebd596fd780dc45c4",
+      "git_blob_sha1": "f0f2251be459c3527be0b2055064182201338b1d"
+    },
+    {
+      "path": "Assets/Script/Shop/Items/IPurchasableItem.cs",
+      "bytes": 961,
+      "sha256": "707f756e1440aa0a764ea7ba19d324d3b8a7646e624b7dd09d0c50c7739b49e4",
+      "git_blob_sha1": "bdd3fec39191e98c7b4552dda8fd634bb3773642"
+    },
+    {
+      "path": "Assets/Script/Shop/Items/IPurchaseContext.cs",
+      "bytes": 973,
+      "sha256": "80ca0c07b7105025d42dbc4b33d204643a7b411f55b1c8d86ccec662a9bd69a9",
+      "git_blob_sha1": "6d9b9aeef90566950999ee5973e8025422be8825"
+    },
+    {
+      "path": "Assets/Script/Shop/Pricing/IPricingStrategy.cs",
+      "bytes": 472,
+      "sha256": "70052c17f25a4ad2535792cba15052a6151e53f685aa99372a6e20890376ed92",
+      "git_blob_sha1": "ec16f90a3ad659f0b39900969bf3365a7740698d"
+    },
+    {
+      "path": "Assets/Script/Shop/Pricing/PricingContext.cs",
+      "bytes": 1429,
+      "sha256": "b996f1caa82e1bf58a923204e1f46b926b79c1f6223817d231566356df2ecdd1",
+      "git_blob_sha1": "8bea89a1c2b13fc6f6bf62efd0a8c1535d9fe2db"
+    },
+    {
+      "path": "Assets/Script/Shop/Pricing/RarityBasedPricing.cs",
+      "bytes": 1126,
+      "sha256": "047317d94796eb6105ae7cad21dd47e60f0fa609471cee1415d1c05f6ad4066c",
+      "git_blob_sha1": "aeee0c2df1bb3387bc00db0139945f5ae3c981c6"
+    },
+    {
+      "path": "Assets/Script/Shop/Selection/ICardSelectionStrategy.cs",
+      "bytes": 630,
+      "sha256": "5518079e6db1f307101ecec8a57726e1d411b91eea721e741326771e5e8063b3",
+      "git_blob_sha1": "8124b672cb6e1df9ad0902c8398ab77c100b431c"
+    },
+    {
+      "path": "Assets/Script/Shop/Selection/IPackSelectionStrategy.cs",
+      "bytes": 668,
+      "sha256": "86e4fe47f7610555df6e562d39616a09b0dd7722d02a3e6266b0a2ff53234413",
+      "git_blob_sha1": "852f2a7b7b0420a0799e0170337bfe4d94a46ba7"
+    },
+    {
+      "path": "Assets/Script/Shop/Selection/RandomPackSelectionStrategy.cs",
+      "bytes": 879,
+      "sha256": "31d80a03f2fead34612417de1cec6b443ac5081831adbc8a985a7c9046efa7b6",
+      "git_blob_sha1": "2111174cd3bab79899753e12ecbb0533a54e73db"
+    },
+    {
+      "path": "Assets/Script/Shop/Selection/RandomSelectionStrategy.cs",
+      "bytes": 1028,
+      "sha256": "d9ba147135e68ff6818c53aa95dff11278283ca4077b3af807ccf4bc20de3377",
+      "git_blob_sha1": "e85679302fcb0bd681d59c0c244c69ba788525d1"
+    },
+    {
+      "path": "Assets/Script/Shop/ShopItem.cs",
+      "bytes": 1514,
+      "sha256": "ed0913534ab2407922631e7a79209ca0da8a146fc7a04d137cbaa011aabfabda",
+      "git_blob_sha1": "f83b0eab6ade2946d2910e0e8b3f96ba27d66a1e"
+    },
+    {
+      "path": "Assets/Script/Shop/ShopManager.cs",
+      "bytes": 14610,
+      "sha256": "db6295a041978c8220322223a611a1d319bcbc1129708380c6a8ab033fecd9a8",
+      "git_blob_sha1": "afa3dbef9a3609029a47c0269cb4841c1a7ace40"
+    },
+    {
+      "path": "Assets/Script/UI/Components/DeckButtonSwitcher.cs",
+      "bytes": 9544,
+      "sha256": "9ac5ba5ab2283b3fbb963a16022b8f91955f073e9e42becba536b9f058e3a813",
+      "git_blob_sha1": "05aab845fd81b883a62f00495cc1a12c7c3ea59a"
+    },
+    {
+      "path": "Assets/Script/UI/Components/DeckSwitcher.cs",
+      "bytes": 7230,
+      "sha256": "25dd8a8ad84cae08864bfab87eb98cd25c7c6b850eb0f829e056fd6bd7df0f1d",
+      "git_blob_sha1": "c684ec1aa9139812f214b5b81f783f8857466760"
+    },
+    {
+      "path": "Assets/Script/UI/Components/ScrollRectHorizontalPositionButton.cs",
+      "bytes": 1792,
+      "sha256": "8f4158cf3746eba4b39e827c4467b7205c3ebc7c4979daa46811baf42faf7462",
+      "git_blob_sha1": "2f080b7fc49c8c0cc8b476b5efb9c4c81b3e5633"
+    },
+    {
+      "path": "Assets/Script/UI/Coordinators/CardInventorySaveCoordinator.cs",
+      "bytes": 17608,
+      "sha256": "91ebdf2fafc423bf2e7968c8200b47eaa461c2db15a90048542bd288ebb636a5",
+      "git_blob_sha1": "e2fddd89bce9ab47c7b7a89c482603e42ffd2660"
+    },
+    {
+      "path": "Assets/Script/UI/Coordinators/DeckInventoryCoordinator.cs",
+      "bytes": 9607,
+      "sha256": "dfa743577a1279a48e28594a0acc9a97dec84de8cda7434c11554f82c7f4bc1c",
+      "git_blob_sha1": "5b0ad51b6460b4340280ef714e308f7a6ca14e88"
+    },
+    {
+      "path": "Assets/Script/UI/Coordinators/StagePreviewInitializer.cs",
+      "bytes": 3246,
+      "sha256": "8f60bd4fa21376013eb414f07b82f4cdd6cc5d2d8d4cf64375c28f437498776e",
+      "git_blob_sha1": "caad8f00f6683745ab3a579977132b4dd627fd6d"
+    },
+    {
+      "path": "Assets/Script/UI/Core/GlobalUIPanelManager.cs",
+      "bytes": 13902,
+      "sha256": "292d1a0d30eeffeec95e5453140fcc933a6dc6b18d93d4d25263f935758ad758",
+      "git_blob_sha1": "c07cc17d8ad166a897da3ad3a1c08ab74785b5f7"
+    },
+    {
+      "path": "Assets/Script/UI/Core/IButtonedPanel.cs",
+      "bytes": 441,
+      "sha256": "680194382b64454d85d5a0afc5ea68651c7eac65927a3c0e0e8481da5fe75dc0",
+      "git_blob_sha1": "ef639b03d14a468a088c9cd8f1146c5ca43aa8a0"
+    },
+    {
+      "path": "Assets/Script/UI/Core/IDialogPanel.cs",
+      "bytes": 424,
+      "sha256": "752728466a136712672878a37535f03b3ff7f158a38c1aab8cc918625d84bb08",
+      "git_blob_sha1": "d24ffab31f10bb66623b06623f99a020c05c0a01"
+    },
+    {
+      "path": "Assets/Script/UI/Core/IDualClosePanel.cs",
+      "bytes": 599,
+      "sha256": "1f657b5feb6e5dcf6b3f9a44fdf3adff0b982a17e6a64218331665abe87e86de",
+      "git_blob_sha1": "40a56e0c09f963200275f99166f2723e196a1bb8"
+    },
+    {
+      "path": "Assets/Script/UI/Core/IGameResultPanel.cs",
+      "bytes": 1020,
+      "sha256": "f7c960f4b30da33993862caf99797c62bbd3e41636c9ac62ac7202cbeecb0a37",
+      "git_blob_sha1": "924db29204891a082e8c3b186db4dfb1480218a6"
+    },
+    {
+      "path": "Assets/Script/UI/Core/INavigablePanel.cs",
+      "bytes": 462,
+      "sha256": "99aaa70cdb66dbaf86ff462d79285a31a780dcf00e0236720f5ebe95ed4f857d",
+      "git_blob_sha1": "482386b1196404e52c4ae68ced87c14c882e323d"
+    },
+    {
+      "path": "Assets/Script/UI/Core/IOpenablePanel.cs",
+      "bytes": 546,
+      "sha256": "cb476281099c802b464a0abcfdbb895708efde3af9cd45fafe90632af1bc6773",
+      "git_blob_sha1": "e1c0adedfcda398ae91fb6dd2e5ed0523a5c2102"
+    },
+    {
+      "path": "Assets/Script/UI/Core/IUIPanel.cs",
+      "bytes": 918,
+      "sha256": "f69a75f4a2b74478e91b55714c63b2042fa9297068073d5e6dd2f168871c482d",
+      "git_blob_sha1": "c7bcb905b98026f8c9da512452fbcb0ab5e73123"
+    },
+    {
+      "path": "Assets/Script/UI/Core/LoadingScreenPanel.cs",
+      "bytes": 13760,
+      "sha256": "4389db17f82003dffe093dbe6dee3abd4524493f26717059c1272ac9dbf3a56c",
+      "git_blob_sha1": "a96819d3943af3cad259dabf0cdd67f713c9c80c"
+    },
+    {
+      "path": "Assets/Script/UI/Core/LocalUIPanelManager.cs",
+      "bytes": 13282,
+      "sha256": "877d4c1ef390c6c9ba21b37a9389e05122f18ae28bf7198d84863f204942846e",
+      "git_blob_sha1": "6772621bc27740a1168ffb3e5faf049e20a9745d"
+    },
+    {
+      "path": "Assets/Script/UI/Core/PopupManager.cs",
+      "bytes": 1550,
+      "sha256": "231f00ca4a214006afb6f32c9b8f645e3ec46e3923b36f0fc9acb3369df62ae7",
+      "git_blob_sha1": "5c9548eeae0376c20ac7e1526fb52db7d74b2d50"
+    },
+    {
+      "path": "Assets/Script/UI/Core/UIPanel.cs",
+      "bytes": 11962,
+      "sha256": "60568a01c835fc2b8cd7831909b54fca506f21134443990ab310db4ba5c70c14",
+      "git_blob_sha1": "bd0c05a11645bcf2554c627282802195817fe2cc"
+    },
+    {
+      "path": "Assets/Script/UI/Core/UIPanelController.cs",
+      "bytes": 2008,
+      "sha256": "ca71b3ff3ccc44d3553538c1c2cbf2d0127aab444e141dc70cfad5a3966ae2e7",
+      "git_blob_sha1": "9a0641c6bbdc19943db6f8edab42d913b0829fbd"
+    },
+    {
+      "path": "Assets/Script/UI/Core/UIPanelFacade.cs",
+      "bytes": 11004,
+      "sha256": "8ecac4dd8fd479eb078504ef2bed9a609d61e9a8fe2b933a1c1c4c17a1b71a58",
+      "git_blob_sha1": "81ed72bd08ae990056acdd8c8079c8a160b734ed"
+    },
+    {
+      "path": "Assets/Script/UI/Core/UIPanelManager.cs",
+      "bytes": 10983,
+      "sha256": "b977ed61110b11aef92e52b64e9842a21a4cb089c8e153fb4276e7036b2df008",
+      "git_blob_sha1": "82b13c2c982f83521207ccf469127e3fa6e8f454"
+    },
+    {
+      "path": "Assets/Script/UI/Events/CardDragEndEventChannelSO.cs",
+      "bytes": 484,
+      "sha256": "a61f88d973a976e5882346b86dbc36bb91ed86058115c3716cf6b5a60cd84c5b",
+      "git_blob_sha1": "3bd7ff77c6ed5c5af0f0d52f9857434d1b41456a"
+    },
+    {
+      "path": "Assets/Script/UI/Events/CardDragStartEventChannelSO.cs",
+      "bytes": 1067,
+      "sha256": "b1098477f634aa13f2a33fcf5f0b5dd153b407dca96280e0f93d1f49ba082dde",
+      "git_blob_sha1": "03e84420eac108001e895c383d7dfab75e4f27fc"
+    },
+    {
+      "path": "Assets/Script/UI/Events/CardInfoEventChannelSO.cs",
+      "bytes": 816,
+      "sha256": "19a71d9d8324324fb8e07fc81cdb13761825f967e611b427d83ad564dfe70e4b",
+      "git_blob_sha1": "3deff5a750f01f4d246496ff0d93df6ea3074b1c"
+    },
+    {
+      "path": "Assets/Script/UI/Events/CardPackInfoEventChannelSO.cs",
+      "bytes": 931,
+      "sha256": "91bacc453c86ca290bd936ac92e21221ad33153fd725247eae506390c6933178",
+      "git_blob_sha1": "588790d943664ec6204bb71db8aa1bf68c5a593d"
+    },
+    {
+      "path": "Assets/Script/UI/Events/StageInfoEventChannelSO.cs",
+      "bytes": 849,
+      "sha256": "4ef75fadbc5308923627cb5a8516396587611ee99f8c9904f659a5788444e63b",
+      "git_blob_sha1": "cc68f95cedd4569b5563a1bb1c8a58c2efa5b499"
+    },
+    {
+      "path": "Assets/Script/UI/Feedback/CardTransferFeedback.cs",
+      "bytes": 6235,
+      "sha256": "f131559ce09f04f137d7863b8763e81ec969e9d1d7ccd7f211fcbada44754776",
+      "git_blob_sha1": "ecfddfceaea41e2fc4e6bc7bbe7e73c3f952565e"
+    },
+    {
+      "path": "Assets/Script/UI/Feedback/DropdownValueChangeTween.cs",
+      "bytes": 1799,
+      "sha256": "8ab99683a503639cddfc3e205cd712d553f7185ddb12b7b280aaef8e8e8699a4",
+      "git_blob_sha1": "04107343b605b7a9be11120e5c44574395224f57"
+    },
+    {
+      "path": "Assets/Script/UI/Feedback/UIButtonTween.cs",
+      "bytes": 6953,
+      "sha256": "27ab41c5a5fa0d5f0d53e784516b981a76ed5579b6e9655538994f50dae7b773",
+      "git_blob_sha1": "f23da6bc3f4457a7003903d478017b06b17a7b5b"
+    },
+    {
+      "path": "Assets/Script/UI/Game/CardInfoPanel.cs",
+      "bytes": 6992,
+      "sha256": "b23807fb342c98efda2ffaf8b137e980efdc3615bbd048babe6998f74fd84a70",
+      "git_blob_sha1": "97dd3329854d3db43ab5c2113c2d7c33774b1a1c"
+    },
+    {
+      "path": "Assets/Script/UI/Game/CardPackInfoPanel.cs",
+      "bytes": 7514,
+      "sha256": "947c4fc3e5031344dce5b707b46d76df27b618b8f4c5a3c2db8406ca84f073b7",
+      "git_blob_sha1": "9ca827c05e954e7f4c1c84e8a6c5ff1a09729b80"
+    },
+    {
+      "path": "Assets/Script/UI/Game/DefeatPanel.cs",
+      "bytes": 7534,
+      "sha256": "863526de0f9b43edca7ea9f49bc94e89f3deb8a57791016320ecdad2fa4fdf11",
+      "git_blob_sha1": "9a426ae26f5a9c65442113797f08d4de0797a0ed"
+    },
+    {
+      "path": "Assets/Script/UI/Game/StageButton.cs",
+      "bytes": 33199,
+      "sha256": "bd99bb35bbc3a8cdb86ac824f8f56d8a21394845091f9c5b7e6901a8bc61633c",
+      "git_blob_sha1": "0695a7353f8951995ba19e6d4cf2ab813ce0c2e0"
+    },
+    {
+      "path": "Assets/Script/UI/Game/VictoryPanel.cs",
+      "bytes": 8723,
+      "sha256": "d038cef7985957e053d6bc4cc138d99e05b0c50436757e4200dde32b221419c3",
+      "git_blob_sha1": "d72b926b846ff180927cbd128f7ee27c4814a79c"
+    },
+    {
+      "path": "Assets/Script/UI/Menu/MainMenuCameraController.cs",
+      "bytes": 12052,
+      "sha256": "881ac0b1c7b686f226957d76fa6e7f48cddbb5689201097cb2bb86378bcb6487",
+      "git_blob_sha1": "a0bf0119a4affa91c7f94b26319c8af086955912"
+    },
+    {
+      "path": "Assets/Script/UI/Menu/MainMenuPanel.cs",
+      "bytes": 10858,
+      "sha256": "1c58e417fc380af90cb614b98ba73db43ce266f8c0159bdec2222f5d1cba5781",
+      "git_blob_sha1": "1666f14cdc66b5e7b8f7c97c8f066eaac2cd997b"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/CardInventoryPanel.cs",
+      "bytes": 6668,
+      "sha256": "7b066ba58cc66fb49aced2c04def74ba4acc834d703ccdf1add4eedc742ab193",
+      "git_blob_sha1": "ac38f7cf81922519bdc098aa3ccd57da80fd61be"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/ConfirmPanelWithSceneData.cs",
+      "bytes": 5076,
+      "sha256": "9784a0d7498f8c2ea494a9de47adca517939827963900758e203b9447dfdd540",
+      "git_blob_sha1": "1cc02eb89ac8b51976f50b7a32bb86cef81c3518"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/DeckBuilderPanel.cs",
+      "bytes": 24743,
+      "sha256": "54c05ba9bafefe93a1c0d2a7242ef5391245e7ff1957a9265d5ce628681ae0ed",
+      "git_blob_sha1": "42c7ad9d4e630b4fa966139dc256374e65e2c59b"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/EnemyCardIconUI.cs",
+      "bytes": 1156,
+      "sha256": "b6bfb0c76416d2b573eea82cd23f4b20cb25299e8006e06c564e113bdb34760a",
+      "git_blob_sha1": "3968b10a6bff50389ac0e602458a8199e7c746b8"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/InventoryPanel.cs",
+      "bytes": 15928,
+      "sha256": "699346a4494c5fc9bfffaa1fdd3d765a548bd0f338419d66f6f5d052bc042170",
+      "git_blob_sha1": "b802151caf2f22809932277d8b3e3809b0d0370c"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/PackOpenCardSlot.cs",
+      "bytes": 2118,
+      "sha256": "cea0164768864a36980bda2a1f103e700cb9d72fb849c67f27c9c8fddfa4173f",
+      "git_blob_sha1": "21b7be1ec1f4587696dcaa97eebecb89f8da55fd"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/PackOpenPanel.cs",
+      "bytes": 6318,
+      "sha256": "33224666ea80d3ed3315b346c5cf17b6d0eded3fd325bc51bd87161979bc476a",
+      "git_blob_sha1": "8aa0a678a4b185eb470be1e8925f5b530d51e0f2"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/ShopItemUI.cs",
+      "bytes": 8948,
+      "sha256": "0a8b77771d35d65f88209256226f02eb7ac5d58eb4ead47141e9c6b2ff325c4c",
+      "git_blob_sha1": "a3449600c0a00c3fc53c37fe76f15a9343d372bc"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/ShopItemViewModel.cs",
+      "bytes": 2818,
+      "sha256": "4b78b5217b1efdccb4216313cd6f2c343de78b53879da59372a90e2e10a2e864",
+      "git_blob_sha1": "cf1a249639eb2d17630bf9afe99b62c3ba9b4e5b"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/ShopPanel.cs",
+      "bytes": 18219,
+      "sha256": "d2761e081f92dbf0680178aa131127f7f50e520a1e6fce2dd89132d4066b534d",
+      "git_blob_sha1": "908861d25302c7299f5e22f81b63219611b436c9"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/StageDetailInfoPanel.cs",
+      "bytes": 9661,
+      "sha256": "cb4b782ae1770ef184238ef842d3a0d3d61afb47b43c92a5ebd79e600a699191",
+      "git_blob_sha1": "c1c8edc639ddb13acae1c555d6553c5e5158621e"
+    },
+    {
+      "path": "Assets/Script/UI/Panels/StageEnemyPreviewPanel.cs",
+      "bytes": 7872,
+      "sha256": "c84d862eefeea54532ee9cb59fc52192fcb34f56552e701a8d7ac16c3f44f5bc",
+      "git_blob_sha1": "052fb4c776057bd657b56cd15d90169a37ad7ce7"
+    },
+    {
+      "path": "Assets/Script/UI/Settings/InGameSettingsPanel.cs",
+      "bytes": 10060,
+      "sha256": "d97faa0eb6ba1f0f7080bf8c34ed7d1849c73de97b45b8d087bd3a95acb7a7d0",
+      "git_blob_sha1": "02e7c900b4503c4065b6564ecaee04e69944d3b1"
+    },
+    {
+      "path": "Assets/Script/UI/Settings/SettingsPanel.cs",
+      "bytes": 18323,
+      "sha256": "8ac18eec8f9516f7aeb018afb9fe059938cbad69e852095dc27bfc499fe563a8",
+      "git_blob_sha1": "ad029a808a65f38ed479911165edbe4b32c196f0"
+    },
+    {
+      "path": "Assets/Script/UI/Utils/UIModalStack.cs",
+      "bytes": 15546,
+      "sha256": "c3d1f2804c63d610eeb3d1128181bb90dbffbf7e6254892c0bee96d0cbee3c22",
+      "git_blob_sha1": "d73caaf3bd888b628e1992dd3dd4da895f8b1cdc"
+    },
+    {
+      "path": "Assets/Script/Validators/DeckValidationResult.cs",
+      "bytes": 2258,
+      "sha256": "8521384358a40788446e5ae78f728d31e1b869fc2806094cbba7d1b5b0dda3db",
+      "git_blob_sha1": "26536585e2d5e3714b039e3200f229f71905a191"
+    },
+    {
+      "path": "Assets/Script/Validators/DeckValidator.cs",
+      "bytes": 5634,
+      "sha256": "dc705ac7be501ea7644b5d419a7e1e83b36528534c3f76edcbebf9c9ab5c0c63",
+      "git_blob_sha1": "a250eaa955dc8ffcbe79c7a22d642044887491f1"
+    },
+    {
+      "path": "CONTRIBUTIONS.md",
+      "bytes": 6945,
+      "sha256": "e76c7a557359af8c5918760859558d165dca3b15e6dd78d70cfd64b87581146a",
+      "git_blob_sha1": "b5a319e582c00d1e80ad1f5acbc9cd89836ca889"
+    },
+    {
+      "path": "MANIFEST.csv",
+      "bytes": 98546,
+      "sha256": "5bf96fcc37dd200420f41d8ae51c4f5081fc028be303c2d82ee85b880d2dbc78",
+      "git_blob_sha1": "fc9ccd7533919a9748f2f623c60bcd5a2bfbc546"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8791,
+      "sha256": "b20d145bca760312c3a73157d0058a4ba814baba2e6efa0a4367b050150758b5",
+      "git_blob_sha1": "78fdf884f7a426580705cb3044a60a6ec460c7ea"
+    },
+    {
+      "path": "ReviewContext/Packages/manifest.json",
+      "bytes": 1990,
+      "sha256": "cfe3c44dbd925a93d28eeaa462587b608d1d5de1c83a52c093c6939834f683b0",
+      "git_blob_sha1": "e6f8e48cfd6af9f6b00fca5b94dd358602fe0004"
+    },
+    {
+      "path": "ReviewContext/Packages/packages-lock.json",
+      "bytes": 11547,
+      "sha256": "e44c39b254364be0ed7c45895bae5fb50b31760f69d6ecf5e60b166483be2477",
+      "git_blob_sha1": "626e9f912a73f938eb47ae46b881933cf6255407"
+    },
+    {
+      "path": "ReviewContext/ProjectSettings/ProjectVersion.txt",
+      "bytes": 85,
+      "sha256": "d90a138ca7c184f5cd2e572a670a5f62e784eb453ec12222f9ace363fd0d38d2",
+      "git_blob_sha1": "7a6f40b417d8a983ffa3b25eb3740e2d687fcdab"
+    }
+  ],
+  "self_hash_policy": {
+    "manifest_rows": 416,
+    "manifest_omits": [
+      "MANIFEST.csv",
+      "VALIDATION.json"
+    ],
+    "report_hashes": "This report inventories and hashes every other 417 included files. A file cannot contain its own stable digest. VALIDATION.json SHA-256/size is independently recorded in FINAL-VERIFICATION.json outside the 418-file deliverable.",
+    "report_self_scanned": true
+  },
+  "exclusion_reasons": {
+    "vendor_implementation_or_sample": {
+      "count": 20,
+      "groups": [
+        "DOTween/Pro 16 C#",
+        "Layer Lab 2 C#",
+        "Unity TutorialInfo 2 C#"
+      ],
+      "interpretation": "Package/sample provenance observed; no finding of a legal redistribution violation"
+    },
+    "separate_improvement_and_backup": {
+      "count": 5,
+      "groups": [
+        "Root CardUIRefactored_Improved_Part1/2 2 C#",
+        "backup_carddata_20250929_003212 3 C#"
+      ],
+      "reason": "Outside selected current source review scope; not classified as external or a confirmed rights issue"
+    },
+    "auxiliary_outside_core_source": {
+      "count": 2,
+      "paths": [
+        "Assets/_ConeAni.cs",
+        "Assets/Game_Practice/MapDrop.cs"
+      ],
+      "reason": "Animator state control and falling/bounce presentation helpers outside Assets/Script; no source-unknown or rights-concern exclusion claim",
+      "user_attestation": "No externally provided code",
+      "git_evidence": {
+        "commit": "3ca800ba54a0aa200dc4c35e2dec1b2c77c940fa",
+        "github_author_account": "als79gur49",
+        "scope": "Path-filtered GitHub history identifies adding commit; account mapping alone is not proof of copyright"
+      }
+    }
+  },
+  "prepublication": {
+    "status": "APPROVED_FOR_PUBLICATION",
+    "validation_phase": "Before upload of this exact file set; not itself a claim that a remote write succeeded",
+    "target_repository": "als79gur49/2025-2TeamProject-code-portfolio",
+    "target_url": "https://github.com/als79gur49/2025-2TeamProject-code-portfolio",
+    "target_visibility": "Public",
+    "original_repository_visibility": "Private",
+    "source_scope_changed": false,
+    "publication_result_record": "FINAL-VERIFICATION.json outside the deliverable; populated after remote verification",
+    "remaining_limitations": [
+      "Exact DOTween and DOTween Pro versions unavailable through supported binary read route",
+      "Asset-excluded copy remains non-executable; existing static inconsistencies preserved",
+      "Official final submission identity not established"
+    ]
+  }
+}

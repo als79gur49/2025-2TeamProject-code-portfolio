@@ -1,0 +1,896 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using Game.Services;
+using Game.Controllers;
+using Game.SceneManagement;
+using Game.SaveSystem;
+using Game.Managers;
+
+namespace Game.Core
+{
+    /// <summary>
+    /// Centralized bootstrap system for initializing and registering global services.
+    ///
+    /// Execution Order: Set to -100 in Script Execution Order settings (Edit → Project Settings → Script Execution Order)
+    /// Lifecycle: Creates and registers all global services at game startup, persists across scenes
+    ///
+    /// Unity Official Pattern: Persistent Bootstrap + Additive Loading
+    /// - BootstrapScene remains loaded (DontDestroyOnLoad services)
+    /// - Initial scene loaded additively to preserve bootstrap
+    ///
+    /// Usage:
+    /// 1. Create a "BootstrapScene" and add a GameObject with this component
+    /// 2. Assign service prefabs in the Inspector
+    /// 3. Set this scene as index 0 in Build Settings
+    /// 4. Configure Script Execution Order to -100
+    /// 5. Assign initialSceneData ScriptableObject in Inspector
+    /// </summary>
+    public class ServiceBootstrap : MonoBehaviour
+    {
+        [Header("Service Prefab References")]
+        [Tooltip("Optional: Leave null to auto-create. SceneLoaderService has no dependencies.")]
+        [SerializeField] private GameObject sceneLoaderServicePrefab;
+
+        [Tooltip("Required: Must have LoadingScreenPanel reference. SceneTransitionController depends on SceneLoaderService.")]
+        [SerializeField] private GameObject sceneTransitionControllerPrefab;
+
+        [Header("Audio Service Configuration")]
+        [Tooltip("Required: AudioServiceContainer prefab with all audio services configured")]
+        [SerializeField] private GameObject audioServiceContainerPrefab;
+
+        [Header("UI Service Configuration")]
+        [Tooltip("Required: GlobalUIPanelManager prefab with Canvas (Sort Order 1000)")]
+        [SerializeField] private GameObject globalUIPanelManagerPrefab;
+
+        [Header("Player Data System Configuration")]
+        [Tooltip("Required: PlayerDataManager prefab")]
+        [SerializeField] private GameObject playerDataManagerPrefab;
+
+        [Header("Stage System Configuration")]
+        [Tooltip("Required: StageProgressManager prefab with stageDatabase configured")]
+        [SerializeField] private GameObject stageProgressManagerPrefab;
+
+        [Header("Card System Configuration")]
+        [Tooltip("Required: CardDatabase prefab for card data management")]
+        [SerializeField] private GameObject cardDatabasePrefab;
+
+        [Tooltip("Required: CollectionManager prefab for player card collection")]
+        [SerializeField] private GameObject collectionManagerPrefab;
+
+        [Header("Initial Scene Configuration")]
+        [Tooltip("SceneData asset to load after bootstrap initialization. Contains scene name, BGM, and loading screen configuration.")]
+        [SerializeField] private SceneData initialSceneData;
+
+        [Header("Debug Options")]
+        [SerializeField] private bool enableDebugLogs = true;
+        [SerializeField] private bool validateOnStart = true;
+
+        private static bool isInitialized = false;
+
+        #region Unity Lifecycle
+
+        private void Awake()
+        {
+            // Prevent duplicate initialization
+            if (isInitialized)
+            {
+                Log("ServiceBootstrap already initialized. Destroying duplicate...");
+                Destroy(gameObject);
+                return;
+            }
+
+            isInitialized = true;
+            DontDestroyOnLoad(gameObject);
+
+            Log("=== ServiceBootstrap: Starting Service Initialization ===");
+            InitializeServices();
+            Log("=== ServiceBootstrap: Service Initialization Complete ===");
+        }
+
+        private void Start()
+        {
+            if (validateOnStart)
+            {
+                ValidateServices();
+            }
+
+            // ✅ Unity Official Pattern: Load initial scene additively
+            // BootstrapScene persists, initial scene loads on top
+            StartCoroutine(LoadInitialSceneAsync());
+        }
+
+        #endregion
+
+        #region Scene Loading (SceneTransitionController Integration)
+
+        /// <summary>
+        /// Load initial scene using SceneTransitionController with proper BGM and metadata handling.
+        ///
+        /// Benefits of using SceneTransitionController instead of direct SceneManager:
+        /// - Automatic BGM transition from SceneData.BgMusic
+        /// - Loading screen with custom background and tips
+        /// - Consistent scene transition flow throughout the game
+        /// - Proper event handling (OnSceneTransitionStarted/Completed)
+        ///
+        /// Note: SceneTransitionController is already initialized in Awake() phase,
+        /// so it's safe to use here in Start() coroutine.
+        /// </summary>
+        private IEnumerator LoadInitialSceneAsync()
+        {
+            // Validate SceneData reference
+            if (initialSceneData == null)
+            {
+                LogError("Initial SceneData is not configured! Please assign a SceneData asset in the Inspector.");
+                yield break;
+            }
+
+            Log($"Loading initial scene '{initialSceneData.SceneName}' via SceneTransitionController...");
+
+            // Get SceneTransitionController from ServiceLocator
+            ISceneTransitionController sceneTransitionController = ServiceLocator.Get<ISceneTransitionController>();
+
+            if (sceneTransitionController == null)
+            {
+                LogError("SceneTransitionController not found in ServiceLocator! Cannot load initial scene.");
+                LogError("This should never happen as SceneTransitionController is initialized in Awake().");
+                yield break;
+            }
+
+            // ✅ Use SceneTransitionController for proper scene loading with BGM and metadata
+            // This will:
+            // 1. Show loading screen (if configured in SceneData)
+            // 2. Load scene in Additive mode (preserving BootstrapScene)
+            // 3. Trigger BGM transition from SceneData.BgMusic
+            // 4. Set the loaded scene as active scene
+            sceneTransitionController.LoadSceneWithLoading(initialSceneData);
+
+            // Wait a frame to let the transition start
+            yield return null;
+
+            Log($"✓ Initial scene transition started: {initialSceneData.SceneName}");
+            Log($"  BootstrapScene remains loaded with global services");
+            Log($"  BGM will be played from SceneData configuration");
+        }
+
+        #endregion
+
+        #region Service Initialization
+
+        /// <summary>
+        /// Initialize all global services in dependency order.
+        /// ORDER IS CRITICAL: Dependencies must be registered before dependents.
+        /// </summary>
+        private void InitializeServices()
+        {
+            // PHASE 1: Foundational Services (no dependencies)
+            InitializeSceneLoaderService();
+
+            // PHASE 2: Audio System (no dependencies)
+            InitializeAudioServiceContainer();
+
+            // PHASE 2: Card Database System (no dependencies)
+            InitializeCardDatabase();
+
+            // PHASE 2.5: Save System (depends on Audio System)
+            InitializeSaveSystem();
+
+            // PHASE 2.6: Card Collection System (depends on Save System and Card Database)
+            InitializeCollectionManager();
+
+            // PHASE 2.7: Player Data System (depends on Save System)
+            InitializePlayerDataManager();
+
+            // PHASE 2.8: Stage Progress System (depends on Save System)
+            InitializeStageProgressManager();
+
+            // PHASE 3: Controllers (depend on Phase 1 services)
+            InitializeSceneTransitionController();
+
+            // PHASE 4: UI System (no dependencies)
+            InitializeGlobalUIPanelManager();
+        }
+
+        /// <summary>
+        /// Initialize SceneLoaderService and register with ServiceLocator.
+        /// Dependencies: None
+        /// </summary>
+        private void InitializeSceneLoaderService()
+        {
+            Log("[1/3] Initializing SceneLoaderService...");
+
+            // Create service instance
+            GameObject serviceObj = sceneLoaderServicePrefab != null
+                ? Instantiate(sceneLoaderServicePrefab)
+                : new GameObject("SceneLoaderService");
+
+            // Add component if not present
+            SceneLoaderService service = serviceObj.GetComponent<SceneLoaderService>();
+            if (service == null)
+            {
+                service = serviceObj.AddComponent<SceneLoaderService>();
+            }
+
+            // ✅ RegisterSingleton 사용 (ServiceCleanup 자동 부착)
+            // SceneLoaderService의 Awake()에서 DontDestroyOnLoad 호출됨
+            // ServiceCleanup은 게임 종료 시에만 OnDestroy()에서 자동 Unregister
+            ServiceLocator.RegisterSingleton<ISceneLoaderService, SceneLoaderService>(service);
+
+            Log("  ✓ SceneLoaderService created and registered");
+        }
+
+        /// <summary>
+        /// Initialize AudioServiceContainer and register all audio services with ServiceLocator.
+        /// Dependencies: None
+        ///
+        /// Registers:
+        /// - AudioServiceContainer (container management)
+        /// - IBGMAudioService (background music)
+        /// - IEffectAudioService (sound effects)
+        /// - IVolumeController (volume management)
+        /// </summary>
+        private void InitializeAudioServiceContainer()
+        {
+            Log("[Audio] Initializing Audio System (BGM + Effect + Volume)...");
+
+            // Validate prefab reference
+            if (audioServiceContainerPrefab == null)
+            {
+                LogError("  ✗ AudioServiceContainer prefab reference is missing!");
+                LogError("  → Please assign the prefab in ServiceBootstrap Inspector");
+                return;
+            }
+
+            // Create container instance from prefab
+            GameObject containerObj = Instantiate(audioServiceContainerPrefab);
+            AudioServiceContainer container = containerObj.GetComponent<AudioServiceContainer>();
+
+            if (container == null)
+            {
+                LogError("  ✗ AudioServiceContainer component not found on prefab!");
+                LogError("  → Verify the prefab has AudioServiceContainer component");
+                Destroy(containerObj);
+                return;
+            }
+
+            // ✅ RegisterSingleton 사용 (ServiceCleanup 자동 부착)
+            // AudioServiceContainer의 Awake()에서 DontDestroyOnLoad 호출됨
+            // ServiceCleanup은 게임 종료 시에만 OnDestroy()에서 자동 Unregister
+            ServiceLocator.RegisterSingleton<IAudioServiceContainer, AudioServiceContainer>(container);
+
+            // ✅ FIX: Initialize services immediately before trying to access them
+            // AudioServiceContainer.Start() would be too late - we need services NOW
+            container.InitializeAllServices();
+            Log("  ✓ AudioServiceContainer services initialized");
+
+            // Register individual audio services for direct access
+            // Use container.GetService<T>() instead of GetComponentInChildren to ensure services are found
+
+            // BGM Service
+            var bgmService = container.GetService<IBGMAudioService>();
+            if (bgmService != null)
+            {
+                ServiceLocator.RegisterSingleton<IBGMAudioService, BGMAudioService>(bgmService as BGMAudioService);
+                Log("  ✓ BGMAudioService registered");
+            }
+            else
+            {
+                LogError("  ✗ BGMAudioService not found in container");
+            }
+
+            // Effect Service
+            var effectService = container.GetService<IEffectAudioService>();
+            if (effectService != null)
+            {
+                ServiceLocator.RegisterSingleton<IEffectAudioService, EffectAudioService>(effectService as EffectAudioService);
+                Log("  ✓ EffectAudioService registered");
+            }
+            else
+            {
+                LogError("  ✗ EffectAudioService not found in container");
+            }
+
+            // Volume Controller
+            var volumeController = container.GetService<IVolumeController>();
+            if (volumeController != null)
+            {
+                ServiceLocator.RegisterSingleton<IVolumeController, VolumeController>(volumeController as VolumeController);
+                Log("  ✓ VolumeController registered");
+            }
+            else
+            {
+                LogError("  ✗ VolumeController not found in container");
+            }
+
+            Log("  ✓ Audio System initialization complete");
+        }
+
+        /// <summary>
+        /// Initialize CardDatabase and register with ServiceLocator.
+        /// Dependencies: None
+        /// </summary>
+        private void InitializeCardDatabase()
+        {
+            Log("[CardDB] Initializing Card Database System...");
+
+            // Validate prefab reference
+            if (cardDatabasePrefab == null)
+            {
+                LogError("  ✗ CardDatabase prefab reference is missing!");
+                LogError("  → Please assign the prefab in ServiceBootstrap Inspector");
+                return;
+            }
+
+            // Create database instance from prefab
+            GameObject databaseObj = Instantiate(cardDatabasePrefab);
+            CardDatabase database = databaseObj.GetComponent<CardDatabase>();
+
+            if (database == null)
+            {
+                LogError("  ✗ CardDatabase component not found on prefab!");
+                LogError("  → Verify the prefab has CardDatabase component");
+                Destroy(databaseObj);
+                return;
+            }
+
+            // Apply DontDestroyOnLoad
+            DontDestroyOnLoad(databaseObj);
+
+            // Initialize database (loads all cards from Resources/Cards/)
+            database.Initialize();
+            Log("  ✓ CardDatabase initialized");
+
+            // Register with ServiceLocator
+            ServiceLocator.RegisterSingleton<ICardRegistry, CardDatabase>(database);
+            Log("  ✓ ICardRegistry registered to ServiceLocator");
+
+            // Add ServiceCleanup component
+            if (databaseObj.GetComponent<ServiceCleanup>() == null)
+            {
+                databaseObj.AddComponent<ServiceCleanup>();
+            }
+
+            Log("  ✓ Card Database System initialization complete");
+        }
+
+        /// <summary>
+        /// Initialize SaveSystem (SaveGameManager + SaveDataAdapter) and register with ServiceLocator.
+        /// Dependencies: Audio System (IVolumeController, IAudioServiceContainer)
+        /// </summary>
+        private void InitializeSaveSystem()
+        {
+            Log("[SaveSystem] Initializing Save System...");
+
+            // 1. Create SaveGameManager GameObject
+            GameObject saveManagerGO = new GameObject("SaveGameManager");
+            SaveGameManager saveManagerImpl = saveManagerGO.AddComponent<SaveGameManager>();
+            DontDestroyOnLoad(saveManagerGO);
+            Log("  ✓ SaveGameManager created");
+
+            // 2. Create SaveDataAdapter GameObject
+            GameObject adapterGO = new GameObject("SaveDataAdapter");
+            SaveDataAdapter adapterImpl = adapterGO.AddComponent<SaveDataAdapter>();
+            DontDestroyOnLoad(adapterGO);
+
+            // 3. Inject SaveManager dependency into Adapter
+            ISaveGameManager saveManager = saveManagerImpl;
+            adapterImpl.Initialize(saveManager);
+            Log("  ✓ SaveDataAdapter initialized with SaveGameManager");
+
+            // 4. Register Adapter interface with ServiceLocator
+            ISaveDataAdapter saveAdapter = adapterImpl;
+            ServiceLocator.RegisterSingleton<ISaveDataAdapter, SaveDataAdapter>(adapterImpl);
+            Log("  ✓ ISaveDataAdapter registered to ServiceLocator");
+
+            // 5. Add ServiceCleanup component
+            if (adapterGO.GetComponent<ServiceCleanup>() == null)
+            {
+                adapterGO.AddComponent<ServiceCleanup>();
+            }
+
+            // 6. 게임 시작 시 오디오 설정 자동 로드
+            try
+            {
+                saveAdapter.LoadSpecific(SaveFileType.AudioSettings);
+                Log("  ✓ Audio settings loaded from save file");
+            }
+            catch (System.Exception ex)
+            {
+                Log($"  ⚠ Failed to load audio settings: {ex.Message}");
+                Log("  ℹ Using default audio settings");
+            }
+
+            Log("  ✓ Save System initialization complete with audio settings loaded");
+        }
+
+        /// <summary>
+        /// Initialize CollectionManager and register with ServiceLocator.
+        /// Dependencies: ISaveDataAdapter (Phase 2.5), ICardRegistry (Phase 2)
+        /// </summary>
+        private void InitializeCollectionManager()
+        {
+            Log("[Collection] Initializing Card Collection System...");
+
+            // Validate dependencies
+            if (!ServiceLocator.IsRegistered<ISaveDataAdapter>())
+            {
+                LogError("  ✗ Dependency check failed: ISaveDataAdapter not registered!");
+                LogError("  → Cannot initialize CollectionManager without SaveDataAdapter");
+                return;
+            }
+
+            if (!ServiceLocator.IsRegistered<ICardRegistry>())
+            {
+                LogError("  ✗ Dependency check failed: ICardRegistry not registered!");
+                LogError("  → Cannot initialize CollectionManager without CardDatabase");
+                return;
+            }
+
+            // Validate prefab reference
+            if (collectionManagerPrefab == null)
+            {
+                LogError("  ✗ CollectionManager prefab reference is missing!");
+                LogError("  → Please assign the prefab in ServiceBootstrap Inspector");
+                return;
+            }
+
+            // Create manager instance from prefab
+            GameObject managerObj = Instantiate(collectionManagerPrefab);
+            CollectionManager manager = managerObj.GetComponent<CollectionManager>();
+
+            if (manager == null)
+            {
+                LogError("  ✗ CollectionManager component not found on prefab!");
+                LogError("  → Verify the prefab has CollectionManager component");
+                Destroy(managerObj);
+                return;
+            }
+
+            // Apply DontDestroyOnLoad
+            DontDestroyOnLoad(managerObj);
+
+            // Register with ServiceLocator (before Start() is called)
+            ServiceLocator.RegisterSingleton<ICardCollection, CollectionManager>(manager);
+            Log("  ✓ ICardCollection registered to ServiceLocator");
+
+            // Add ServiceCleanup component
+            if (managerObj.GetComponent<ServiceCleanup>() == null)
+            {
+                managerObj.AddComponent<ServiceCleanup>();
+            }
+
+            // Note: CollectionManager.Start() will automatically:
+            // 1. Retrieve SaveAdapter from ServiceLocator
+            // 2. Call LoadCollection() to load saved card data
+            Log("  ✓ CollectionManager will auto-initialize in Start()");
+
+            // Load saved collection
+            try
+            {
+                var saveAdapter = ServiceLocator.Get<ISaveDataAdapter>();
+                if (saveAdapter.HasSaveData())
+                {
+                    saveAdapter.LoadSpecific(SaveFileType.CardCollection);
+                    Log("  ✓ Card collection loaded from save file");
+                }
+                else
+                {
+                    Log("  ℹ No saved collection found, using initial state");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Log($"  ⚠ Failed to load collection: {ex.Message}");
+                Log("  ℹ Using initial collection state");
+            }
+
+            Log("  ✓ Card Collection System initialization complete");
+        }
+
+        /// <summary>
+        /// Initialize PlayerDataManager and register with ServiceLocator.
+        /// Dependencies: ISaveDataAdapter (Phase 2.5)
+        /// </summary>
+        private void InitializePlayerDataManager()
+        {
+            Log("[PlayerData] Initializing Player Data System...");
+
+            // Validate dependency
+            if (!ServiceLocator.IsRegistered<ISaveDataAdapter>())
+            {
+                LogError("  ✗ Dependency check failed: ISaveDataAdapter not registered!");
+                LogError("  → Cannot initialize PlayerDataManager without SaveDataAdapter");
+                return;
+            }
+
+            // Validate prefab reference
+            if (playerDataManagerPrefab == null)
+            {
+                LogError("  ✗ PlayerDataManager prefab reference is missing!");
+                LogError("  → Please assign the prefab in ServiceBootstrap Inspector");
+                return;
+            }
+
+            // Create manager instance from prefab
+            GameObject managerObj = Instantiate(playerDataManagerPrefab);
+            PlayerDataManager manager = managerObj.GetComponent<PlayerDataManager>();
+
+            if (manager == null)
+            {
+                LogError("  ✗ PlayerDataManager component not found on prefab!");
+                LogError("  → Verify the prefab has PlayerDataManager component");
+                Destroy(managerObj);
+                return;
+            }
+
+            // Apply DontDestroyOnLoad
+            DontDestroyOnLoad(managerObj);
+
+            // Initialize manager (before registration for proper dependency injection)
+            manager.Initialize();
+            Log("  ✓ PlayerDataManager initialized");
+
+            // Register with ServiceLocator
+            ServiceLocator.RegisterSingleton<IPlayerDataManager, PlayerDataManager>(manager);
+            Log("  ✓ IPlayerDataManager registered to ServiceLocator");
+
+            // Add ServiceCleanup component
+            if (managerObj.GetComponent<ServiceCleanup>() == null)
+            {
+                managerObj.AddComponent<ServiceCleanup>();
+            }
+
+            // Load saved player data
+            try
+            {
+                var saveAdapter = ServiceLocator.Get<ISaveDataAdapter>();
+                if (saveAdapter.HasSaveData())
+                {
+                    saveAdapter.LoadSpecific(SaveFileType.PlayerData);
+                    Log("  ✓ Player data loaded from save file");
+                }
+                else
+                {
+                    Log("  ℹ No saved player data found, using initial state");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Log($"  ⚠ Failed to load player data: {ex.Message}");
+                Log("  ℹ Using initial player data state");
+            }
+
+            Log("  ✓ Player Data System initialization complete");
+        }
+
+        /// <summary>
+        /// Initialize StageProgressManager and register with ServiceLocator.
+        /// Dependencies: ISaveDataAdapter (Phase 2.5)
+        /// </summary>
+        private void InitializeStageProgressManager()
+        {
+            Log("[Stage] Initializing Stage Progress System...");
+
+            // Validate dependency
+            if (!ServiceLocator.IsRegistered<ISaveDataAdapter>())
+            {
+                LogError("  ✗ Dependency check failed: ISaveDataAdapter not registered!");
+                LogError("  → Cannot initialize StageProgressManager without SaveDataAdapter");
+                return;
+            }
+
+            // Validate prefab reference
+            if (stageProgressManagerPrefab == null)
+            {
+                LogError("  ✗ StageProgressManager prefab reference is missing!");
+                LogError("  → Please assign the prefab in ServiceBootstrap Inspector");
+                return;
+            }
+
+            // Create manager instance from prefab
+            GameObject managerObj = Instantiate(stageProgressManagerPrefab);
+            StageProgressManager manager = managerObj.GetComponent<StageProgressManager>();
+
+            if (manager == null)
+            {
+                LogError("  ✗ StageProgressManager component not found on prefab!");
+                LogError("  → Verify the prefab has StageProgressManager component");
+                Destroy(managerObj);
+                return;
+            }
+
+            // Apply DontDestroyOnLoad
+            DontDestroyOnLoad(managerObj);
+
+            // Initialize manager (before registration for proper dependency injection)
+            manager.Initialize();
+            Log("  ✓ StageProgressManager initialized");
+
+            // Register with ServiceLocator
+            ServiceLocator.RegisterSingleton<IStageProgressManager, StageProgressManager>(manager);
+            Log("  ✓ IStageProgressManager registered to ServiceLocator");
+
+            // Add ServiceCleanup component
+            if (managerObj.GetComponent<ServiceCleanup>() == null)
+            {
+                managerObj.AddComponent<ServiceCleanup>();
+            }
+
+            // Load saved progress
+            try
+            {
+                var saveAdapter = ServiceLocator.Get<ISaveDataAdapter>();
+                if (saveAdapter.HasSaveData())
+                {
+                    // Use LoadProgress() instead of direct SaveDataAdapter call
+                    // This ensures CheckAndUnlockNextStages() runs after loading
+                    manager.LoadProgress();
+                    Log("  ✓ Stage progress loaded from save file");
+                    Log("  ✓ Unlock conditions re-evaluated (new stages auto-unlocked if conditions met)");
+                }
+                else
+                {
+                    Log("  ℹ No saved stage progress found, using initial state");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Log($"  ⚠ Failed to load stage progress: {ex.Message}");
+                Log("  ℹ Using initial stage progress state");
+            }
+
+            Log("  ✓ Stage Progress System initialization complete");
+        }
+
+        /// <summary>
+        /// Initialize SceneTransitionController and register with ServiceLocator.
+        /// Dependencies: ISceneLoaderService (must be registered first)
+        /// </summary>
+        private void InitializeSceneTransitionController()
+        {
+            Log("[3/3] Initializing SceneTransitionController...");
+
+            // Validate dependency
+            if (!ServiceLocator.IsRegistered<ISceneLoaderService>())
+            {
+                LogError("  ✗ Dependency check failed: ISceneLoaderService not registered!");
+                LogError("  → Cannot initialize SceneTransitionController without SceneLoaderService");
+                return;
+            }
+
+            // Validate prefab reference
+            if (sceneTransitionControllerPrefab == null)
+            {
+                LogError("  ✗ SceneTransitionController prefab reference is missing!");
+                LogError("  → Please assign the prefab in ServiceBootstrap Inspector");
+                return;
+            }
+
+            // Create controller instance from prefab
+            GameObject controllerObj = Instantiate(sceneTransitionControllerPrefab);
+            SceneTransitionController controller = controllerObj.GetComponent<SceneTransitionController>();
+
+            if (controller == null)
+            {
+                LogError("  ✗ SceneTransitionController component not found on prefab!");
+                LogError("  → Verify the prefab has SceneTransitionController component");
+                Destroy(controllerObj);
+                return;
+            }
+
+            // ✅ RegisterSingleton 사용 (ServiceCleanup 자동 부착)
+            // SceneTransitionController의 Awake()에서 DontDestroyOnLoad 호출됨
+            // ServiceCleanup은 게임 종료 시에만 OnDestroy()에서 자동 Unregister
+            ServiceLocator.RegisterSingleton<ISceneTransitionController, SceneTransitionController>(controller);
+
+            Log("  ✓ SceneTransitionController created and registered");
+        }
+
+        /// <summary>
+        /// Initialize GlobalUIPanelManager and register with ServiceLocator.
+        /// Dependencies: None
+        /// </summary>
+        private void InitializeGlobalUIPanelManager()
+        {
+            Log("[4/4] Initializing GlobalUIPanelManager...");
+
+            // Validate prefab reference
+            if (globalUIPanelManagerPrefab == null)
+            {
+                LogError("  ✗ GlobalUIPanelManager prefab reference is missing!");
+                LogError("  → Please assign the prefab in ServiceBootstrap Inspector");
+                return;
+            }
+
+            // Create manager instance from prefab
+            GameObject managerObj = Instantiate(globalUIPanelManagerPrefab);
+            GlobalUIPanelManager manager = managerObj.GetComponent<GlobalUIPanelManager>();
+
+            if (manager == null)
+            {
+                LogError("  ✗ GlobalUIPanelManager component not found on prefab!");
+                LogError("  → Verify the prefab has GlobalUIPanelManager component");
+                Destroy(managerObj);
+                return;
+            }
+
+            // ✅ RegisterSingleton 사용 (ServiceCleanup 자동 부착)
+            // GlobalUIPanelManager의 Awake()에서 DontDestroyOnLoad 호출됨
+            // ServiceCleanup은 게임 종료 시에만 OnDestroy()에서 자동 Unregister
+            ServiceLocator.RegisterSingleton<GlobalUIPanelManager, GlobalUIPanelManager>(manager);
+
+            Log("  ✓ GlobalUIPanelManager created and registered");
+        }
+
+        #endregion
+
+        #region Validation
+
+        /// <summary>
+        /// Validate all registered services are in valid state.
+        /// Can be called from Unity Inspector via Context Menu.
+        /// </summary>
+        [ContextMenu("Validate Services")]
+        public void ValidateServices()
+        {
+            Log("=== Service Validation ===");
+
+            bool allValid = true;
+
+            // Validate SceneLoaderService
+            allValid &= ValidateService<ISceneLoaderService>("SceneLoaderService");
+
+            // Validate Audio Services
+            allValid &= ValidateService<IAudioServiceContainer>("AudioServiceContainer");
+            allValid &= ValidateAudioService<IBGMAudioService>("BGMAudioService");
+            allValid &= ValidateAudioService<IEffectAudioService>("EffectAudioService");
+            allValid &= ValidateAudioService<IVolumeController>("VolumeController");
+
+            // Validate Card System
+            allValid &= ValidateService<ICardRegistry>("CardDatabase");
+            allValid &= ValidateService<ICardCollection>("CollectionManager");
+
+            // Validate Save System
+            allValid &= ValidateSaveDataAdapter("SaveDataAdapter");
+
+            // Validate Player Data Manager
+            allValid &= ValidateService<IPlayerDataManager>("PlayerDataManager");
+
+            // Validate Stage Progress Manager
+            allValid &= ValidateService<IStageProgressManager>("IStageProgressManager");
+
+            // Validate SceneTransitionController
+            allValid &= ValidateService<ISceneTransitionController>("SceneTransitionController");
+
+            // Validate GlobalUIPanelManager
+            allValid &= ValidateService<GlobalUIPanelManager>("GlobalUIPanelManager");
+
+            if (allValid)
+            {
+                Log("✓ All services validated successfully");
+            }
+            else
+            {
+                LogError("✗ Service validation failed - check errors above");
+            }
+        }
+
+        /// <summary>
+        /// Validate a specific service type.
+        /// </summary>
+        private bool ValidateService<T>(string serviceName) where T : class
+        {
+            // Check if registered
+            if (!ServiceLocator.IsRegistered<T>())
+            {
+                LogError($"  ✗ {serviceName}: Not registered in ServiceLocator");
+                return false;
+            }
+
+            // Check if retrievable
+            T service = ServiceLocator.Get<T>();
+            if (service == null)
+            {
+                LogError($"  ✗ {serviceName}: Registered but returns null");
+                return false;
+            }
+
+            // Validate if it implements IGlobalService
+            if (service is IGlobalService globalService)
+            {
+                if (!globalService.IsValid())
+                {
+                    LogError($"  ✗ {serviceName}: IsValid() returned false");
+                    return false;
+                }
+            }
+
+            Log($"  ✓ {serviceName}: Valid");
+            return true;
+        }
+
+        /// <summary>
+        /// Validate audio service type with additional audio-specific checks.
+        /// </summary>
+        private bool ValidateAudioService<T>(string serviceName) where T : class
+        {
+            // Check if registered
+            if (!ServiceLocator.IsRegistered<T>())
+            {
+                LogError($"  ✗ {serviceName}: Not registered in ServiceLocator");
+                return false;
+            }
+
+            // Check if retrievable
+            T service = ServiceLocator.Get<T>();
+            if (service == null)
+            {
+                LogError($"  ✗ {serviceName}: Registered but returns null");
+                return false;
+            }
+
+            // Audio-specific validation
+            if (service is IAudioService audioService)
+            {
+                if (!audioService.IsInitialized)
+                {
+                    LogError($"  ✗ {serviceName}: IsInitialized returned false");
+                    return false;
+                }
+            }
+
+            Log($"  ✓ {serviceName}: Valid");
+            return true;
+        }
+
+        /// <summary>
+        /// Validate SaveDataAdapter with SaveSystem-specific checks.
+        /// </summary>
+        private bool ValidateSaveDataAdapter(string serviceName)
+        {
+            // Check if registered
+            if (!ServiceLocator.IsRegistered<ISaveDataAdapter>())
+            {
+                LogError($"  ✗ {serviceName}: Not registered in ServiceLocator");
+                return false;
+            }
+
+            // Check if retrievable
+            ISaveDataAdapter service = ServiceLocator.Get<ISaveDataAdapter>();
+            if (service == null)
+            {
+                LogError($"  ✗ {serviceName}: Registered but returns null");
+                return false;
+            }
+
+            // SaveSystem-specific validation
+            if (!service.IsInitialized)
+            {
+                LogError($"  ✗ {serviceName}: IsInitialized returned false");
+                return false;
+            }
+
+            Log($"  ✓ {serviceName}: Valid");
+            return true;
+        }
+
+        #endregion
+
+        #region Logging
+
+        private void Log(string message)
+        {
+            if (enableDebugLogs)
+            {
+                Debug.Log($"[ServiceBootstrap] {message}");
+            }
+        }
+
+        private void LogError(string message)
+        {
+            Debug.LogError($"[ServiceBootstrap] {message}");
+        }
+
+        #endregion
+    }
+}
