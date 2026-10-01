@@ -379,7 +379,7 @@ flowchart TB
 
 아래는 앞선 문서 작성 과정의 검증 기록이다. 이번 표현 수정에서 검사를 다시 수행했다는 뜻은 아니다.
 
-- 2026-10-01 UTC, 연결된 GitHub의 원본 저장소 기본 정보, 브랜치·커밋 조회와 비교 결과로 위 기본 브랜치, 원본 브랜치의 마지막 커밋과 158커밋 앞섬·0커밋 뒤처짐를 재확인했다.
+- 2026-10-01 UTC, 연결된 GitHub의 원본 저장소 기본 정보, 브랜치·커밋 조회와 비교 결과로 위 기본 브랜치, 원본 브랜치의 마지막 커밋, 158커밋 앞서고 뒤처진 커밋은 없다는 비교 결과를 재확인했다.
 - 로컬 `UrbanTour-CodeReview-8b1f532/MANIFEST.csv`의 `kind=original` 413개 파일에 대해 SHA-256을 재계산했고 **413개 일치, 불일치 0개**였다. 이는 로컬 사본이 기록된 버전에서 변하지 않았음을 확인하는 검사이며 빌드 검사가 아니다.
 - 원본 고정 커밋에서 TurnService, Unit, CardSpawnService, EnemyAIController를 다시 조회한 blob SHA는 각각 `2cc74cf2d4be13e7fe56fd2ddfeda96d94ee1ae2`, `27e0b857f85719764d1e749940ba32366b930b64`, `cecd6a1ec89dd8543d8bb78e14cca8832bbb91ce`, `96a6f24647b72f802303d9a846af28e7429bec02`다. 로컬 manifest의 해당 원본 blob 기록과 대조했다.
 - 추가로 원본 고정 커밋의 EditorBuildSettings 및 두 초기화 클래스의 meta를 읽었다. 이 자료는 공개 사본에 없는 원본 설정이며 위 링크로 구분했다.
